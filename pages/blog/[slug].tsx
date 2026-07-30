@@ -1,11 +1,14 @@
+import fs from 'fs';
+import path from 'path';
 import { GetStaticPropsContext, InferGetStaticPropsType } from 'next';
 import Head from 'next/head';
 import React, { useEffect, useRef, useState } from 'react';
+import matter from 'gray-matter';
+import { MDXRemoteSerializeResult } from 'next-mdx-remote';
+import { serialize } from 'next-mdx-remote/serialize';
 import styled from 'styled-components';
-import { staticRequest } from 'tinacms';
 import Container from 'components/Container';
 import MDXRichText from 'components/MDXRichText';
-import { NonNullableChildrenDeep } from 'types';
 import { formatDate } from 'utils/formatDate';
 import { media } from 'utils/media';
 import { getReadTime } from 'utils/readTime';
@@ -14,7 +17,17 @@ import MetadataHead from 'views/SingleArticlePage/MetadataHead';
 import OpenGraphHead from 'views/SingleArticlePage/OpenGraphHead';
 import ShareWidget from 'views/SingleArticlePage/ShareWidget';
 import StructuredDataHead from 'views/SingleArticlePage/StructuredDataHead';
-import { Posts, PostsDocument, Query } from '.tina/__generated__/types';
+
+const postsDir = path.join(process.cwd(), 'posts');
+
+interface PostData {
+  title: string;
+  description: string;
+  date: string;
+  tags: string;
+  imageUrl: string;
+  body: MDXRemoteSerializeResult;
+}
 
 export default function SingleArticlePage(props: InferGetStaticPropsType<typeof getStaticProps>) {
   const contentRef = useRef<HTMLDivElement | null>(null);
@@ -33,7 +46,6 @@ export default function SingleArticlePage(props: InferGetStaticPropsType<typeof 
 
     function lazyLoadPrismTheme() {
       const prismThemeLinkEl = document.querySelector('link[data-id="prism-theme"]');
-
       if (!prismThemeLinkEl) {
         const headEl = document.querySelector('head');
         if (headEl) {
@@ -50,15 +62,14 @@ export default function SingleArticlePage(props: InferGetStaticPropsType<typeof 
   }, []);
 
   const { slug, data } = props;
-  const content = data.getPostsDocument.data.body;
 
-  if (!data) {
-    return null;
-  }
-  const { title, description, date, tags, imageUrl } = data.getPostsDocument.data as NonNullableChildrenDeep<Posts>;
-  const meta = { title, description, date: date, tags, imageUrl, author: '' };
+  if (!data) return null;
+
+  const { title, description, date, tags, imageUrl, body } = data as PostData;
+  const meta = { title, description, date, tags, imageUrl, author: '' };
   const formattedDate = formatDate(new Date(date));
   const absoluteImageUrl = imageUrl.replace(/\/+/, '/');
+
   return (
     <>
       <Head>
@@ -72,75 +83,47 @@ export default function SingleArticlePage(props: InferGetStaticPropsType<typeof 
       <CustomContainer id="content" ref={contentRef}>
         <ShareWidget title={title} slug={slug} />
         <Header title={title} formattedDate={formattedDate} imageUrl={absoluteImageUrl} readTime={readTime} />
-        <MDXRichText content={content} />
+        <MDXRichText content={body} />
       </CustomContainer>
     </>
   );
 }
 
 export async function getStaticPaths() {
-  const postsListData = await staticRequest({
-    query: `
-      query PostsSlugs{
-        getPostsList{
-          edges{
-            node{
-              sys{
-                basename
-              }
-            }
-          }
-        }
-      }
-    `,
-    variables: {},
-  });
-
-  if (!postsListData) {
-    return {
-      paths: [],
-      fallback: false,
-    };
+  if (!fs.existsSync(postsDir)) {
+    return { paths: [], fallback: false };
   }
-
-  type NullAwarePostsList = { getPostsList: NonNullableChildrenDeep<Query['getPostsList']> };
+  const files = fs.readdirSync(postsDir).filter((f) => f.endsWith('.mdx'));
   return {
-    paths: (postsListData as NullAwarePostsList).getPostsList.edges.map((edge) => ({
-      params: { slug: normalizePostName(edge.node.sys.basename) },
-    })),
+    paths: files.map((f) => ({ params: { slug: f.replace('.mdx', '') } })),
     fallback: false,
   };
 }
 
-function normalizePostName(postName: string) {
-  return postName.replace('.mdx', '');
-}
-
 export async function getStaticProps({ params }: GetStaticPropsContext<{ slug: string }>) {
   const { slug } = params as { slug: string };
-  const variables = { relativePath: `${slug}.mdx` };
-  const query = `
-    query BlogPostQuery($relativePath: String!) {
-      getPostsDocument(relativePath: $relativePath) {
-        data {
-          title
-          description
-          date
-          tags
-          imageUrl
-          body
-        }
-      }
-    }
-  `;
+  const filePath = path.join(postsDir, `${slug}.mdx`);
 
-  const data = (await staticRequest({
-    query: query,
-    variables: variables,
-  })) as { getPostsDocument: PostsDocument };
+  if (!fs.existsSync(filePath)) {
+    return { notFound: true };
+  }
+
+  const fileContent = fs.readFileSync(filePath, 'utf-8');
+  const { data: frontmatter, content } = matter(fileContent);
+  const body = await serialize(content, { parseFrontmatter: false });
 
   return {
-    props: { slug, variables, query, data },
+    props: {
+      slug,
+      data: {
+        title: frontmatter.title || '',
+        description: frontmatter.description || '',
+        date: frontmatter.date ? String(frontmatter.date) : '',
+        tags: frontmatter.tags || '',
+        imageUrl: frontmatter.imageUrl || '',
+        body,
+      } as PostData,
+    },
   };
 }
 

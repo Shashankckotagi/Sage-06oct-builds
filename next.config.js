@@ -21,6 +21,11 @@ module.exports = withBundleAnalyzer({
     styledComponents: true,
   },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
+    // Fix ESM directory import: tinacms imports @heroicons/react/solid (directory),
+    // which Node's ESM resolver rejects. Point it to the explicit index.js.
+    config.resolve.alias['@heroicons/react/solid'] = require.resolve('@heroicons/react/solid/index.js');
+    config.resolve.alias['@heroicons/react/outline'] = require.resolve('@heroicons/react/outline/index.js');
+
     config.module.rules.push({
       test: /\.svg$/,
       issuer: {
