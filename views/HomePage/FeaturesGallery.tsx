@@ -10,28 +10,28 @@ import { media } from 'utils/media';
 
 const TABS = [
   {
-    title: 'Find relevant media contacts - multiline title',
+    title: 'Practical Engineering Guidelines & Formulas',
     description:
-      '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam quidem ipsam ratione dicta quis cupiditate consequuntur laborum ducimus iusto velit.</p>',
+      '<p>Move beyond theoretical textbook formulas to proven design rules for RF, microwave, mmWave circuits, sub-systems, and system link budgets.</p>',
     imageUrl: '/demo-illustration-3.png',
-    baseColor: '249,82,120',
-    secondColor: '221,9,57',
+    baseColor: '0,106,173',
+    secondColor: '53,169,239',
   },
   {
-    title: 'Another amazing feature',
+    title: 'Specialized Industry & Faculty Training',
     description:
-      '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam quidem ipsam ratione dicta quis cupiditate consequuntur laborum ducimus iusto velit.</p>',
+      '<p>Customized on-site, off-site, and online training courses tailored specifically for engineering teams, university faculty, and recent graduates.</p>',
     imageUrl: '/demo-illustration-4.png',
-    baseColor: '57,148,224',
-    secondColor: '99,172,232',
+    baseColor: '53,169,239',
+    secondColor: '0,106,173',
   },
   {
-    title: 'And yet... another truly fascinating feature',
+    title: 'High-Impact Engineering Consulting Services',
     description:
-      '<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam quidem ipsam ratione dicta quis cupiditate consequuntur laborum ducimus iusto velit.</p>',
+      '<p>Solve complex wireless architectural challenges, antenna array designs, and 5G system optimizations directly with senior SAGE associates.</p>',
     imageUrl: '/demo-illustration-5.png',
-    baseColor: '88,193,132',
-    secondColor: '124,207,158',
+    baseColor: '251,107,49',
+    secondColor: '228,103,32',
   },
 ];
 
@@ -76,8 +76,8 @@ export default function FeaturesGallery() {
   return (
     <FeaturesGalleryWrapper>
       <Content>
-        <OverTitle>features</OverTitle>
-        <SectionTitle>What are you signing in for?</SectionTitle>
+        <OverTitle>SAGE Learning & Consulting</OverTitle>
+        <SectionTitle>What Are You Signing Up For?</SectionTitle>
       </Content>
       <GalleryWrapper>
         <TabsContainer>{tabsMarkup}</TabsContainer>

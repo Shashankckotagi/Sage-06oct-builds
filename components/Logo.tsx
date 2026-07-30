@@ -1,44 +1,64 @@
+import NextImage from 'next/image';
 import styled from 'styled-components';
 
 export default function Logo({ ...rest }) {
   return (
     <LogoWrapper {...rest}>
-      <LogoMark>
-        SAGE<Dot>.</Dot>
-      </LogoMark>
-      <SubText>Shastry Associates Global Enterprises</SubText>
+      <IconContainer>
+        <NextImage
+          src="/Shastryhexagon(Orange).png"
+          alt="SAGE Hexagon Emblem"
+          width={42}
+          height={42}
+          objectFit="contain"
+          priority
+        />
+      </IconContainer>
+      <TextGroup>
+        <NextImage
+          src="/sage-text.png"
+          alt="Shastry Associates Global Enterprises (SAGE)"
+          width={110}
+          height={28}
+          objectFit="contain"
+          priority
+        />
+        <SubText>Shastry Associates Global Enterprises</SubText>
+      </TextGroup>
     </LogoWrapper>
   );
 }
 
 const LogoWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  justify-content: center;
+  align-items: center;
+  gap: 1.2rem;
   cursor: pointer;
   user-select: none;
 `;
 
-const LogoMark = styled.span`
-  font-family: var(--font-heading);
-  font-weight: 800;
-  font-size: 2.6rem;
-  letter-spacing: -0.03em;
-  color: rgb(var(--brandBlue, 0, 106, 173));
-  line-height: 1;
+const IconContainer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
 `;
 
-const Dot = styled.span`
-  color: rgb(var(--primary, 251, 107, 49));
+const TextGroup = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
 `;
 
 const SubText = styled.span`
   font-family: var(--font-body);
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   font-weight: 600;
-  letter-spacing: 0.06em;
-  color: rgb(var(--skyBlue, 53, 169, 239));
+  letter-spacing: 0.05em;
+  color: rgb(var(--brandBlue, 0, 106, 173));
   margin-top: 0.2rem;
   text-transform: uppercase;
+  white-space: nowrap;
 `;
 

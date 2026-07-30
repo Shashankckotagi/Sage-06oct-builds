@@ -41,10 +41,11 @@ export default function WaveCta() {
 const CtaWrapper = styled.div`
   background: rgb(var(--secondary));
   margin-top: -1rem;
-  padding-bottom: 16rem;
+  padding-bottom: 6rem;
 
   ${media('<=tablet')} {
-    padding-top: 8rem;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
   }
 `;
 

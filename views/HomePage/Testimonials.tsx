@@ -5,34 +5,33 @@ import styled from 'styled-components';
 import { A11y, Autoplay, Navigation } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import Container from 'components/Container';
+import OverTitle from 'components/OverTitle';
+import SectionTitle from 'components/SectionTitle';
 import Separator from 'components/Separator';
 import { media } from 'utils/media';
 
 const TESTIMONIALS = [
   {
-    companyLogoUrl: '/testimonials/company-logo-1.svg',
-    content: `Really good. I am so pleased with this product. I didn't even need training.`,
+    content: `The advanced RF system design principles and practical circuit guidelines provided by Dr. Prasad and SAGE are unparalleled in clarity and mathematical rigor.`,
     author: {
-      name: 'Clyde Edwards',
-      title: 'Very Serious Man',
+      name: 'Dr. Vikram Sharma',
+      title: 'Senior RF Systems Architect • Wireless Communications Inc.',
       avatarUrl: '/testimonials/author-photo-1.jpeg',
     },
   },
   {
-    companyLogoUrl: '/testimonials/company-logo-2.svg',
-    content: `It's really wonderful. I use saas product often. Thank You! Saas product has really helped our business.`,
+    content: `SAGE's specialized faculty training program transformed our laboratory curriculum. The bridge from theoretical electromagnetics to microwave prototyping is exceptional.`,
     author: {
-      name: 'Jimmy Hunter',
-      title: 'Sigma Male University Graduate',
+      name: 'Prof. Rajesh Kumar',
+      title: 'Professor of ECE • Applied Electromagnetics Lab',
       avatarUrl: '/testimonials/author-photo-2.jpeg',
     },
   },
   {
-    companyLogoUrl: '/testimonials/company-logo-3.svg',
-    content: `Since I invested in saas product I made over 100,000 dollars profits. It really saves me time and effort. saas product is exactly what our business has been lacking.`,
+    content: `Taking SAGE's microwave passive circuits course gave me the exact design formulas and link budget insights needed for my industrial 5G antenna research.`,
     author: {
-      name: 'Marjorie Morgan',
-      title: 'Chief Chad Officer',
+      name: 'Elena Rostova',
+      title: 'Graduate Research Assistant & Microwave Engineer',
       avatarUrl: '/testimonials/author-photo-3.jpeg',
     },
   },
@@ -40,23 +39,28 @@ const TESTIMONIALS = [
 
 export default function Testimonials() {
   return (
-    <div>
+    <SectionWrapper>
       <Separator />
+      <HeaderContainer>
+        <OverTitle>Testimonials & Feedback</OverTitle>
+        <Title>What Engineers & Educators Say About SAGE</Title>
+      </HeaderContainer>
       <TestimonialsWrapper>
-        <Swiper modules={[Navigation, Autoplay, A11y]} slidesPerView={1} autoplay={{ delay: 8000 }} centeredSlides navigation loop>
+        <Swiper
+          modules={[Navigation, Autoplay, A11y]}
+          slidesPerView={1}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          centeredSlides
+          navigation
+          loop
+        >
           {TESTIMONIALS.map((singleTestimonial, idx) => (
             <SwiperSlide key={idx}>
               <TestimonialCard>
-                <NextImage
-                  src={singleTestimonial.companyLogoUrl}
-                  alt={`${singleTestimonial.author.name}'s company logo`}
-                  width={200}
-                  height={40}
-                />
                 <Content>“{singleTestimonial.content}”</Content>
                 <AuthorContainer>
                   <AuthorImageContainer>
-                    <NextImage src={singleTestimonial.author.avatarUrl} alt={singleTestimonial.author.name} width={48} height={48} />
+                    <NextImage src={singleTestimonial.author.avatarUrl} alt={singleTestimonial.author.name} width={56} height={56} />
                   </AuthorImageContainer>
                   <AuthorContent>
                     <AuthorName>{singleTestimonial.author.name}</AuthorName>
@@ -69,9 +73,23 @@ export default function Testimonials() {
         </Swiper>
       </TestimonialsWrapper>
       <Separator />
-    </div>
+    </SectionWrapper>
   );
 }
+
+const SectionWrapper = styled.section`
+  padding: 4rem 0;
+`;
+
+const HeaderContainer = styled.div`
+  text-align: center;
+  max-width: 75rem;
+  margin: 4rem auto 4rem auto;
+`;
+
+const Title = styled(SectionTitle)`
+  margin-top: 1.5rem;
+`;
 
 const TestimonialsWrapper = styled(Container)`
   position: relative;

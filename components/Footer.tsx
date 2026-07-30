@@ -97,11 +97,12 @@ function ListItem({ title, href }: SingleFooterListItem) {
   );
 }
 
-const FooterWrapper = styled.div`
-  padding-top: 10rem;
-  padding-bottom: 4rem;
+const FooterWrapper = styled.footer`
+  padding-top: 4rem;
+  padding-bottom: 3rem;
   background: rgb(var(--secondary));
   color: rgb(var(--textSecondary));
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
 `;
 
 const ListContainer = styled.div`
@@ -111,26 +112,28 @@ const ListContainer = styled.div`
   justify-content: space-between;
 `;
 
-const ListHeader = styled.p`
+const ListHeader = styled.h4`
   font-family: var(--font-heading);
   font-weight: 700;
-  font-size: 2rem;
-  margin-bottom: 2.5rem;
+  font-size: 1.6rem;
+  margin-bottom: 1.5rem;
+  color: #FFFFFF;
+  letter-spacing: 0.02em;
 `;
 
 const ListWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 5rem;
-  margin-right: 5rem;
+  margin-bottom: 2rem;
+  margin-right: 4rem;
 
   & > *:not(:first-child) {
-    margin-top: 1rem;
+    margin-top: 0.8rem;
   }
 
   ${media('<=tablet')} {
-    flex: 0 40%;
-    margin-right: 1.5rem;
+    flex: 0 45%;
+    margin-right: 1rem;
   }
 
   ${media('<=phone')} {
@@ -140,11 +143,11 @@ const ListWrapper = styled.div`
 `;
 
 const ListItemWrapper = styled.p`
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 
   a {
     text-decoration: none;
-    color: rgba(var(--textSecondary), 0.75);
+    color: rgba(255, 255, 255, 0.75);
     transition: color 0.2s ease-in-out;
 
     &:hover {
@@ -154,18 +157,25 @@ const ListItemWrapper = styled.p`
 `;
 
 const ShareBar = styled.div`
-  & > *:not(:first-child) {
-    margin-left: 1rem;
-  }
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
 `;
 
 const Copyright = styled.p`
-  font-size: 1.5rem;
-  margin-top: 0.5rem;
+  font-size: 1.3rem;
+  color: rgba(255, 255, 255, 0.6);
+
+  ${media('<=tablet')} {
+    margin-top: 1.5rem;
+    text-align: center;
+  }
 `;
 
 const BottomBar = styled.div`
-  margin-top: 6rem;
+  margin-top: 3rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
   display: flex;
   justify-content: space-between;
   align-items: center;
