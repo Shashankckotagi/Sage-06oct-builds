@@ -1,9 +1,9 @@
+import NextImage from 'next/image';
 import NextLink from 'next/link';
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import Button from 'components/Button';
 import ButtonGroup from 'components/ButtonGroup';
 import Container from 'components/Container';
-import HeroIllustration from 'components/HeroIllustation';
 import { media } from 'utils/media';
 
 export default function Hero() {
@@ -33,12 +33,45 @@ export default function Hero() {
           </CustomButtonGroup>
         </Contents>
         <ImageContainer>
-          <HeroIllustration />
+          <GlowingGlowBackground />
+          <HexagonWrapper>
+            <NextImage
+              src="/Shastryhexagon(Orange).png"
+              alt="SAGE Hexagon Emblem"
+              width={350}
+              height={350}
+              objectFit="contain"
+              priority
+            />
+          </HexagonWrapper>
         </ImageContainer>
       </HeroWrapper>
     </HeroOuterContainer>
   );
 }
+
+const floatAnimation = keyframes`
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+`;
+
+const pulseGlow = keyframes`
+  0%, 100% {
+    opacity: 0.5;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.05);
+  }
+`;
 
 const HeroOuterContainer = styled(Container)`
   padding-top: 1.5rem;
@@ -73,6 +106,13 @@ const TaglineBadge = styled.div`
   letter-spacing: 0.05em;
   text-transform: uppercase;
   box-shadow: 0 4px 14px rgba(53, 169, 239, 0.12);
+
+  html[data-theme='dark'] & {
+    background: rgba(0, 106, 173, 0.45);
+    border: 1.5px solid rgba(53, 169, 239, 0.65);
+    color: #ffffff;
+    box-shadow: 0 4px 20px rgba(53, 169, 239, 0.3);
+  }
 
   ${media('<=tablet')} {
     font-size: 1.05rem;
@@ -141,18 +181,54 @@ const CustomButtonGroup = styled(ButtonGroup)`
 
 const ImageContainer = styled.div`
   display: flex;
-  flex: 1.3;
-  justify-content: flex-end;
+  position: relative;
+  flex: 1.1;
+  justify-content: center;
   align-items: center;
 
-  svg {
-    max-width: 72rem;
-    width: 100%;
-    height: auto;
+  ${media('<=desktop')} {
+    margin-top: 3rem;
+  }
+`;
+
+const GlowingGlowBackground = styled.div`
+  position: absolute;
+  width: 38rem;
+  height: 38rem;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(53, 169, 239, 0.22) 0%,
+    rgba(251, 107, 49, 0.12) 45%,
+    rgba(0, 106, 173, 0) 70%
+  );
+  filter: blur(20px);
+  animation: ${pulseGlow} 6s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+
+  ${media('<=tablet')} {
+    width: 28rem;
+    height: 28rem;
+  }
+`;
+
+const HexagonWrapper = styled.div`
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: ${floatAnimation} 5s ease-in-out infinite;
+  filter: drop-shadow(0 15px 35px rgba(0, 106, 173, 0.25));
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.03);
   }
 
-  ${media('<=desktop')} {
-    display: none;
+  ${media('<=tablet')} {
+    max-width: 300px;
   }
 `;
 

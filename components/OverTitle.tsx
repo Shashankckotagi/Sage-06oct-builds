@@ -23,6 +23,10 @@ const OverTitle = styled.span`
   line-height: 0;
   text-transform: uppercase;
 
+  html[data-theme='dark'] & {
+    color: #ffffff;
+  }
+
   ${media('<=desktop')} {
     line-height: 1.5;
   }

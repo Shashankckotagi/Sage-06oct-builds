@@ -378,6 +378,12 @@ const PillButton = styled.button<{ isActive: boolean }>`
   border: 1.5px solid ${(p) => (p.isActive ? 'rgb(var(--brandBlue, 0, 106, 173))' : 'rgb(var(--lineColor, 226, 232, 240))')};
   box-shadow: ${(p) => (p.isActive ? '0 8px 20px -4px rgba(0, 106, 173, 0.3)' : 'var(--shadow-sm)')};
 
+  html[data-theme='dark'] & {
+    color: ${(p) => (p.isActive ? '#FFFFFF' : '#f1f5f9')};
+    background: ${(p) => (p.isActive ? 'rgb(var(--brandBlue, 0, 106, 173))' : 'rgba(255, 255, 255, 0.08)')};
+    border-color: ${(p) => (p.isActive ? 'rgb(var(--skyBlue, 53, 169, 239))' : 'rgba(255, 255, 255, 0.18)')};
+  }
+
   &:hover {
     transform: translateY(-2px);
     border-color: rgb(var(--skyBlue, 53, 169, 239));

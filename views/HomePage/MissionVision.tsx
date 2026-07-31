@@ -105,6 +105,12 @@ const Badge = styled.span<{ highlight?: boolean }>`
   background: ${(p) => (p.highlight ? 'rgba(255, 255, 255, 0.2)' : 'rgb(var(--tertiary, 235, 246, 254))')};
   color: ${(p) => (p.highlight ? '#FFFFFF' : 'rgb(var(--brandBlue, 0, 106, 173))')};
   margin-bottom: 2rem;
+
+  html[data-theme='dark'] & {
+    background: ${(p) => (p.highlight ? 'rgba(255, 255, 255, 0.25)' : 'rgba(0, 106, 173, 0.45)')};
+    color: #ffffff;
+    border: 1px solid rgba(53, 169, 239, 0.5);
+  }
 `;
 
 const CardTitle = styled.h3`
