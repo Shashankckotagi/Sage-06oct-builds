@@ -36,12 +36,21 @@ const CustomButton = styled.button`
   display: flex;
   cursor: pointer;
   align-items: center;
+  justify-content: center;
   border: 0;
-  width: 4rem;
-  height: 4rem;
-  background: transparent;
+  width: 3.8rem;
+  height: 3.8rem;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.28);
+    transform: scale(1.05);
+  }
 
   svg {
-    color: var(--logoColor);
+    color: #ffffff;
   }
 `;

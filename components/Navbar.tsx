@@ -133,8 +133,17 @@ function NavItem({ href, title, outlined, highlighted, subItems }: SingleNavItem
 }
 
 const CustomButton = styled(Button)`
-  padding: 0.75rem 1.5rem;
+  padding: 0.75rem 1.6rem;
   line-height: 1.8;
+  background-color: rgb(var(--primary, 251, 107, 49));
+  color: #ffffff;
+  border-radius: 0.6rem;
+  font-weight: 700;
+
+  &:hover {
+    background-color: #e0551b;
+    transform: translateY(-1px);
+  }
 `;
 
 const NavItemList = styled.div`
@@ -148,6 +157,24 @@ const NavItemList = styled.div`
 `;
 
 const HamburgerMenuWrapper = styled.div`
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 0.6rem;
+  border-radius: 0.6rem;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+  }
+
+  svg {
+    width: 2.4rem;
+    height: 2.4rem;
+    fill: #ffffff;
+  }
+
   ${media('>=desktop')} {
     display: none;
   }
@@ -157,32 +184,32 @@ const LogoWrapper = styled.a`
   display: flex;
   margin-right: auto;
   text-decoration: none;
-
-  color: rgb(var(--logoColor));
+  color: #ffffff;
 `;
 
 const ChevronIcon = styled.svg`
   width: 1.4rem;
   height: 1.4rem;
   margin-left: 0.4rem;
+  fill: #ffffff;
   transition: transform 0.2s ease-in-out;
 `;
 
 const NavLink = styled.a<{ highlighted?: boolean }>`
   display: flex;
   align-items: center;
-  color: ${(p) => (p.highlighted ? '#ffffff !important' : 'rgb(var(--text))')};
-  background-color: ${(p) => (p.highlighted ? '#166534' : 'transparent')};
+  color: #ffffff !important;
+  background-color: ${(p) => (p.highlighted ? 'rgb(var(--primary, 251, 107, 49))' : 'transparent')};
   border-radius: 0.6rem;
   padding: 0.75rem 1.4rem;
   font-weight: 700;
-  letter-spacing: 0.025em;
+  letter-spacing: 0.03em;
   text-decoration: none;
   transition: all 0.2s ease-in-out;
 
   &:hover {
-    color: ${(p) => (p.highlighted ? '#ffffff !important' : 'rgb(var(--brandBlue, 0, 106, 173))')};
-    background-color: ${(p) => (p.highlighted ? '#14532d' : 'rgba(53, 169, 239, 0.08)')};
+    color: #ffffff !important;
+    background-color: ${(p) => (p.highlighted ? '#e0551b' : 'rgba(255, 255, 255, 0.18)')};
   }
 `;
 
@@ -190,14 +217,19 @@ const DropdownMenu = styled.div`
   position: absolute;
   top: 100%;
   left: 0;
-  min-width: 18rem;
-  background: rgb(var(--cardBackground, 255, 255, 255));
-  border: 1.5px solid rgba(53, 169, 239, 0.25);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  min-width: 20rem;
+  background: #005a93;
+  border: 1.5px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
   border-radius: 0.8rem;
   padding: 0.8rem 0;
   z-index: 100;
   animation: fadeIn 0.2s ease-in-out;
+
+  html[data-theme='dark'] & {
+    background: #003e66;
+    border: 1.5px solid rgba(53, 169, 239, 0.4);
+  }
 
   @keyframes fadeIn {
     from {
@@ -213,17 +245,17 @@ const DropdownMenu = styled.div`
 
 const DropdownItem = styled.a`
   display: block;
-  padding: 0.8rem 1.6rem;
+  padding: 0.9rem 1.6rem;
   font-size: 1.3rem;
   font-weight: 600;
-  color: rgb(var(--text));
+  color: #ffffff;
   text-decoration: none;
   text-transform: none;
   transition: background 0.15s ease, color 0.15s ease;
 
   &:hover {
-    background: rgba(53, 169, 239, 0.12);
-    color: rgb(var(--brandBlue, 0, 106, 173));
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
   }
 `;
 
@@ -243,18 +275,28 @@ const NavbarContainer = styled.div<NavbarContainerProps>`
   display: flex;
   position: sticky;
   top: 0;
-  padding: 1.5rem 0;
+  padding: 1.2rem 0;
   width: 100%;
   height: 8rem;
   z-index: var(--z-navbar);
 
-  background-color: rgb(var(--navbarBackground));
-  box-shadow: 0 1px 2px 0 rgb(0 0 0 / 5%);
+  /* Light Mode SAGE Deep Blue background */
+  background-color: #006aad;
+  box-shadow: 0 4px 20px rgba(0, 106, 173, 0.35);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+
+  /* Dark Mode Ultra-Rich Oceanic Blue background */
+  html[data-theme='dark'] & {
+    background-color: #004d7e;
+    border-bottom: 1px solid rgba(53, 169, 239, 0.3);
+    box-shadow: 0 4px 25px rgba(0, 0, 0, 0.45);
+  }
+
   visibility: ${(p) => (p.hidden ? 'hidden' : 'visible')};
   transform: ${(p) => (p.hidden ? `translateY(-8rem) translateZ(0) scale(1)` : 'translateY(0) translateZ(0) scale(1)')};
 
   transition-property: transform, visibility, height, box-shadow, background-color;
-  transition-duration: 0.15s;
+  transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
 `;
 
