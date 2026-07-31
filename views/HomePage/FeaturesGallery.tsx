@@ -13,7 +13,7 @@ const TABS = [
     title: 'Practical Engineering Guidelines & Formulas',
     description:
       '<p>Move beyond theoretical textbook formulas to proven design rules for RF, microwave, mmWave circuits, sub-systems, and system link budgets.</p>',
-    imageUrl: '/demo-illustration-3.png',
+    imageUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=1200&q=80',
     baseColor: '0,106,173',
     secondColor: '53,169,239',
   },
@@ -21,7 +21,7 @@ const TABS = [
     title: 'Specialized Industry & Faculty Training',
     description:
       '<p>Customized on-site, off-site, and online training courses tailored specifically for engineering teams, university faculty, and recent graduates.</p>',
-    imageUrl: '/demo-illustration-4.png',
+    imageUrl: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=1200&q=80',
     baseColor: '53,169,239',
     secondColor: '0,106,173',
   },
@@ -29,7 +29,7 @@ const TABS = [
     title: 'High-Impact Engineering Consulting Services',
     description:
       '<p>Solve complex wireless architectural challenges, antenna array designs, and 5G system optimizations directly with senior SAGE associates.</p>',
-    imageUrl: '/demo-illustration-5.png',
+    imageUrl: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=1200&q=80',
     baseColor: '251,107,49',
     secondColor: '228,103,32',
   },
@@ -44,7 +44,7 @@ export default function FeaturesGallery() {
 
     return (
       <ImageContainer key={singleTab.title} isActive={isActive}>
-        <NextImage src={singleTab.imageUrl} alt={singleTab.title} layout="fill" objectFit="contain" priority={isFirst} />
+        <NextImage src={singleTab.imageUrl} alt={singleTab.title} layout="fill" objectFit="cover" priority={isFirst} unoptimized />
       </ImageContainer>
     );
   });

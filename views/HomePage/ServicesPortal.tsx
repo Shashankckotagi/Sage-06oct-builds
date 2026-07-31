@@ -19,6 +19,7 @@ interface ServiceTab {
   ctaText: string;
   ctaLink: string;
   imageBg: string;
+  imageUrl: string;
   accentColor: string;
 }
 
@@ -27,7 +28,7 @@ const SERVICE_TABS: ServiceTab[] = [
     id: 'courses',
     title: 'Courses',
     badge: 'Educational Programs',
-    icon: '📚',
+    icon: 'courses',
     headline: 'Structured Engineering Courses from Fundamentals to Advanced Design',
     description:
       'Rigorous, self-paced and instructor-led courses covering RF circuit design, microwave passive networks, 5G wireless architectures, and antenna theory.',
@@ -39,14 +40,15 @@ const SERVICE_TABS: ServiceTab[] = [
     formats: ['Online Self-Paced', 'Live Online Seminars', 'Campus Sessions'],
     ctaText: 'Explore All Courses',
     ctaLink: '/courses',
-    imageBg: 'linear-gradient(135deg, #006AAD 0%, #35A9EF 100%)',
+    imageBg: 'linear-gradient(135deg, rgba(0, 106, 173, 0.92) 0%, rgba(15, 23, 42, 0.95) 100%)',
+    imageUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80',
     accentColor: '#FB6B31',
   },
   {
     id: 'tutorials',
     title: 'Tutorials',
     badge: 'Applied Guides',
-    icon: '📖',
+    icon: 'tutorials',
     headline: 'In-Depth Technical Tutorials & Mathematical Insights',
     description:
       'Clear, practical tutorials bridging complex electromagnetic theory with physical circuit design guidelines, S-parameter analysis, and link budgets.',
@@ -58,14 +60,15 @@ const SERVICE_TABS: ServiceTab[] = [
     formats: ['Web Tutorials', 'PDF Reference Guides', 'Video Demonstrations'],
     ctaText: 'Browse Tutorials',
     ctaLink: '/courses#tutorials',
-    imageBg: 'linear-gradient(135deg, #0F172A 0%, #006AAD 100%)',
+    imageBg: 'linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(0, 106, 173, 0.95) 100%)',
+    imageUrl: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=900&q=80',
     accentColor: '#35A9EF',
   },
   {
     id: 'training',
     title: 'Training',
     badge: 'Professional Upskilling',
-    icon: '🎓',
+    icon: 'training',
     headline: 'Customized Training Programs for Industry Teams & Faculty',
     description:
       'Targeted professional development programs designed for corporate R&D teams, engineering organizations, and university faculty looking to upgrade their skills.',
@@ -77,14 +80,15 @@ const SERVICE_TABS: ServiceTab[] = [
     formats: ['Corporate On-Site', 'Off-Site Retreats', 'Virtual Bootcamps'],
     ctaText: 'Request Training Info',
     ctaLink: '/services#training',
-    imageBg: 'linear-gradient(135deg, #006AAD 0%, #1E293B 100%)',
+    imageBg: 'linear-gradient(135deg, rgba(0, 106, 173, 0.92) 0%, rgba(30, 41, 59, 0.95) 100%)',
+    imageUrl: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=80',
     accentColor: '#FB6B31',
   },
   {
     id: 'consulting',
     title: 'Consulting',
     badge: 'Expert Advisory',
-    icon: '💼',
+    icon: 'consulting',
     headline: 'Specialized RF, Microwave & Wireless System Consulting',
     description:
       'Direct consulting engagements with Dr. S.N. Prasad and senior SAGE associates to solve critical electromagnetic design challenges and optimize system performance.',
@@ -96,14 +100,15 @@ const SERVICE_TABS: ServiceTab[] = [
     formats: ['Direct Retainer', 'Project-Based Advisory', 'Design Audits'],
     ctaText: 'Schedule Consultation',
     ctaLink: '/contact',
-    imageBg: 'linear-gradient(135deg, #15803D 0%, #006AAD 100%)',
+    imageBg: 'linear-gradient(135deg, rgba(21, 128, 61, 0.9) 0%, rgba(0, 106, 173, 0.95) 100%)',
+    imageUrl: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80',
     accentColor: '#FB6B31',
   },
   {
     id: 'workshops',
     title: 'Workshops',
     badge: 'Interactive Seminars',
-    icon: '🛠️',
+    icon: 'workshops',
     headline: 'Hands-On Technical Workshops & Interactive Seminars',
     description:
       'Intensive 1-day to 3-day technical workshops focusing on specialized topics in mmWave circuits, 5G wireless deployment, and microwave component measurement.',
@@ -115,14 +120,15 @@ const SERVICE_TABS: ServiceTab[] = [
     formats: ['On-Site Workshops', 'IEEE Conference Sessions', 'Webinars'],
     ctaText: 'View Workshops',
     ctaLink: '/services#workshops',
-    imageBg: 'linear-gradient(135deg, #0369A1 0%, #35A9EF 100%)',
+    imageBg: 'linear-gradient(135deg, rgba(3, 105, 161, 0.92) 0%, rgba(53, 169, 239, 0.95) 100%)',
+    imageUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=80',
     accentColor: '#FB6B31',
   },
   {
     id: 'news',
     title: 'News',
     badge: 'Research & Industry Updates',
-    icon: '📰',
+    icon: 'news',
     headline: 'Latest SAGE Announcements, Research Insights & Publications',
     description:
       'Stay informed with technical articles, research publications, industry trends, and institutional announcements from the SAGE global network.',
@@ -134,14 +140,15 @@ const SERVICE_TABS: ServiceTab[] = [
     formats: ['Editorial Articles', 'Research Papers', 'Quarterly Digest'],
     ctaText: 'Read Latest News',
     ctaLink: '/blog',
-    imageBg: 'linear-gradient(135deg, #334155 0%, #006AAD 100%)',
+    imageBg: 'linear-gradient(135deg, rgba(51, 65, 85, 0.92) 0%, rgba(0, 106, 173, 0.95) 100%)',
+    imageUrl: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=900&q=80',
     accentColor: '#35A9EF',
   },
   {
     id: 'events',
     title: 'Upcoming Events',
     badge: 'Global Schedule',
-    icon: '📅',
+    icon: 'events',
     headline: 'Upcoming Webinars, IEEE Keynotes & Academic Conferences',
     description:
       'Explore upcoming international keynote addresses, conference presentations, IEEE chapter meetings, and virtual Q&A sessions hosted by SAGE.',
@@ -153,10 +160,84 @@ const SERVICE_TABS: ServiceTab[] = [
     formats: ['IEEE Symposia', 'Global Webinars', 'Academic Panels'],
     ctaText: 'Check Event Calendar',
     ctaLink: '/contact#events',
-    imageBg: 'linear-gradient(135deg, #006AAD 0%, #0284C7 100%)',
+    imageBg: 'linear-gradient(135deg, rgba(0, 106, 173, 0.92) 0%, rgba(2, 132, 199, 0.95) 100%)',
+    imageUrl: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=900&q=80',
     accentColor: '#FB6B31',
   },
 ];
+
+function TabIcon({ name, size = '1.8rem', color = 'currentColor' }: { name: string; size?: string; color?: string }) {
+  const props = {
+    width: size,
+    height: size,
+    fill: 'none',
+    stroke: color,
+    strokeWidth: '2',
+    strokeLinecap: 'round' as const,
+    strokeLinejoin: 'round' as const,
+    viewBox: '0 0 24 24',
+  };
+
+  switch (name) {
+    case 'courses':
+      return (
+        <svg {...props}>
+          <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" />
+          <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" />
+          <path d="M12 6h4" />
+          <path d="M12 10h4" />
+        </svg>
+      );
+    case 'tutorials':
+      return (
+        <svg {...props}>
+          <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z" />
+          <polyline points="14 2 14 8 20 8" />
+          <line x1="16" y1="13" x2="8" y2="13" />
+          <line x1="16" y1="17" x2="8" y2="17" />
+        </svg>
+      );
+    case 'training':
+      return (
+        <svg {...props}>
+          <path d="M22 10v6M2 10l10-5 10 5-10 5z" />
+          <path d="M6 12v5c3 3 9 3 12 0v-5" />
+        </svg>
+      );
+    case 'consulting':
+      return (
+        <svg {...props}>
+          <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+          <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+        </svg>
+      );
+    case 'workshops':
+      return (
+        <svg {...props}>
+          <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+        </svg>
+      );
+    case 'news':
+      return (
+        <svg {...props}>
+          <path d="M19 20H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v1m2 13a2 2 0 0 1-2-2V7m2 13a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2h-2" />
+          <line x1="7" y1="8" x2="13" y2="8" />
+          <line x1="7" y1="12" x2="11" y2="12" />
+        </svg>
+      );
+    case 'events':
+      return (
+        <svg {...props}>
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+          <line x1="16" y1="2" x2="16" y2="6" />
+          <line x1="8" y1="2" x2="8" y2="6" />
+          <line x1="3" y1="10" x2="21" y2="10" />
+        </svg>
+      );
+    default:
+      return null;
+  }
+}
 
 export default function ServicesPortal() {
   const [activeTab, setActiveTab] = useState<ServiceTab>(SERVICE_TABS[0]);
@@ -182,7 +263,9 @@ export default function ServicesPortal() {
                 isActive={isActive}
                 onClick={() => setActiveTab(tab)}
               >
-                <PillIcon>{tab.icon}</PillIcon>
+                <PillIcon>
+                  <TabIcon name={tab.icon} size="1.8rem" color={isActive ? '#FFFFFF' : 'rgb(var(--brandBlue, 0, 106, 173))'} />
+                </PillIcon>
                 <span>{tab.title}</span>
                 {isActive && <ActiveIndicator />}
               </PillButton>
@@ -221,7 +304,7 @@ export default function ServicesPortal() {
           </InfoPanel>
 
           {/* Right Visual Card Panel */}
-          <VisualCardPanel bgGradient={activeTab.imageBg}>
+          <VisualCardPanel bgGradient={activeTab.imageBg} bgImage={activeTab.imageUrl}>
             <CardHeaderOverlay>
               <BrandMark>SAGE.</BrandMark>
               <CategoryBadge>{activeTab.title}</CategoryBadge>
@@ -230,7 +313,9 @@ export default function ServicesPortal() {
             <AccentDivider style={{ background: activeTab.accentColor }} />
 
             <CardBodyContent>
-              <IconDisplay>{activeTab.icon}</IconDisplay>
+              <IconDisplay>
+                <TabIcon name={activeTab.icon} size="3.6rem" color="#FFFFFF" />
+              </IconDisplay>
               <CardTitle>{activeTab.headline}</CardTitle>
               <FormatPillsRow>
                 {activeTab.formats.map((fmt) => (
@@ -415,7 +500,8 @@ const CtaButtonRow = styled.div`
   margin-top: auto;
 `;
 
-const VisualCardPanel = styled.div<{ bgGradient: string }>`
+const VisualCardPanel = styled.div<{ bgGradient: string; bgImage: string }>`
+  position: relative;
   background: ${(p) => p.bgGradient};
   border-radius: 1.2rem;
   padding: 3.5rem;
@@ -425,6 +511,27 @@ const VisualCardPanel = styled.div<{ bgGradient: string }>`
   justify-content: space-between;
   min-height: 38rem;
   box-shadow: 0 12px 30px -5px rgba(0, 106, 173, 0.25);
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url(${(p) => p.bgImage});
+    background-size: cover;
+    background-position: center;
+    opacity: 0.28;
+    mix-blend-mode: overlay;
+    transition: all 0.4s ease-in-out;
+  }
+
+  & > * {
+    position: relative;
+    z-index: 2;
+  }
 
   ${media('<=desktop')} {
     min-height: 30rem;

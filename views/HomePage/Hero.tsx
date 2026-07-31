@@ -41,7 +41,18 @@ export default function Hero() {
 }
 
 const HeroOuterContainer = styled(Container)`
-  padding-top: 4rem;
+  padding-top: 1.5rem;
+  padding-bottom: 3rem;
+
+  ${media('<=desktop')} {
+    min-height: calc(100vh - 8rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
 `;
 
 const TaglineBadge = styled.div`
@@ -49,8 +60,8 @@ const TaglineBadge = styled.div`
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin: 0 auto 3.5rem auto;
-  padding: 1rem 2.4rem;
+  margin: 0 auto 1.5rem auto;
+  padding: 0.8rem 2rem;
   width: fit-content;
   background: rgb(var(--tertiary, 235, 246, 254));
   border: 1.5px solid rgba(53, 169, 239, 0.35);
@@ -64,9 +75,17 @@ const TaglineBadge = styled.div`
   box-shadow: 0 4px 14px rgba(53, 169, 239, 0.12);
 
   ${media('<=tablet')} {
-    font-size: 1.1rem;
-    padding: 0.8rem 1.6rem;
+    font-size: 1.05rem;
+    padding: 0.6rem 1.4rem;
     text-align: center;
+    margin-bottom: 1.2rem;
+  }
+
+  ${media('<=phone')} {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    gap: 0.6rem;
+    letter-spacing: 0.03em;
   }
 `;
 
@@ -81,42 +100,59 @@ const BadgeDot = styled.span`
 
 const HeroWrapper = styled.div`
   display: flex;
+  align-items: center;
+  width: 100%;
 
   ${media('<=desktop')} {
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    flex: 1;
   }
 `;
 
 const Contents = styled.div`
   flex: 1;
-  max-width: 60rem;
+  max-width: 52rem;
 
   ${media('<=desktop')} {
     max-width: 100%;
+    width: 100%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
 const CustomButtonGroup = styled(ButtonGroup)`
-  margin-top: 4rem;
+  margin-top: 2.5rem;
+
+  ${media('<=desktop')} {
+    margin-top: 2.5rem;
+    justify-content: center;
+  }
+
+  ${media('<=tablet')} {
+    margin-top: 2rem;
+  }
 `;
 
 const ImageContainer = styled.div`
   display: flex;
-  flex: 1;
+  flex: 1.3;
   justify-content: flex-end;
-  align-items: flex-start;
+  align-items: center;
 
   svg {
-    max-width: 45rem;
+    max-width: 72rem;
+    width: 100%;
+    height: auto;
   }
 
   ${media('<=desktop')} {
-    margin-top: 2rem;
-    justify-content: center;
-    svg {
-      max-width: 80%;
-    }
+    display: none;
   }
 `;
 

@@ -8,8 +8,8 @@ export default function Logo({ ...rest }) {
         <NextImage
           src="/Shastryhexagon(Orange).png"
           alt="SAGE Hexagon Emblem"
-          width={42}
-          height={42}
+          width={50}
+          height={50}
           objectFit="contain"
           priority
         />

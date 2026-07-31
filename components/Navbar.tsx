@@ -88,8 +88,9 @@ export default function Navbar({ items }: NavbarProps) {
   );
 }
 
-function NavItem({ href, title, outlined }: SingleNavItem) {
+function NavItem({ href, title, outlined, highlighted, subItems }: SingleNavItem) {
   const { setIsModalOpened } = useNewsletterModalContext();
+  const [isOpen, setIsOpen] = useState(false);
 
   function showNewsletterModal() {
     setIsModalOpened(true);
@@ -99,11 +100,34 @@ function NavItem({ href, title, outlined }: SingleNavItem) {
     return <CustomButton onClick={showNewsletterModal}>{title}</CustomButton>;
   }
 
+  const hasSubItems = subItems && subItems.length > 0;
+
   return (
-    <NavItemWrapper outlined={outlined}>
+    <NavItemWrapper
+      outlined={outlined}
+      highlighted={highlighted}
+      onMouseEnter={() => setIsOpen(true)}
+      onMouseLeave={() => setIsOpen(false)}
+    >
       <NextLink href={href} passHref>
-        <a>{title}</a>
+        <NavLink highlighted={highlighted}>
+          {title}
+          {hasSubItems && (
+            <ChevronIcon viewBox="0 0 20 20" fill="currentColor">
+              <path fillRule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clipRule="evenodd" />
+            </ChevronIcon>
+          )}
+        </NavLink>
       </NextLink>
+      {hasSubItems && isOpen && (
+        <DropdownMenu>
+          {subItems.map((sub) => (
+            <NextLink key={sub.href} href={sub.href} passHref>
+              <DropdownItem>{sub.title}</DropdownItem>
+            </NextLink>
+          ))}
+        </DropdownMenu>
+      )}
     </NavItemWrapper>
   );
 }
@@ -115,6 +139,7 @@ const CustomButton = styled(Button)`
 
 const NavItemList = styled.div`
   display: flex;
+  align-items: center;
   list-style: none;
 
   ${media('<desktop')} {
@@ -136,34 +161,81 @@ const LogoWrapper = styled.a`
   color: rgb(var(--logoColor));
 `;
 
+const ChevronIcon = styled.svg`
+  width: 1.4rem;
+  height: 1.4rem;
+  margin-left: 0.4rem;
+  transition: transform 0.2s ease-in-out;
+`;
+
+const NavLink = styled.a<{ highlighted?: boolean }>`
+  display: flex;
+  align-items: center;
+  color: ${(p) => (p.highlighted ? '#ffffff !important' : 'rgb(var(--text))')};
+  background-color: ${(p) => (p.highlighted ? '#166534' : 'transparent')};
+  border-radius: 0.6rem;
+  padding: 0.75rem 1.4rem;
+  font-weight: 700;
+  letter-spacing: 0.025em;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    color: ${(p) => (p.highlighted ? '#ffffff !important' : 'rgb(var(--brandBlue, 0, 106, 173))')};
+    background-color: ${(p) => (p.highlighted ? '#14532d' : 'rgba(53, 169, 239, 0.08)')};
+  }
+`;
+
+const DropdownMenu = styled.div`
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 18rem;
+  background: rgb(var(--cardBackground, 255, 255, 255));
+  border: 1.5px solid rgba(53, 169, 239, 0.25);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.12);
+  border-radius: 0.8rem;
+  padding: 0.8rem 0;
+  z-index: 100;
+  animation: fadeIn 0.2s ease-in-out;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(6px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+`;
+
+const DropdownItem = styled.a`
+  display: block;
+  padding: 0.8rem 1.6rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: rgb(var(--text));
+  text-decoration: none;
+  text-transform: none;
+  transition: background 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background: rgba(53, 169, 239, 0.12);
+    color: rgb(var(--brandBlue, 0, 106, 173));
+  }
+`;
+
 const NavItemWrapper = styled.li<Partial<SingleNavItem>>`
-  background-color: ${(p) => (p.outlined ? 'rgb(var(--primary))' : 'transparent')};
+  position: relative;
   border-radius: 0.5rem;
   font-size: 1.3rem;
   text-transform: uppercase;
   line-height: 2;
 
-  &:hover {
-    background-color: ${(p) => (p.outlined ? 'rgb(var(--primary), 0.8)' : 'transparent')};
-    transition: background-color 0.2s;
-  }
-
-  a {
-    display: flex;
-    color: rgb(var(--text));
-    letter-spacing: 0.025em;
-    text-decoration: none;
-    padding: 0.75rem 1.5rem;
-    font-weight: 600;
-    transition: color 0.2s ease-in-out;
-
-    &:hover {
-      color: rgb(var(--brandBlue, 0, 106, 173));
-    }
-  }
-
   &:not(:last-child) {
-    margin-right: 2rem;
+    margin-right: 1.5rem;
   }
 `;
 

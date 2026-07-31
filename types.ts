@@ -1,4 +1,12 @@
-export type SingleNavItem = { title: string; href: string; outlined?: boolean };
+export type SubNavItem = { title: string; href: string };
+
+export type SingleNavItem = {
+  title: string;
+  href: string;
+  outlined?: boolean;
+  highlighted?: boolean;
+  subItems?: SubNavItem[];
+};
 
 export type NavItems = SingleNavItem[];
 

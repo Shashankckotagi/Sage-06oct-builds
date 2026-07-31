@@ -48,6 +48,15 @@ function NavItemsList({ items }: NavigationDrawerProps) {
         return (
           <NavItem key={idx}>
             <NextLink href={singleItem.href}>{singleItem.title}</NextLink>
+            {singleItem.subItems && (
+              <SubList>
+                {singleItem.subItems.map((sub, sIdx) => (
+                  <SubItem key={sIdx}>
+                    <NextLink href={sub.href}>{sub.title}</NextLink>
+                  </SubItem>
+                ))}
+              </SubList>
+            )}
           </NavItem>
         )
       })}
@@ -69,15 +78,15 @@ const Wrapper = styled.div`
     z-index: var(--z-drawer);
     background: rgb(var(--background));
     transition: margin-left 0.3s cubic-bezier(0.82, 0.085, 0.395, 0.895);
-    overflow: hidden;
+    overflow-y: auto;
   }
 
   .my-drawer-container {
     position: relative;
-    height: 100%;
+    min-height: 100%;
     margin: auto;
     max-width: 70rem;
-    padding: 0 1.2rem;
+    padding: 6rem 1.2rem 4rem 1.2rem;
   }
 
   .close-icon {
@@ -95,7 +104,6 @@ const Wrapper = styled.div`
   }
 
   ul {
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -105,20 +113,43 @@ const Wrapper = styled.div`
     list-style: none;
 
     & > *:not(:last-child) {
-      margin-bottom: 3rem;
+      margin-bottom: 2.2rem;
     }
   }
 `
 
 const NavItem = styled.li`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   a {
-    font-size: 3rem;
+    font-size: 2.4rem;
+    font-weight: 700;
     text-transform: uppercase;
     display: block;
     color: currentColor;
     text-decoration: none;
     border-radius: 0.5rem;
-    padding: 0.5rem 1rem;
+    padding: 0.4rem 1rem;
     text-align: center;
+  }
+`
+
+const SubList = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 0.6rem;
+  gap: 0.4rem;
+`
+
+const SubItem = styled.div`
+  a {
+    font-size: 1.5rem !important;
+    color: rgb(var(--brandBlue, 0, 106, 173)) !important;
+    text-transform: none !important;
+    padding: 0.2rem 0.8rem !important;
+    font-weight: 600 !important;
   }
 `

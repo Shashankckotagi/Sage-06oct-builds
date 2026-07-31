@@ -20,10 +20,33 @@ import { NavItems } from 'types';
 
 const navItems: NavItems = [
   { title: 'Home', href: '/' },
-  { title: 'Courses', href: '/courses' },
-  { title: 'Services', href: '/services' },
-  { title: 'About SAGE', href: '/about' },
-  { title: 'News', href: '/blog' },
+  {
+    title: 'About Us',
+    href: '/about',
+    subItems: [
+      { title: 'SAGE Team', href: '/about#team' },
+      { title: 'Missions & Goals', href: '/about#mission' },
+    ],
+  },
+  {
+    title: 'Services',
+    href: '/services',
+    subItems: [
+      { title: 'Courses', href: '/courses' },
+      { title: 'Tutorials', href: '/courses#tutorials' },
+      { title: 'Workshops', href: '/services#workshops' },
+      { title: 'Training', href: '/services#training' },
+      { title: 'Consulting', href: '/services#consulting' },
+    ],
+  },
+  {
+    title: 'News',
+    href: '/blog',
+    subItems: [
+      { title: 'Events', href: '/contact#events' },
+      { title: 'Photo Gallery', href: '/blog#gallery' },
+    ],
+  },
   { title: 'Contact Us', href: '/contact', outlined: true },
 ];
 

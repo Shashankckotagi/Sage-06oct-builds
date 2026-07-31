@@ -55,8 +55,8 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 :root {
-  --font-heading: 'Manrope', sans-serif;
-  --font-body: 'Inter', sans-serif;
+  --font-heading: 'Sansation', 'Manrope', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-body: 'Sansation', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   --font: var(--font-body);
   
   --shadow-sm: 0 1px 3px 0 rgb(26 26 26 / 6%);
@@ -92,6 +92,7 @@ dd {
 
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-heading);
+  font-weight: 700;
   letter-spacing: -0.02em;
 }
 
@@ -132,6 +133,7 @@ body {
   text-rendering: optimizeSpeed;
   line-height: 1.6;
   font-family: var(--font-body);
+  font-weight: 400;
   color: rgb(var(--text));
   background: rgb(var(--background));
   font-feature-settings: "kern";
