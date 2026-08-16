@@ -24,8 +24,8 @@ const navItems: NavItems = [
     title: 'About Us',
     href: '/about',
     subItems: [
-      { title: 'SAGE Team', href: '/about#team' },
-      { title: 'Missions & Goals', href: '/about#mission' },
+      { title: 'Faculty & Team', href: '/team' },
+      { title: 'Mission & Vision', href: '/about#mission' },
     ],
   },
   {

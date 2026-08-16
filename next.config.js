@@ -20,6 +20,12 @@ module.exports = withBundleAnalyzer({
   compiler: {
     styledComponents: true,
   },
+  async redirects() {
+    return [
+      { source: '/about-us', destination: '/about', permanent: true },
+      { source: '/contact-us', destination: '/contact', permanent: true },
+    ];
+  },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
     // Fix ESM directory import: tinacms imports @heroicons/react/solid (directory),
     // which Node's ESM resolver rejects. Point it to the explicit index.js.

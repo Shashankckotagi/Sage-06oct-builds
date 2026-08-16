@@ -9,9 +9,10 @@ import SectionTitle from './SectionTitle';
 export interface PageProps {
   title: string;
   description?: string;
+  hasHeader?: boolean;
 }
 
-export default function Page({ title, description, children }: PropsWithChildren<PageProps>) {
+export default function Page({ title, description, hasHeader = false, children }: PropsWithChildren<PageProps>) {
   return (
     <>
       <Head>
@@ -21,15 +22,15 @@ export default function Page({ title, description, children }: PropsWithChildren
         <meta name="description" content={description} />
       </Head>
       <Wrapper>
-        <HeaderContainer>
-          <Container>
-            <Title>{title}</Title>
-            {description && <Description>{description}</Description>}
-          </Container>
-        </HeaderContainer>
-        <Container>
-          <ChildrenWrapper>{children}</ChildrenWrapper>
-        </Container>
+        {hasHeader && (
+          <HeaderContainer>
+            <Container>
+              <Title>{title}</Title>
+              {description && <Description>{description}</Description>}
+            </Container>
+          </HeaderContainer>
+        )}
+        {children}
       </Wrapper>
     </>
   );

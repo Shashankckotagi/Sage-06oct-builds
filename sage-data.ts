@@ -80,6 +80,32 @@ export const navigation: NavItem[] = [
   { label: "Contact", href: "/contact" },
 ];
 
+export interface Crumb {
+  label: string;
+  href: string;
+}
+
+export type PageHeroData = {
+  breadcrumbs?: Crumb[];
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  imageSrc?: string; // omit for legal / 404
+  extra?: React.ReactNode;
+};
+
+export const pageHeroes: Record<string, PageHeroData> = {
+  '/about': {
+    breadcrumbs: [
+      { label: 'Home', href: '/' },
+      { label: 'About Us', href: '/about' },
+    ],
+    title: 'About Us',
+    description: 'Applied electromagnetics, taught with engineering rigor. Founded by RF and microwave veterans to bridge graduate theory with the industry bench.',
+    imageSrc: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=1600&q=80',
+  },
+};
+
 // ─── Mission, Vision, Goals ──────────────────────────────────────────────────
 
 export const mission =
@@ -561,10 +587,263 @@ export const footerNav = {
     title: "Company",
     links: [
       { label: "About", href: "/about" },
-      { label: "Team", href: "/about#team" },
+      { label: "Team", href: "/team" },
       { label: "News", href: "/news" },
     ],
   },
 };
 
 export const footerCopyright = `© ${new Date().getFullYear()} Shastry Associates Global Enterprises (SAGE). All rights reserved.`;
+
+// ─── Disciplines & Team Members ──────────────────────────────────────────────
+
+export const DISCIPLINES = [
+  { id: "all", label: "All Experts" },
+  { id: "microwave-rf", label: "Microwave & RF" },
+  { id: "wireless-5g6g", label: "Wireless & 5G/6G" },
+  { id: "antenna", label: "Antenna Theory" },
+  { id: "advisory", label: "Corporate Advisory" },
+] as const;
+
+export type DisciplineId = typeof DISCIPLINES[number]["id"];
+
+export interface TeamMember {
+  id: string;
+  slug: string;
+  name: string;
+  degrees: string;
+  role: string;
+  discipline: DisciplineId;
+  disciplineLabel: string;
+  avatarInitials: string;
+  avatarUrl?: string;
+  bio: string;
+  specializations: string[];
+  coursesTaught: string[];
+  publications?: string[];
+  ieeeStatus?: string;
+}
+
+export const teamMembers: TeamMember[] = [
+  {
+    id: "team-1",
+    slug: "shastry-s-r",
+    name: "Dr. S. R. Shastry",
+    degrees: "Ph.D.",
+    role: "Founder & Principal Advisory Fellow",
+    discipline: "advisory",
+    disciplineLabel: "Corporate Advisory",
+    avatarInitials: "SS",
+    ieeeStatus: "IEEE Fellow",
+    bio: "Dr. S. R. Shastry has over 35 years of engineering experience across industry and academia, specializing in applied electromagnetics, microwave circuits, and RF system architecture. He founded SAGE to bridge advanced electromagnetic theory with industrial R&D practice.",
+    specializations: [
+      "Applied Electromagnetics",
+      "Microwave Circuit Architecture",
+      "Corporate Engineering Strategy",
+      "High-Frequency Measurement",
+    ],
+    coursesTaught: [
+      "Fundamentals of RF & Microwave Engineering",
+      "Advanced Microwave Passive Circuits",
+      "RF System Level Architecture",
+    ],
+    publications: [
+      "Monolithic Integrated Microwave Circuits: Design Guidelines (IEEE Trans. MTT)",
+      "High-Efficiency Power Divider Architectures for Phased Arrays",
+    ],
+  },
+  {
+    id: "team-2",
+    slug: "marcus-chen",
+    name: "Dr. Marcus Chen",
+    degrees: "Ph.D., M.S.",
+    role: "Lead Microwave & RF Systems Architect",
+    discipline: "microwave-rf",
+    disciplineLabel: "Microwave & RF",
+    avatarInitials: "MC",
+    ieeeStatus: "IEEE Senior Member",
+    bio: "Dr. Marcus Chen brings 20+ years of experience in RFIC design, passive component optimization, and microwave network analysis. He has led R&D teams in developing sub-6GHz and mmWave transceiver front-ends for tier-1 semiconductor firms.",
+    specializations: [
+      "RFIC & MMIC Front-End Design",
+      "Noise Figure & Linearity Budgeting",
+      "Directional Couplers & Resonators",
+      "Agile Spectrum Analysis",
+    ],
+    coursesTaught: [
+      "Microwave Passive Circuits & Networks",
+      "RF Front-End Transceiver Design",
+      "Low Noise Amplifiers & Linearity Optimization",
+    ],
+    publications: [
+      "Sub-6 GHz Low-Noise Transceiver Architecture with Active Cancellation",
+    ],
+  },
+  {
+    id: "team-3",
+    slug: "elena-rodriguez",
+    name: "Dr. Elena Rodriguez",
+    degrees: "Ph.D.",
+    role: "Director of Wireless Systems & 5G/6G Research",
+    discipline: "wireless-5g6g",
+    disciplineLabel: "Wireless & 5G/6G",
+    avatarInitials: "ER",
+    bio: "Dr. Elena Rodriguez is a specialist in 5G NR physical layer architecture, massive MIMO beamforming algorithms, and network slicing. She consults with global telecom operators on next-generation wireless deployments.",
+    specializations: [
+      "5G NR Air Interface & mmWave",
+      "Massive MIMO Beamforming",
+      "Link Budget & Propagation Modeling",
+      "Network Slicing & QoS Architecture",
+    ],
+    coursesTaught: [
+      "5G Wireless Communication Systems",
+      "Massive MIMO & Beamforming Technology",
+      "Digital Signal Processing for RF Engineers",
+    ],
+    publications: [
+      "Massive MIMO Beamformer Calibration for 28 GHz mmWave Base Stations",
+    ],
+  },
+  {
+    id: "team-4",
+    slug: "rajesh-varma",
+    name: "Prof. Rajesh K. Varma",
+    degrees: "Ph.D.",
+    role: "Senior Antenna Systems & Electromagnetics Fellow",
+    discipline: "antenna",
+    disciplineLabel: "Antenna Theory",
+    avatarInitials: "RV",
+    ieeeStatus: "IEEE Senior Member",
+    bio: "Prof. Varma has spent 25 years researching planar patch arrays, phased array beam steering, and SAR reduction in mobile devices. He serves as an advisor for aerospace electromagnetic compatibility (EMC) testing.",
+    specializations: [
+      "Phased Array Antenna Design",
+      "Planar Patch & Microstrip Arrays",
+      "Anechoic Chamber Radiation Measurement",
+      "Electromagnetic Compatibility (EMC/EMI)",
+    ],
+    coursesTaught: [
+      "Antenna Theory & Practical Array Design",
+      "Phased Array Beam Steering Fundamentals",
+      "EMC/EMI Troubleshooting for RF Systems",
+    ],
+    publications: [
+      "Wideband Phased Array Element Synthesis with Reduced Mutual Coupling",
+    ],
+  },
+  {
+    id: "team-5",
+    slug: "sarah-jenkins",
+    name: "Dr. Sarah Jenkins",
+    degrees: "Ph.D., B.S.E.E.",
+    role: "Senior RFIC Design & Circuit Advisory Consultant",
+    discipline: "microwave-rf",
+    disciplineLabel: "Microwave & RF",
+    avatarInitials: "SJ",
+    bio: "Dr. Jenkins specializes in high-power RF amplifiers, Doherty amplifier matching networks, and GaN/GaAs power device characterization. She conducts intensive bench lab workshops for R&D engineers.",
+    specializations: [
+      "Doherty & High-Efficiency PAs",
+      "GaN & GaAs Semiconductor Modeling",
+      "Impedance Matching & Smith Chart Synthesis",
+      "Thermal & Reliability Modeling for High Power RF",
+    ],
+    coursesTaught: [
+      "High-Power RF Amplifier Design & Linearisation",
+      "Practical Impedance Matching & Smith Chart Masterclass",
+    ],
+    publications: [
+      "High-Efficiency GaN Doherty Power Amplifiers for Cellular Infrastructure",
+    ],
+  },
+  {
+    id: "team-6",
+    slug: "david-park",
+    name: "Dr. David K. Park",
+    degrees: "Ph.D.",
+    role: "Lead Millimeter-Wave & Radar Systems Consultant",
+    discipline: "advisory",
+    disciplineLabel: "Corporate Advisory",
+    avatarInitials: "DP",
+    bio: "Dr. Park works at the intersection of automotive radar, mmWave sensing, and high-frequency packaging. He helps semiconductor enterprises transition designs from simulation models to high-yield silicon production.",
+    specializations: [
+      "77 GHz Automotive Radar Front-Ends",
+      "mmWave Package-Integrated Antennas (AiP)",
+      "High-Yield RFIC Foundry Transition",
+      "Radar Signal Processing & Doppler Filtering",
+    ],
+    coursesTaught: [
+      "Automotive Radar & mmWave Sensing Architectures",
+      "Advanced Package & Antenna-in-Package (AiP) Design",
+    ],
+    publications: [
+      "77 GHz Automotive Radar Transceiver with Integrated Package Antenna",
+    ],
+  },
+];
+
+// ─── Heritage Timeline & Core Pillars ────────────────────────────────────────
+
+export interface TimelineStep {
+  year: string;
+  title: string;
+  description: string;
+}
+
+export const aboutHeritageTimeline: TimelineStep[] = [
+  {
+    year: "Legacy & Origins",
+    title: "Boutique RF Technical Advisory",
+    description:
+      "Founded by senior electromagnetics engineers to provide specialized consulting for complex industrial RF and microwave design challenges.",
+  },
+  {
+    year: "Educational Expansion",
+    title: "Bench-Guided Lab Modules",
+    description:
+      "Launched structured training curricula bridging university electromagnetic theory with real-world bench measurements and instrument practice.",
+  },
+  {
+    year: "Global Reach",
+    title: "International Associate Network",
+    description:
+      "Expanded engineering associates across USA, India, South Korea, and Europe to deliver global corporate advisory and workshop programs.",
+  },
+  {
+    year: "Enterprise Platform",
+    title: "Next-Gen Enterprise Portal",
+    description:
+      "Established modern e-learning and consulting portals supporting R&D teams in 5G/6G, satellite communications, and high-frequency RFICs.",
+  },
+];
+
+export interface AboutPillar {
+  title: string;
+  description: string;
+  iconName: string;
+}
+
+export const aboutPillars: AboutPillar[] = [
+  {
+    title: "Uncompromising Technical Rigor",
+    description:
+      "No marketing fluff or simplified shortcuts. Every course and advisory engagement is grounded in electromagnetic fundamentals and verified data.",
+    iconName: "ShieldCheck",
+  },
+  {
+    title: "Global Expert Network",
+    description:
+      "Collaborative associate network spanning research universities, semiconductor hubs, and international telecommunications R&D centers.",
+    iconName: "Globe2",
+  },
+  {
+    title: "Academic & Industry Synergy",
+    description:
+      "Bridging advanced academic research with commercial product realities, helping engineers design manufacturable, high-yield RF systems.",
+    iconName: "GraduationCap",
+  },
+  {
+    title: "Practical Bench Mastery",
+    description:
+      "Focus on design guidelines, circuit layouts, spectrum analysis, noise figure optimization, and practical lab instrumentation.",
+    iconName: "Cpu",
+  },
+];
+

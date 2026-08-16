@@ -32,33 +32,38 @@ export default function Navbar({ items }: NavbarProps) {
 
   function scrollPositionCallback({ currPos }: ScrollPositionEffectProps) {
     const routerPath = router.asPath;
-    const hasRouteChanged = routerPath !== lastRoute.current;
+    const currentY = Math.abs(currPos.y);
 
-    if (hasRouteChanged) {
+    if (routerPath !== lastRoute.current) {
       lastRoute.current = routerPath;
+      lastScrollY.current = currentY;
       setScrollingDirection('none');
       return;
     }
 
-    const currentScrollY = currPos.y;
-    const isScrollingUp = currentScrollY > lastScrollY.current;
-    const scrollDifference = Math.abs(lastScrollY.current - currentScrollY);
-    const hasScrolledWholeStep = scrollDifference >= stepSize.current;
-    const isInNonCollapsibleArea = lastScrollY.current > -50;
-
-    if (isInNonCollapsibleArea) {
-      setScrollingDirection('none');
-      lastScrollY.current = currentScrollY;
+    // Always keep visible when near the top of the page (< 80px)
+    if (currentY < 80) {
+      if (scrollingDirection !== 'none') {
+        setScrollingDirection('none');
+      }
+      lastScrollY.current = currentY;
       return;
     }
 
-    if (!hasScrolledWholeStep) {
-      lastScrollY.current = currentScrollY;
+    const diff = currentY - lastScrollY.current;
+
+    // Minimum scroll threshold of 15px to prevent flickering on small movements
+    if (Math.abs(diff) < 15) {
       return;
     }
 
-    setScrollingDirection(isScrollingUp ? 'up' : 'down');
-    lastScrollY.current = currentScrollY;
+    if (diff > 0 && scrollingDirection !== 'down') {
+      setScrollingDirection('down');
+      lastScrollY.current = currentY;
+    } else if (diff < 0 && scrollingDirection !== 'up') {
+      setScrollingDirection('up');
+      lastScrollY.current = currentY;
+    }
   }
 
   const isNavbarHidden = scrollingDirection === 'down';
@@ -226,6 +231,15 @@ const DropdownMenu = styled.div`
   z-index: 100;
   animation: fadeIn 0.2s ease-in-out;
 
+  &::before {
+    content: '';
+    position: absolute;
+    top: -1rem;
+    left: 0;
+    right: 0;
+    height: 1rem;
+  }
+
   html[data-theme='dark'] & {
     background: #003e66;
     border: 1.5px solid rgba(53, 169, 239, 0.4);
@@ -292,12 +306,12 @@ const NavbarContainer = styled.div<NavbarContainerProps>`
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.45);
   }
 
-  visibility: ${(p) => (p.hidden ? 'hidden' : 'visible')};
-  transform: ${(p) => (p.hidden ? `translateY(-8rem) translateZ(0) scale(1)` : 'translateY(0) translateZ(0) scale(1)')};
+  transform: ${(p) => (p.hidden ? 'translate3d(0, -100%, 0)' : 'translate3d(0, 0, 0)')};
+  will-change: transform;
 
-  transition-property: transform, visibility, height, box-shadow, background-color;
-  transition-duration: 0.2s;
-  transition-timing-function: ease-in-out;
+  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
+              background-color 0.25s ease,
+              box-shadow 0.25s ease;
 `;
 
 const Content = styled(Container)`
