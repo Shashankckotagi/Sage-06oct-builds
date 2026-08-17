@@ -52,7 +52,7 @@ export default function SitemapPage() {
   return (
     <Page title="Sitemap" description="Complete site navigation tree and sitemap for SAGE.">
       <Head>
-        <title>Sitemap | {EnvVars.SITE_NAME}</title>
+        <title>{`Sitemap | ${EnvVars.SITE_NAME}`}</title>
       </Head>
       <SitemapWrapper>
         <Container>

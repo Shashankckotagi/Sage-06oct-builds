@@ -17,7 +17,7 @@ export default function Homepage({ posts }: InferGetStaticPropsType<typeof getSt
   return (
     <>
       <Head>
-        <title>{EnvVars.SITE_NAME} | Professional RF & Wireless Engineering</title>
+        <title>{`${EnvVars.SITE_NAME} | Professional RF & Wireless Engineering`}</title>
         <meta
           name="description"
           content="SAGE provides expert-led training, consulting, workshops, and courses in radio frequency, microwave, applied electromagnetics, antennas, and wireless communication systems."

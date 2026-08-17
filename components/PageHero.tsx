@@ -531,11 +531,7 @@ const PageHero: React.FC<PageHeroProps> = ({
             </BreadcrumbWrapper>
           )}
 
-          {!breadcrumbs && eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
-
-          {breadcrumbs && breadcrumbs.length > 0 && eyebrow && (
-            <Eyebrow>{eyebrow}</Eyebrow>
-          )}
+          {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
 
           <Title>{title}</Title>
 

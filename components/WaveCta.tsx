@@ -9,7 +9,7 @@ import { media } from 'utils/media';
 export default function WaveCta() {
   return (
     <>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none" style={{ display: 'block' }}>
+      <svg className="wave-cta-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none" style={{ display: 'block' }}>
         <path
           fill="rgb(var(--secondary))"
           fillOpacity="1"

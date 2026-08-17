@@ -16,9 +16,7 @@ export default function Page({ title, description, hasHeader = false, children }
   return (
     <>
       <Head>
-        <title>
-          {title} | {EnvVars.SITE_NAME}
-        </title>
+        <title>{`${title} | ${EnvVars.SITE_NAME}`}</title>
         <meta name="description" content={description} />
       </Head>
       <Wrapper>

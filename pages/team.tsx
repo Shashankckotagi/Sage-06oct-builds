@@ -1,11 +1,13 @@
 import Head from 'next/head'
 import { useState } from 'react'
+import styled from 'styled-components'
 import Page from 'components/Page'
-import TeamHero from 'views/TeamPage/TeamHero'
+import PageHero from 'components/PageHero'
+import Container from 'components/Container'
+import FilterPills from 'components/FilterPills'
 import FilterableTeamGrid from 'views/TeamPage/FilterableTeamGrid'
 import BioDrawer from 'components/BioDrawer'
-
-import { DisciplineId, TeamMember } from 'sage-data'
+import { pageHeroes, DisciplineId, TeamMember } from 'sage-data'
 
 export default function TeamPage() {
   const [activeDiscipline, setActiveDiscipline] = useState<DisciplineId>('all')
@@ -20,10 +22,16 @@ export default function TeamPage() {
         />
       </Head>
 
-      <TeamHero
-        activeDiscipline={activeDiscipline}
-        onSelectDiscipline={(id) => setActiveDiscipline(id)}
-      />
+      <PageHero {...pageHeroes['/team']} />
+
+      <FilterBarSection>
+        <Container>
+          <FilterPills
+            activeId={activeDiscipline}
+            onSelect={(id) => setActiveDiscipline(id)}
+          />
+        </Container>
+      </FilterBarSection>
 
       <FilterableTeamGrid
         activeDiscipline={activeDiscipline}
@@ -31,8 +39,11 @@ export default function TeamPage() {
       />
 
       <BioDrawer member={selectedMember} onClose={() => setSelectedMember(null)} />
-
-
     </Page>
   )
 }
+
+const FilterBarSection = styled.div`
+  padding-top: 3.5rem;
+  padding-bottom: 1rem;
+`

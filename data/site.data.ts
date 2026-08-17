@@ -1,0 +1,113 @@
+import type { ReactNode } from "react";
+
+export const siteConfig = {
+  name: "SAGE",
+  fullName: "Shastry Associates Global Enterprises",
+  legalName: "Shastry Associates Global Enterprises, LLC",
+  tagline: "Professional RF, Microwave & Wireless Engineering Education",
+  description:
+    "SAGE provides expert-led training, consulting, workshops, and courses in radio frequency, microwave, applied electromagnetics, antennas, and wireless communication systems.",
+  url: "https://shastryassociates.com",
+  email: "info@shastryassociates.com",
+  phone: null as string | null, // TODO: confirm
+  address: null as string | null, // TODO: confirm
+  established: null as number | null, // TODO: confirm year
+  social: {
+    linkedin: null as string | null, // TODO: confirm
+    twitter: null as string | null,
+    youtube: null as string | null,
+  },
+};
+
+export const brandColors = {
+  deepBlue: "#006AAD",
+  skyBlue: "#35A9EF",
+  orange: "#FB6B31",
+  ink: "#0F172A",
+  paper: "#FFFFFF",
+  warm: "#F8FBFF",
+  line: "#E2E8F0",
+  muted: "#64748B",
+  softBlue: "#EBF6FE",
+  success: "#16A34A",
+  error: "#DC2626",
+} as const;
+
+export interface NavItem {
+  label: string;
+  href: string;
+  children?: NavItem[];
+}
+
+export const navigation: NavItem[] = [
+  { label: "Home", href: "/" },
+  {
+    label: "Courses",
+    href: "/courses",
+    children: [
+      { label: "RF Engineering", href: "/courses#rf-engineering" },
+      { label: "Microwave", href: "/courses#microwave" },
+      { label: "Wireless Systems", href: "/courses#wireless" },
+      { label: "Antennas", href: "/courses#antennas" },
+      { label: "Signal Processing", href: "/courses#signal-processing" },
+      { label: "Circuit Design", href: "/courses#circuit-design" },
+    ],
+  },
+  {
+    label: "Services",
+    href: "/services",
+    children: [
+      { label: "Training Programs", href: "/services#training" },
+      { label: "Consulting", href: "/services#consulting" },
+      { label: "Custom Courses", href: "/services#custom" },
+      { label: "Workshops & Tutorials", href: "/services#workshops" },
+    ],
+  },
+  { label: "About", href: "/about" },
+  { label: "News", href: "/news" },
+  { label: "Contact", href: "/contact" },
+];
+
+export interface Crumb {
+  label: string;
+  href: string;
+}
+
+export type PageHeroData = {
+  breadcrumbs?: Crumb[];
+  eyebrow?: string;
+  title: string;
+  description?: string;
+  imageSrc?: string; // omit for legal / 404
+  extra?: ReactNode;
+};
+
+export const pageHeroes: Record<string, PageHeroData> = {
+  '/about': {
+    breadcrumbs: [
+      { label: 'Home', href: '/' },
+      { label: 'About Us', href: '/about' },
+    ],
+    title: 'About Us',
+    description: 'Applied electromagnetics, taught with engineering rigor. Founded by RF and microwave veterans to bridge graduate theory with the industry bench.',
+    imageSrc: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=1600&q=80',
+  },
+  '/team': {
+    breadcrumbs: [
+      { label: 'Home', href: '/' },
+      { label: 'Faculty & Associates', href: '/team' },
+    ],
+    title: 'Faculty & Associates',
+    description: 'Our international faculty and corporate advisors bring decades of engineering leadership from top research institutions, semiconductor centers, and industrial laboratories.',
+    imageSrc: 'https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1600&q=80',
+  },
+  '/mission': {
+    breadcrumbs: [
+      { label: 'Home', href: '/' },
+      { label: 'Mission & Vision', href: '/mission' },
+    ],
+    title: 'Mission & Vision',
+    description: 'To disseminate knowledge and information in applied electromagnetics and radio frequency wireless systems engineering globally.',
+    imageSrc: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80',
+  },
+};

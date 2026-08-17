@@ -32,39 +32,51 @@ const SegmentGroupRoot = styled.div`
   flex-wrap: wrap;
   align-items: center;
   gap: 0.8rem;
-  padding: 0.6rem;
-  background: var(--cardBackground);
-  border: 1px solid var(--lineColor);
+  padding: 0.8rem;
+  background: rgb(var(--cardBackground));
+  border: 1px solid rgb(var(--lineColor));
   border-radius: 9999px;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.03);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.05);
 
   @media (max-width: 768px) {
     border-radius: 1.6rem;
     width: 100%;
     justify-content: center;
+    padding: 1.2rem;
   }
 `
 
 const SegmentItem = styled.button<{ isActive: boolean }>`
   border: none;
-  background: ${(p) => (p.isActive ? 'var(--brandBlue)' : 'transparent')};
-  color: ${(p) => (p.isActive ? '#ffffff' : 'var(--mutedColor)')};
+  background: ${(p) => (p.isActive ? 'rgb(var(--brandBlue))' : 'transparent')};
+  color: ${(p) => (p.isActive ? '#ffffff' : 'rgb(var(--mutedColor))')};
   font-family: var(--font-body);
   font-size: 1.4rem;
   font-weight: 700;
-  padding: 0.8rem 1.8rem;
+  padding: 1rem 2rem;
   border-radius: 9999px;
   cursor: pointer;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+
+  ${(p) => p.isActive && `
+    box-shadow: 0 4px 12px rgba(0, 106, 173, 0.25);
+  `}
 
   &:hover {
-    color: ${(p) => (p.isActive ? '#ffffff' : 'var(--text)')};
-    background: ${(p) => (p.isActive ? 'var(--brandBlue)' : 'var(--tertiary)')};
+    color: ${(p) => (p.isActive ? '#ffffff' : 'rgb(var(--text))')};
+    background: ${(p) => (p.isActive ? 'rgb(var(--brandBlue))' : 'rgb(var(--tertiary))')};
+    transform: ${(p) => (p.isActive ? 'scale(1.02)' : 'none')};
+  }
+
+  &:active {
+    transform: scale(0.98);
   }
 
   &:focus-visible {
-    outline: 2px solid var(--primary);
+    outline: 2px solid rgb(var(--primary));
     outline-offset: 2px;
   }
 `

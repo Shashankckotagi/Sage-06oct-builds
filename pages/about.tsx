@@ -2,9 +2,13 @@ import Head from 'next/head'
 import Page from 'components/Page'
 import { pageHeroes } from 'sage-data'
 import PageHero from 'components/PageHero'
-import MissionVisionSection from 'views/AboutPage/MissionVisionSection'
-import ValuesGrid from 'views/AboutPage/ValuesGrid'
-import StorySection from 'views/AboutPage/StorySection'
+
+import WhoWeAre from 'views/AboutPage/WhoWeAre'
+import MissionVisionGoals from 'views/AboutPage/MissionVisionGoals'
+import CoreCompetencies from 'views/AboutPage/CoreCompetencies'
+import ServicesSnapshot from 'views/AboutPage/ServicesSnapshot'
+import StatsBar from 'views/AboutPage/StatsBar'
+import PhilosophyQuote from 'views/AboutPage/PhilosophyQuote'
 
 export default function AboutPage() {
   return (
@@ -16,10 +20,26 @@ export default function AboutPage() {
         />
       </Head>
 
+      {/* Section 1: Page Header (Unchanged as requested) */}
       <PageHero {...pageHeroes['/about']} />
-      <MissionVisionSection />
-      <ValuesGrid />
-      <StorySection />
+      
+      {/* Section 2: Who We Are */}
+      <WhoWeAre />
+      
+      {/* Section 3: Mission, Vision & Goals */}
+      <MissionVisionGoals />
+      
+      {/* Section 4: Core Competencies */}
+      <CoreCompetencies />
+      
+      {/* Section 5: Services Snapshot */}
+      <ServicesSnapshot />
+      
+      {/* Section 6: Stats Bar */}
+      <StatsBar />
+      
+      {/* Section 7: Philosophy Quote & CTA */}
+      <PhilosophyQuote />
 
     </Page>
   )

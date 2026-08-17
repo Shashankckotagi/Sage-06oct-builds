@@ -35,16 +35,6 @@ export default function BioDrawer({ member, onClose }: BioDrawerProps) {
                 <DisciplineTag variant="solid" colorScheme="orange">
                   {member.disciplineLabel}
                 </DisciplineTag>
-                {member.ieeeStatus && (
-                  <DisciplineTag variant="outline" colorScheme="blue">
-                    {member.ieeeStatus}
-                  </DisciplineTag>
-                )}
-                {member.degrees && (
-                  <DisciplineTag variant="outline" colorScheme="slate">
-                    {member.degrees}
-                  </DisciplineTag>
-                )}
               </TagsRow>
             </HeaderMeta>
           </HeaderLeft>
