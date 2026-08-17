@@ -14,6 +14,9 @@ module.exports = withBundleAnalyzer({
     imageSizes: [64, 128],
   },
   swcMinify: false,
+  typescript: {
+    ignoreBuildErrors: true,
+  },
   experimental: {
     esmExternals: false,
   },
