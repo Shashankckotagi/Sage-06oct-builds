@@ -1,63 +1,72 @@
 # SAGE — Shastry Associates Global Enterprises
 
-> **Professional RF, Microwave & Wireless Engineering Education & Consulting**  
-> *Built on Next.js 12, TypeScript, Styled Components, and TinaCMS.*
+> **Professional RF, Microwave & Wireless Engineering Education & Advisory**  
+> *Built on Next.js 12, TypeScript, Styled Components, and Netlify.*
 
 ---
 
-## 📌 Project Overview & Documentation Quick Links
+## 📌 Project Overview
 
-This repository powers the modern web application for **SAGE (Shastry Associates Global Enterprises)**, derived from the `next-saas-starter` framework and customized with SAGE brand guidelines, content data, and legacy WordPress site content migration.
-
-### 📚 Primary Documentation & Reference Files
-
-1. 📖 [**SAGE Master Understanding & Migration Readme (`SAGE_README.md`)**](file:///c:/Users/MOG/Documents/Projects/Sage-new/next-saas-starter/SAGE_README.md)  
-   *Comprehensive synthesis of brand guidelines, site data (`sage-data.ts`), visual design tokens, and WordPress XML audit findings.*
-
-2. 📐 [**Repository Architecture & Developer Guide (`PROJECT_OVERVIEW.md`)**](file:///c:/Users/MOG/Documents/Projects/Sage-new/next-saas-starter/PROJECT_OVERVIEW.md)  
-   *Detailed technical breakdown of directory structure, Next.js routing, Styled Components theme variables, and TinaCMS schema.*
-
-3. 🎨 [**SAGE Brand Guidelines & Master Strategy (`SAGE_BRAND_GUIDELINES.md`)**](file:///c:/Users/MOG/Documents/Projects/Sage-new/next-saas-starter/SAGE_BRAND_GUIDELINES.md)  
-   *Design rules, color palette tokens (`#E46720`, `#1A1A1A`), typography (`Manrope`, `Inter`), tone of voice, and stakeholder collection checklist.*
-
-4. ⚙️ [**SAGE Master Content Data (`sage-data.ts`)**](file:///c:/Users/MOG/Documents/Projects/Sage-new/next-saas-starter/sage-data.ts)  
-   *Typed TypeScript constants for site identity, navigation, competencies, services, courses, team members, and testimonials.*
-
-5. 📦 [**WordPress Legacy Export (`shastryassociates.WordPress.2026-07-30.xml`)**](file:///c:/Users/MOG/Documents/Projects/Sage-new/next-saas-starter/shastryassociates.WordPress.2026-07-30.xml)  
-   *WXR 1.2 export containing legacy site content to be filtered and converted to MDX articles.*
+This repository contains the web application and educational portal for **SAGE (Shastry Associates Global Enterprises, LLC)** (`shastryassociates.com`). SAGE is an international network of senior microwave engineers, university faculty, and industry leaders specializing in applied electromagnetics, radio frequency (RF) circuits, antennas, and wireless communication systems.
 
 ---
 
-## ⚡ Key Highlights & Business Model
+## 📚 Documentation Quick Links
 
-- **Domain:** Radio Frequency (RF), Microwave Engineering, Applied Electromagnetics, Antennas & 5G/Wireless Systems.
-- **Offerings:** Training courses (B.E./B.Tech/M.E./M.Tech & industry level), custom enterprise workshops, hands-on tutorials, and specialized engineering consulting.
-- **Global Network:** 15 senior associate engineers and faculty across India, US, and South Korea, 6 Youth Wing members, and legal/IT advisors.
+All project guidelines, architecture specifications, design tokens, and migration procedures are organized in the [**`docs/`**](file:///c:/Users/MOG/Documents/Projects/Sage-new/next-saas-starter/docs/README.md) directory:
+
+1. 🏗️ [**Architecture & Tech Stack (`docs/ARCHITECTURE.md`)**](file:///c:/Users/MOG/Documents/Projects/Sage-new/next-saas-starter/docs/ARCHITECTURE.md) — Technical stack, Netlify hosting, Resend, Cloudinary, and DNS details.
+2. 🎨 [**Brand Guidelines (`docs/BRAND_GUIDELINES.md`)**](file:///c:/Users/MOG/Documents/Projects/Sage-new/next-saas-starter/docs/BRAND_GUIDELINES.md) — Voice, tone, Master Trio color palette, and copywriting standards.
+3. 📐 [**Design System (`docs/DESIGN_SYSTEM.md`)**](file:///c:/Users/MOG/Documents/Projects/Sage-new/next-saas-starter/docs/DESIGN_SYSTEM.md) — Tokens, CSS RGB variables, components, and responsive breakpoints.
+4. 🖼️ [**Page Hero Specifications (`docs/PAGE_HERO_SPECS.md`)**](file:///c:/Users/MOG/Documents/Projects/Sage-new/next-saas-starter/docs/PAGE_HERO_SPECS.md) — Specs for the inner-page parallax blurred banner.
+5. 🔄 [**WordPress Migration Guide (`docs/MIGRATION_GUIDE.md`)**](file:///c:/Users/MOG/Documents/Projects/Sage-new/next-saas-starter/docs/MIGRATION_GUIDE.md) — Legacy XML extraction, security sanitization, and data scripts.
+6. 🗓️ [**Project Roadmap & Milestones (`docs/ROADMAP.md`)**](file:///c:/Users/MOG/Documents/Projects/Sage-new/next-saas-starter/docs/ROADMAP.md) — Target launch schedule (Sep 25–30, 2026) and QA phases.
 
 ---
 
-## 🚀 Getting Started (Development)
+## 🚀 Quick Start (Development)
 
 ```bash
-# Install dependencies
+# 1. Install dependencies
 yarn install
 
-# Run dev server (with TinaCMS integration)
+# 2. Run local development server
 yarn dev
 
-# Build for production
+# 3. Type-check TypeScript code
+yarn tsc --noEmit
+
+# 4. Build for production
 yarn build
 
-# Start production server
+# 5. Start production server
 yarn start
-
-# Run lint checks
-yarn lint
 ```
 
 ---
 
-## 📝 License & Attribution
+## 📂 Key Directory Layout
 
-- Built by **SAGE Engineering Team** & **MSV Group**.
-- Template base based on [Blazity next-saas-starter](https://github.com/Blazity/next-saas-starter) under MIT License.
+```
+next-saas-starter/
+├── docs/                  # Documentation suite (Architecture, Brand, Design, Roadmap)
+├── data/                  # Modular TypeScript site data (site, home, team, courses, etc.)
+│   └── archive/           # Raw WordPress XML export and data archives
+├── pages/                 # Next.js routes (/about, /team, /mission, /contact, /blog)
+├── components/            # Reusable Styled-Component UI library
+├── views/                 # Multi-section composite page layouts
+├── contexts/              # Global React Context providers
+├── hooks/                 # Custom React utility hooks
+├── posts/                 # MDX technical and announcement articles
+├── scripts/               # Migration, data splitting, and maintenance scripts
+└── public/                # Logos, emblems, icons, and static assets
+```
+
+---
+
+## 👥 Credits & Stakeholders
+
+* **Organization:** Shastry Associates Global Enterprises, LLC (SAGE)
+* **Leadership & Stakeholders:** Dr. Prasad Shastry, Scarlet Daoud, Aparna Sankarasubram
+* **Development & Engineering:** Team MSV
+* **Base Template:** [Next SaaS Starter](https://github.com/Blazity/next-saas-starter) under MIT License
