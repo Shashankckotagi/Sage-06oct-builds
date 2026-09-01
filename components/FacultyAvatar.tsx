@@ -1,26 +1,36 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
+import { getAvatarUrl, imagePresets } from 'utils/cloudinary';
 
 export interface FacultyAvatarProps {
-  initials: string
-  name: string
-  imageUrl?: string
-  size?: 'sm' | 'md' | 'lg'
+  initials: string;
+  name: string;
+  imageUrl?: string;
+  avatarPublicId?: string;
+  size?: 'sm' | 'md' | 'lg';
 }
 
-export default function FacultyAvatar({ initials, name, imageUrl, size = 'md' }: FacultyAvatarProps) {
-  if (imageUrl) {
+export default function FacultyAvatar({
+  initials,
+  name,
+  imageUrl,
+  avatarPublicId,
+  size = 'md',
+}: FacultyAvatarProps) {
+  const resolvedSrc = getAvatarUrl(avatarPublicId, imageUrl, imagePresets.avatar);
+
+  if (resolvedSrc) {
     return (
       <AvatarImageWrapper size={size}>
-        <img src={imageUrl} alt={name} />
+        <img src={resolvedSrc} alt={name} loading="lazy" />
       </AvatarImageWrapper>
-    )
+    );
   }
 
   return (
     <AvatarFallbackWrapper size={size} aria-label={name}>
       {initials}
     </AvatarFallbackWrapper>
-  )
+  );
 }
 
 const getSizePX = (size: 'sm' | 'md' | 'lg') => {

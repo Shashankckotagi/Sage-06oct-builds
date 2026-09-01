@@ -1,12 +1,15 @@
 import NextImage from 'next/image';
 import styled from 'styled-components';
+import { cloudinaryUrl } from 'utils/cloudinary';
 
 export default function Logo({ ...rest }) {
+  const emblemSrc = cloudinaryUrl('Shastryhexagon_Orange.png');
+
   return (
     <LogoWrapper {...rest}>
       <IconContainer>
         <NextImage
-          src="/Shastryhexagon(Orange).png"
+          src={emblemSrc}
           alt="SAGE Hexagon Emblem"
           width={46}
           height={46}

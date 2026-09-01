@@ -7,13 +7,12 @@
     })
     return str
   }
-  export type Maybe<T> = T | null;
-export type InputMaybe<T> = Maybe<T>;
-export type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
-export type MakeOptional<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]?: Maybe<T[SubKey]> };
-export type MakeMaybe<T, K extends keyof T> = Omit<T, K> & { [SubKey in K]: Maybe<T[SubKey]> };
-export type MakeEmpty<T extends { [key: string]: unknown }, K extends keyof T> = { [_ in K]?: never };
+  /** Internal type. DO NOT USE DIRECTLY. */
+type Exact<T extends { [key: string]: unknown }> = { [K in keyof T]: T[K] };
+/** Internal type. DO NOT USE DIRECTLY. */
 export type Incremental<T> = T | { [P in keyof T]?: P extends ' $fragmentName' | '__typename' ? T[P] : never };
+export type Maybe<T> = T | null;
+export type InputMaybe<T> = Maybe<T>;
 /** All built-in and custom scalars, mapped to their actual values */
 export type Scalars = {
   ID: { input: string; output: string; }
@@ -324,26 +323,85 @@ export type PostsMutation = {
   body?: InputMaybe<Scalars['JSON']['input']>;
 };
 
-export type PostsPartsFragment = { __typename: 'Posts', title: string, description?: string | null, date?: string | null, tags?: string | null, imageUrl?: string | null, body?: any | null };
+export type StringFilter = {
+  startsWith?: string | null | undefined;
+  eq?: string | null | undefined;
+  exists?: boolean | null | undefined;
+  in?: Array<string | null | undefined> | null | undefined;
+};
+
+export type PostsBodyQuoteFilter = {
+  content?: StringFilter | null | undefined;
+  author?: StringFilter | null | undefined;
+  cite?: StringFilter | null | undefined;
+};
+
+export type PostsBodyArticleImageFilter = {
+  src?: StringFilter | null | undefined;
+  caption?: StringFilter | null | undefined;
+};
+
+export type BooleanFilter = {
+  eq?: boolean | null | undefined;
+  exists?: boolean | null | undefined;
+};
+
+export type PostsBodyCodeFilter = {
+  code?: StringFilter | null | undefined;
+  language?: StringFilter | null | undefined;
+  selectedLines?: StringFilter | null | undefined;
+  withCopyButton?: BooleanFilter | null | undefined;
+  withLineNumbers?: BooleanFilter | null | undefined;
+  caption?: StringFilter | null | undefined;
+};
+
+export type PostsBodyH2Filter = {};
+
+export type PostsBodyH3Filter = {};
+
+export type PostsBodyBrFilter = {};
+
+export type PostsBodyPFilter = {};
+
+export type PostsBodyFilter = {
+  Quote?: PostsBodyQuoteFilter | null | undefined;
+  ArticleImage?: PostsBodyArticleImageFilter | null | undefined;
+  Code?: PostsBodyCodeFilter | null | undefined;
+  h2?: PostsBodyH2Filter | null | undefined;
+  h3?: PostsBodyH3Filter | null | undefined;
+  br?: PostsBodyBrFilter | null | undefined;
+  p?: PostsBodyPFilter | null | undefined;
+};
+
+export type PostsFilter = {
+  title?: StringFilter | null | undefined;
+  description?: StringFilter | null | undefined;
+  date?: StringFilter | null | undefined;
+  tags?: StringFilter | null | undefined;
+  imageUrl?: StringFilter | null | undefined;
+  body?: PostsBodyFilter | null | undefined;
+};
+
+export type PostsPartsFragment = { __typename: 'Posts', title: string, description: string | null, date: string | null, tags: string | null, imageUrl: string | null, body: any };
 
 export type PostsQueryVariables = Exact<{
-  relativePath: Scalars['String']['input'];
+  relativePath: string;
 }>;
 
 
-export type PostsQuery = { __typename?: 'Query', posts: { __typename: 'Posts', id: string, title: string, description?: string | null, date?: string | null, tags?: string | null, imageUrl?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
+export type PostsQuery = { posts: { __typename: 'Posts', id: string, title: string, description: string | null, date: string | null, tags: string | null, imageUrl: string | null, body: any, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } };
 
 export type PostsConnectionQueryVariables = Exact<{
-  before?: InputMaybe<Scalars['String']['input']>;
-  after?: InputMaybe<Scalars['String']['input']>;
-  first?: InputMaybe<Scalars['Float']['input']>;
-  last?: InputMaybe<Scalars['Float']['input']>;
-  sort?: InputMaybe<Scalars['String']['input']>;
-  filter?: InputMaybe<PostsFilter>;
+  before?: string | null | undefined;
+  after?: string | null | undefined;
+  first?: number | null | undefined;
+  last?: number | null | undefined;
+  sort?: string | null | undefined;
+  filter?: PostsFilter | null | undefined;
 }>;
 
 
-export type PostsConnectionQuery = { __typename?: 'Query', postsConnection: { __typename?: 'PostsConnection', totalCount: number, pageInfo: { __typename?: 'PageInfo', hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges?: Array<{ __typename?: 'PostsConnectionEdges', cursor: string, node?: { __typename: 'Posts', id: string, title: string, description?: string | null, date?: string | null, tags?: string | null, imageUrl?: string | null, body?: any | null, _sys: { __typename?: 'SystemInfo', filename: string, basename: string, hasReferences?: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
+export type PostsConnectionQuery = { postsConnection: { totalCount: number, pageInfo: { hasPreviousPage: boolean, hasNextPage: boolean, startCursor: string, endCursor: string }, edges: Array<{ cursor: string, node: { __typename: 'Posts', id: string, title: string, description: string | null, date: string | null, tags: string | null, imageUrl: string | null, body: any, _sys: { filename: string, basename: string, hasReferences: boolean | null, breadcrumbs: Array<string>, path: string, relativePath: string, extension: string } } | null } | null> | null } };
 
 export const PostsPartsFragmentDoc = gql`
     fragment PostsParts on Posts {
@@ -481,5 +539,7 @@ export const queries = (
   const requester = generateRequester(client)
   return getSdk(requester)
 }
+
+export type { Exact };
 
   

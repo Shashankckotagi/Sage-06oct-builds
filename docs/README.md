@@ -12,6 +12,7 @@ Welcome to the technical and strategic documentation for the **SAGE (Shastry Ass
 | 🎨 [**Brand Guidelines**](file:///c:/Users/MOG/Documents/Projects/Sage-new/next-saas-starter/docs/BRAND_GUIDELINES.md) | Master brand identity, voice, Master Trio color palette, and copywriting standards. | Designers, Copywriters & Stakeholders |
 | 📐 [**Design System**](file:///c:/Users/MOG/Documents/Projects/Sage-new/next-saas-starter/docs/DESIGN_SYSTEM.md) | CSS variable tokens, styled-components conventions, responsive breakpoints, UI primitives. | Frontend Engineers |
 | 🖼️ [**Page Hero Specifications**](file:///c:/Users/MOG/Documents/Projects/Sage-new/next-saas-starter/docs/PAGE_HERO_SPECS.md) | Specifications for the inner-page parallax blurred banner component. | Frontend Engineers |
+| ☁️ [**Cloudinary Integration Guide**](file:///c:/Users/MOG/Documents/Projects/Sage-new/next-saas-starter/docs/CLOUDINARY_GUIDE.md) | Cloudinary environment setup, `sage/` folder governance, presets, and Next.js developer usage. | Frontend Engineers, Vishwas, Manish, Shashank |
 | 🔄 [**WordPress Migration Guide**](file:///c:/Users/MOG/Documents/Projects/Sage-new/next-saas-starter/docs/MIGRATION_GUIDE.md) | Extraction procedures, XML parser scripts, security sanitization, and team data schema. | Data Engineers & Developers |
 | 🗓️ [**Project Roadmap & Timeline**](file:///c:/Users/MOG/Documents/Projects/Sage-new/next-saas-starter/docs/ROADMAP.md) | Launch phases (Phases 0–Launch, Aug 31 – Sep 30), stakeholder review gates, and rollback policy. | Project Managers & Stakeholders |
 

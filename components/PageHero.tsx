@@ -6,6 +6,7 @@ import Breadcrumbs from './Breadcrumbs';
 import OverTitle from './OverTitle';
 import { useScrollPosition } from 'hooks/useScrollPosition';
 import type { PageHeroData } from 'sage-data';
+import { cloudinaryUrl, imagePresets } from 'utils/cloudinary';
 
 export type PageHeroProps = PageHeroData;
 
@@ -496,6 +497,7 @@ const PageHero: React.FC<PageHeroProps> = ({
   description,
   extra,
   imageSrc,
+  imagePublicId,
 }) => {
   const [scrollY, setScrollY] = useState(0);
 
@@ -510,12 +512,15 @@ const PageHero: React.FC<PageHeroProps> = ({
   );
 
   const parallaxY = Math.min(scrollY * 0.28, 140);
+  const resolvedImageSrc = imagePublicId
+    ? cloudinaryUrl(imagePublicId, imagePresets.hero)
+    : imageSrc;
 
   return (
-    <HeroSection $src={imageSrc}>
-      {imageSrc && (
+    <HeroSection $src={resolvedImageSrc}>
+      {resolvedImageSrc && (
         <>
-          <HeroImage $src={imageSrc} $parallaxY={parallaxY} aria-hidden="true" />
+          <HeroImage $src={resolvedImageSrc} $parallaxY={parallaxY} aria-hidden="true" />
           <ImageShade aria-hidden="true" />
           <AtmosphericBlur aria-hidden="true" />
           <TextGlow aria-hidden="true" />

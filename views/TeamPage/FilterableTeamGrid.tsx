@@ -2,6 +2,7 @@ import styled from 'styled-components'
 import Container from 'components/Container'
 import DisciplineTag from 'components/DisciplineTag'
 import { teamMembers, DisciplineId, TeamMember } from 'sage-data'
+import { getAvatarUrl, imagePresets } from 'utils/cloudinary'
 
 export interface FilterableTeamGridProps {
   activeDiscipline: DisciplineId
@@ -27,16 +28,19 @@ export default function FilterableTeamGrid({
           </EmptyState>
         ) : (
           <TeamGrid>
-            {filteredMembers.map((member) => (
-              <MemberCard key={member.id} onClick={() => onSelectMember(member)}>
-                {/* 1. Top Image Header with Zoom Animation */}
-                <ImageFrame>
-                  {member.avatarUrl ? (
-                    <CardImage src={member.avatarUrl} alt={member.name} loading="lazy" />
-                  ) : (
-                    <AvatarFallback>{member.avatarInitials}</AvatarFallback>
-                  )}
-                </ImageFrame>
+            {filteredMembers.map((member) => {
+              const avatarSrc = getAvatarUrl(member.avatarPublicId, member.avatarUrl, imagePresets.avatar)
+
+              return (
+                <MemberCard key={member.id} onClick={() => onSelectMember(member)}>
+                  {/* 1. Top Image Header with Zoom Animation */}
+                  <ImageFrame>
+                    {avatarSrc ? (
+                      <CardImage src={avatarSrc} alt={member.name} loading="lazy" />
+                    ) : (
+                      <AvatarFallback>{member.avatarInitials}</AvatarFallback>
+                    )}
+                  </ImageFrame>
 
                 {/* 2. Member Meta Info */}
                 <CardBody>
@@ -85,7 +89,8 @@ export default function FilterableTeamGrid({
                   </ReadMoreLink>
                 </CardFooter>
               </MemberCard>
-            ))}
+              )
+            })}
           </TeamGrid>
         )}
       </Container>

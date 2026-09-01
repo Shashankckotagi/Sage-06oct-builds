@@ -26,6 +26,7 @@ export default function BioDrawer({ member, onClose }: BioDrawerProps) {
               initials={member.avatarInitials}
               name={member.name}
               imageUrl={member.avatarUrl}
+              avatarPublicId={member.avatarPublicId}
               size="lg"
             />
             <HeaderMeta>

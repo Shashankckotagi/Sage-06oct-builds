@@ -21,6 +21,7 @@ export interface TeamMember {
   disciplineLabel: string;
   avatarInitials: string;
   avatarUrl?: string;
+  avatarPublicId?: string;
   socialLinks?: {
     linkedin?: string;
     facebook?: string;

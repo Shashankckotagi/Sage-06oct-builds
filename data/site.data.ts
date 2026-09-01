@@ -79,6 +79,7 @@ export type PageHeroData = {
   title: string;
   description?: string;
   imageSrc?: string; // omit for legal / 404
+  imagePublicId?: string; // Cloudinary public ID
   extra?: ReactNode;
 };
 
