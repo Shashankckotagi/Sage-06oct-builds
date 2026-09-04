@@ -1,9 +1,16 @@
 import { PropsWithChildren } from 'react';
 import styled from 'styled-components';
 
-type ButtonProps = PropsWithChildren<{ transparent?: boolean }>;
+type ButtonProps = PropsWithChildren<{
+  transparent?: boolean;
+  as?: any;
+  type?: any;
+  disabled?: boolean;
+  href?: string;
+  onClick?: (e?: any) => void;
+}>;
 
-const Button = styled.a<ButtonProps>`
+const Button = styled.button<ButtonProps>`
   border: none;
   background: none;
   display: inline-block;

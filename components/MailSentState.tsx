@@ -1,6 +1,11 @@
 import styled from 'styled-components';
+import Button from 'components/Button';
 
-export default function MailSentState() {
+export interface MailSentStateProps {
+  onReset?: () => void;
+}
+
+export default function MailSentState({ onReset }: MailSentStateProps) {
   return (
     <Wrapper>
       <svg id="b76bd6b3-ad77-41ff-b778-1d1d054fe577" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 570 511.67482">
@@ -13,12 +18,12 @@ export default function MailSentState() {
         <path
           d="M489.25553,650.70367H359.81522a6.04737,6.04737,0,1,1,0-12.09473H489.25553a6.04737,6.04737,0,1,1,0,12.09473Z"
           transform="translate(-315 -194.16259)"
-          fill="#1673ff"
+          fill="#006aad"
         />
         <path
           d="M406.25553,624.70367H359.81522a6.04737,6.04737,0,1,1,0-12.09473h46.44031a6.04737,6.04737,0,1,1,0,12.09473Z"
           transform="translate(-315 -194.16259)"
-          fill="#1673ff"
+          fill="#006aad"
         />
         <path
           d="M603.96016,504.82207a7.56366,7.56366,0,0,1-2.86914-.562L439.5002,437.21123v-209.874a7.00817,7.00817,0,0,1,7-7h310a7.00818,7.00818,0,0,1,7,7v210.0205l-.30371.12989L606.91622,504.22734A7.61624,7.61624,0,0,1,603.96016,504.82207Z"
@@ -38,28 +43,56 @@ export default function MailSentState() {
         <path
           d="M602.345,445.30958a27.49862,27.49862,0,0,1-16.5459-5.4961l-.2959-.22217-62.311-47.70752a27.68337,27.68337,0,1,1,33.67407-43.94921l40.36035,30.94775,95.37793-124.38672a27.68235,27.68235,0,0,1,38.81323-5.12353l-.593.80517.6084-.79346a27.71447,27.71447,0,0,1,5.12353,38.81348L624.36938,434.50586A27.69447,27.69447,0,0,1,602.345,445.30958Z"
           transform="translate(-315 -194.16259)"
-          fill="#1673ff"
+          fill="#fb6b31"
         />
       </svg>
-      <p>Mail successfully sent!</p>
+      <Title>Message Sent Successfully!</Title>
+      <Description>
+        Thank you for reaching out to SAGE. We have sent a confirmation receipt to your email, and a member of our specialist team will review your inquiry shortly.
+      </Description>
+      {onReset && (
+        <ButtonContainer>
+          <Button type="button" onClick={onReset} transparent>
+            Send Another Message
+          </Button>
+        </ButtonContainer>
+      )}
     </Wrapper>
   );
 }
 
 const Wrapper = styled.div`
-  flex: 1;
-
-  & > *:not(:first-child) {
-    margin-top: 5rem;
-  }
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 4rem 2rem;
 
   svg {
     width: 100%;
-    height: 25rem;
+    max-width: 22rem;
+    height: auto;
+    margin-bottom: 2.5rem;
   }
+`;
 
-  p {
-    font-size: 2.5rem;
-    text-align: center;
-  }
+const Title = styled.h3`
+  font-family: var(--font-heading);
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: rgb(var(--text));
+  margin-bottom: 1.2rem;
+`;
+
+const Description = styled.p`
+  font-size: 1.5rem;
+  line-height: 1.6;
+  color: rgb(var(--mutedColor));
+  max-width: 44rem;
+  margin: 0 auto 2.5rem auto;
+`;
+
+const ButtonContainer = styled.div`
+  display: flex;
+  justify-content: center;
 `;

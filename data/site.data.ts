@@ -111,4 +111,13 @@ export const pageHeroes: Record<string, PageHeroData> = {
     description: 'To disseminate knowledge and information in applied electromagnetics and radio frequency wireless systems engineering globally.',
     imageSrc: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80',
   },
+  '/contact': {
+    breadcrumbs: [
+      { label: 'Home', href: '/' },
+      { label: 'Contact', href: '/contact' },
+    ],
+    title: 'Get in Touch',
+    description: 'Have questions about our RF, microwave, and wireless training programs, consulting, or customized workshops? Connect with our specialist team.',
+    imageSrc: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1600&q=80',
+  },
 };

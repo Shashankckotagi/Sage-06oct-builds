@@ -51,7 +51,7 @@ export default function NewsletterModal({ onClose }: NewsletterModalProps) {
                         placeholder="Enter your email..."
                         required
                       />
-                      <CustomButton as="button" type="submit" disabled={hasSignedUp}>
+                      <CustomButton type="submit" disabled={hasSignedUp}>
                         Submit
                       </CustomButton>
                     </Row>

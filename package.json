@@ -13,7 +13,6 @@
     "@accessible/drawer": "^3.0.2",
     "@heroicons/react": "^1.0.6",
     "@n8tb1t/use-scroll-position": "^2.0.3",
-    "@sendgrid/mail": "^7.7.0",
     "@svgr/webpack": "^8.0.0",
     "css-in-js-media": "^2.0.1",
     "date-fns": "^2.29.3",
@@ -34,6 +33,7 @@
     "react-schemaorg": "^2.0.0",
     "react-share": "^4.4.1",
     "reading-time": "^1.5.0",
+    "resend": "^6.26.0",
     "schema-dts": "^1.1.2",
     "styled-components": "^5.3.5",
     "swiper": "9.3.2",
@@ -48,9 +48,10 @@
     "@next/bundle-analyzer": "^13.3.1",
     "@tinacms/cli": "^2.5.6",
     "@types/node": "^18.11.18",
-    "@types/react": "17.0.50",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
     "@types/react-mailchimp-subscribe": "^2.1.1",
-    "@types/styled-components": "^5.1.25",
+    "@types/styled-components": "^5.1.36",
     "@types/swiper": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^5.0.0",
     "@typescript-eslint/parser": "^5.59.9",
@@ -78,7 +79,8 @@
   },
   "resolutions": {
     "posthog-node": "5.47.0",
-    "@types/react": "17.0.50"
+    "@types/react": "^18.3.31",
+    "@types/react-dom": "^18.3.7"
   },
   "packageManager": "yarn@1.22.22+sha512.a6b2f7906b721bba3d67d4aff083df04dad64c399707841b7acf00f6b133b7ac24255f2652fa22ae3534329dc6180534e98d17432037ff6fd140556e2bb3137e"
 }

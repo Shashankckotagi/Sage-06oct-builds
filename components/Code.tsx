@@ -37,15 +37,17 @@ export default function Code({
     </ClientOnly>
   );
 
+  const HighlightComponent = Highlight as any;
+
   return (
     <>
-      <Highlight {...defaultProps} theme={undefined} code={code} language={language}>
-        {({ className, style, tokens, getLineProps, getTokenProps }) => (
+      <HighlightComponent {...defaultProps} theme={undefined} code={code} language={language}>
+        {({ className, style, tokens, getLineProps, getTokenProps }: any) => (
           <>
             <CodeWrapper className="code-wrapper" language={language}>
               {withCopyButton && copyButtonMarkup}
               <Pre className={className} style={style}>
-                {tokens.map((line, i) => {
+                {tokens.map((line: any, i: number) => {
                   const lineNumber = i + 1;
                   const isSelected = selectedLines.includes(lineNumber);
                   const lineProps = getLineProps({ line, key: i });
@@ -55,7 +57,7 @@ export default function Code({
                     <Line key={i} {...{ ...lineProps, className }}>
                       {withLineNumbers && <LineNo>{lineNumber}</LineNo>}
                       <LineContent>
-                        {line.map((token, key) => (
+                        {line.map((token: any, key: number) => (
                           <span key={key} {...getTokenProps({ token, key })} />
                         ))}
                       </LineContent>
@@ -67,7 +69,7 @@ export default function Code({
             {caption && <Caption>{caption}</Caption>}
           </>
         )}
-      </Highlight>
+      </HighlightComponent>
     </>
   );
 }
