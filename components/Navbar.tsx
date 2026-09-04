@@ -102,6 +102,13 @@ function NavItem({ href, title, outlined, highlighted, subItems }: SingleNavItem
   }
 
   if (outlined) {
+    if (href) {
+      return (
+        <NextLink href={href} passHref>
+          <CustomButtonLink>{title}</CustomButtonLink>
+        </NextLink>
+      );
+    }
     return <CustomButton onClick={showNewsletterModal}>{title}</CustomButton>;
   }
 
@@ -136,6 +143,31 @@ function NavItem({ href, title, outlined, highlighted, subItems }: SingleNavItem
     </NavItemWrapper>
   );
 }
+
+const CustomButtonLink = styled.a`
+  display: inline-block;
+  text-decoration: none;
+  text-align: center;
+  padding: 0.75rem 1.6rem;
+  line-height: 1.8;
+  background-color: rgb(var(--primary, 251, 107, 49));
+  color: #ffffff !important;
+  border-radius: 0.6rem;
+  font-family: var(--font-body);
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(251, 107, 49, 0.35);
+
+  &:hover {
+    background-color: #e0551b;
+    transform: translateY(-1px);
+    box-shadow: 0 6px 20px rgba(251, 107, 49, 0.45);
+    color: #ffffff !important;
+  }
+`;
 
 const CustomButton = styled(Button)`
   padding: 0.75rem 1.6rem;
