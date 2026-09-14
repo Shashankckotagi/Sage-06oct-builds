@@ -11,7 +11,6 @@ import { pageHeroes, DisciplineId, TeamMember } from 'sage-data'
 
 export default function TeamPage() {
   const [activeDiscipline, setActiveDiscipline] = useState<DisciplineId>('all')
-  const [selectedMember, setSelectedMember] = useState<TeamMember | null>(null)
 
   return (
     <Page title="Faculty & Associates | SAGE — Shastry Associates Global Enterprises">
@@ -33,12 +32,7 @@ export default function TeamPage() {
         </Container>
       </FilterBarSection>
 
-      <FilterableTeamGrid
-        activeDiscipline={activeDiscipline}
-        onSelectMember={(member) => setSelectedMember(member)}
-      />
-
-      <BioDrawer member={selectedMember} onClose={() => setSelectedMember(null)} />
+      <FilterableTeamGrid activeDiscipline={activeDiscipline} />
     </Page>
   )
 }

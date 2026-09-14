@@ -11,12 +11,21 @@ export const DISCIPLINES = [
 
 export type DisciplineId = typeof DISCIPLINES[number]["id"];
 
+export interface PublicationItem {
+  title: string;
+  venue?: string;
+  year?: number | string;
+  url?: string;
+  doi?: string;
+}
+
 export interface TeamMember {
   id: string;
   slug: string;
   name: string;
-  degrees: string;
+  degrees?: string;
   role: string;
+  affiliation?: string;
   discipline: DisciplineId;
   disciplineLabel: string;
   avatarInitials: string;
@@ -25,11 +34,14 @@ export interface TeamMember {
   socialLinks?: {
     linkedin?: string;
     facebook?: string;
+    scholar?: string;
+    orcid?: string;
+    website?: string;
   };
   bio: string;
   specializations: string[];
   coursesTaught: string[];
-  publications?: string[];
+  publications?: Array<string | PublicationItem>;
   ieeeStatus?: string;
 }
 
@@ -44,6 +56,7 @@ export const teamMembers: TeamMember[] = [
     name: "Dr. Prasad Shastry",
     degrees: "Ph.D.",
     role: "Executive Board",
+    affiliation: "Professor of Microwave & Wireless Engineering, Bradley University",
     discipline: "executive-board",
     disciplineLabel: "Executive Board",
     avatarInitials: "PS",
@@ -76,6 +89,7 @@ export const teamMembers: TeamMember[] = [
     name: "Dr. M. H. Kori",
     degrees: "Ph.D.",
     role: "Executive Board",
+    affiliation: "Former Technical Director & Head of Wireless R&D, Alcatel-Lucent",
     discipline: "executive-board",
     disciplineLabel: "Executive Board",
     avatarInitials: "MK",
@@ -174,6 +188,7 @@ export const teamMembers: TeamMember[] = [
     name: "Dr. Paul Draxler",
     degrees: "Ph.D.",
     role: "Advisory Board",
+    affiliation: "Distinguished RF Systems Architect & Power Amplifier Specialist",
     discipline: "advisory-board",
     disciplineLabel: "Advisory Board",
     avatarInitials: "PD",
@@ -235,6 +250,7 @@ export const teamMembers: TeamMember[] = [
     name: "Dr. S. Raghavan",
     degrees: "Ph.D.",
     role: "Advisory Board",
+    affiliation: "Senior Professor of ECE, National Institute of Technology (NIT) Tiruchirappalli",
     discipline: "advisory-board",
     disciplineLabel: "Advisory Board",
     avatarInitials: "SR",
@@ -769,3 +785,20 @@ export const teamMembers: TeamMember[] = [
     publications: [],
   },
 ];
+
+export function getTeamMemberBySlug(slug: string): TeamMember | undefined {
+  return teamMembers.find((m) => m.slug === slug);
+}
+
+export function getAllTeamMemberSlugs(): string[] {
+  return teamMembers.map((m) => m.slug);
+}
+
+export function getAdjacentTeamMembers(slug: string): { prev?: TeamMember; next?: TeamMember } {
+  const index = teamMembers.findIndex((m) => m.slug === slug);
+  if (index === -1) return {};
+  const prev = index > 0 ? teamMembers[index - 1] : teamMembers[teamMembers.length - 1];
+  const next = index < teamMembers.length - 1 ? teamMembers[index + 1] : teamMembers[0];
+  return { prev, next };
+}
+

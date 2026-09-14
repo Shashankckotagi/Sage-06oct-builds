@@ -79,7 +79,11 @@ export default function BioDrawer({ member, onClose }: BioDrawerProps) {
                 {member.publications.map((pub, i) => (
                   <ListItem key={i}>
                     <PubBullet>•</PubBullet>
-                    <span>{pub}</span>
+                    <span>
+                      {typeof pub === 'object' && pub !== null
+                        ? `${pub.title}${pub.venue ? `, ${pub.venue}` : ''}${pub.year ? ` (${pub.year})` : ''}`
+                        : String(pub)}
+                    </span>
                   </ListItem>
                 ))}
               </ListGroup>
