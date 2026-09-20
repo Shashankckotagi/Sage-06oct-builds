@@ -32,13 +32,13 @@ export default function SingleTeamMemberPage({
         <title>{pageTitle}</title>
         <meta name="description" content={metaDescription} />
         <link rel="canonical" href={canonicalUrl} />
-        <meta property="og:title" content={`${member.name} — SAGE Faculty & Associates`} />
+        <meta property="og:title" content={`${member.name} — SAGE Team & Instructors`} />
         <meta property="og:description" content={metaDescription} />
         <meta property="og:type" content="profile" />
         <meta property="og:url" content={canonicalUrl} />
         {member.avatarUrl && <meta property="og:image" content={member.avatarUrl} />}
         <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content={`${member.name} — SAGE Faculty & Associates`} />
+        <meta name="twitter:title" content={`${member.name} — SAGE Team & Instructors`} />
         <meta name="twitter:description" content={metaDescription} />
         {member.avatarUrl && <meta name="twitter:image" content={member.avatarUrl} />}
       </Head>

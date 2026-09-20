@@ -16,6 +16,7 @@ export default function ContactPage() {
           name="description"
           content="Contact SAGE for professional RF, microwave, and wireless engineering training programs, corporate consulting, and customized technical workshops."
         />
+        <link rel="canonical" href="https://shastryassociates.com/contact" />
       </Head>
 
       {pageHeroes['/contact'] && <PageHero {...pageHeroes['/contact']} />}

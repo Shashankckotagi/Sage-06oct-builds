@@ -12,46 +12,43 @@ import { createGlobalStyle } from 'styled-components';
 export const GlobalStyle = createGlobalStyle`
 
 .next-light-theme {
-  --background: 255,255,255;
-  --secondBackground: 248,251,255;
-  --text: 15,23,42;
+  --background: 255,255,255; /* #FFFFFF SAGE Paper */
+  --secondBackground: 248,251,255; /* #F8FBFF Light Sky Tint */
+  --text: 15,23,42; /* #0F172A Slate Ink */
   --textSecondary: 255,255,255;
-  --primary: 251,107,49; 
-  --brandBlue: 0,106,173;
-  --skyBlue: 53,169,239;
-  --secondary: 0,106,173;
-  --tertiary: 235,246,254;
+  --primary: 251,107,49; /* #FB6B31 Vibrant Orange */
+  --brandBlue: 0,106,173; /* #006AAD Deep Blue */
+  --skyBlue: 53,169,239; /* #35A9EF Sky Blue */
+  --secondary: 0,106,173; /* #006AAD Deep Blue */
+  --tertiary: 235,246,254; /* #EBF6FE Soft Sky */
   --cardBackground: 255,255,255;
   --inputBackground: 255,255,255;
-  --navbarBackground: 255,255,255;
+  --navbarBackground: 0,106,173;
   --modalBackground: 255,255,255;
   --errorColor: 220,38,38;
   --logoColor: #006aad;
-  --lineColor: 226,232,240;
-  --mutedColor: 100,116,139;
+  --lineColor: 226,232,240; /* #E2E8F0 Border Line */
+  --mutedColor: 100,116,139; /* #64748B Muted Slate */
 }
 
 .next-dark-theme {
-  --background: 15,23,42;
-  --secondBackground: 30,41,59;
+  --background: 15,23,42; /* #0F172A Dark Slate Ink Base */
+  --secondBackground: 24,36,60;
   --text: 248,250,252;
   --textSecondary: 255,255,255;
-  --primary: 251,107,49; 
-  --brandBlue: 0,106,173;
-  --skyBlue: 53,169,239;
-  --secondary: 0,80,130;
-  --tertiary: 30,58,95;
-  --cardBackground: 30,41,59;
-  --inputBackground: 30,41,59;
-  --navbarBackground: 15,23,42;
+  --primary: 251,107,49; /* #FB6B31 Vibrant Orange */
+  --brandBlue: 53,169,239; /* #35A9EF Sky Blue */
+  --skyBlue: 53,169,239; /* #35A9EF Sky Blue */
+  --secondary: 0,106,173; /* #006AAD Deep Blue */
+  --tertiary: 28,48,78;
+  --cardBackground: 24,36,60;
+  --inputBackground: 24,36,60;
+  --navbarBackground: 0,106,173;
   --modalBackground: 15,23,42;
   --errorColor: 220,38,38;
   --logoColor: #35a9ef;
-  --lineColor: 51,65,85;
+  --lineColor: 44,62,92;
   --mutedColor: 148,163,184;
-}
-  --lineColor: 60,60,60;
-  --mutedColor: 160,160,160;
 }
 
 :root {

@@ -19,7 +19,7 @@ export default function ProfileView({ member, prevMember, nextMember }: ProfileV
 
   const breadcrumbs = [
     { label: 'Home', href: '/' },
-    { label: 'Faculty & Associates', href: '/team' },
+    { label: 'Meet Our Team', href: '/team' },
     { label: member.name, href: `/team/${member.slug}` },
   ];
 
@@ -164,7 +164,7 @@ export default function ProfileView({ member, prevMember, nextMember }: ProfileV
                 </NextLink>
                 <NextLink href="/team" passHref>
                   <DirectoryLink>
-                    <span>&larr;</span> Faculty directory
+                    <span>&larr;</span> Team directory
                   </DirectoryLink>
                 </NextLink>
               </ActionArea>

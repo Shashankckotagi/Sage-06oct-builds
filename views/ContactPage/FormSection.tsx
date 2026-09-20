@@ -21,7 +21,7 @@ const INQUIRY_TOPICS = [
   'Professional Training & Courses',
   'Engineering Consulting',
   'Custom Corporate Workshops',
-  'Faculty & Research Collaboration',
+  'Academic & Research Collaboration',
   'Other',
 ];
 

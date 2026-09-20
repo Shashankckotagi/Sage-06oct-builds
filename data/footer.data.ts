@@ -14,14 +14,17 @@ export const footerNav = {
       { label: "Consulting", href: "/services#consulting" },
       { label: "Custom Courses", href: "/services#custom" },
       { label: "Contact", href: "/contact" },
+      { label: "info@shastryassociates.com", href: "mailto:info@shastryassociates.com" },
     ],
   },
   company: {
     title: "Company",
     links: [
-      { label: "About", href: "/about" },
-      { label: "Team", href: "/team" },
-      { label: "News", href: "/news" },
+      { label: "About SAGE", href: "/about" },
+      { label: "News & Articles", href: "/blog" },
+      { label: "Events", href: "/events" },
+      { label: "Privacy Policy", href: "/privacy-policy" },
+      { label: "Sitemap", href: "/sitemap" },
     ],
   },
 };

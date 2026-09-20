@@ -13,11 +13,11 @@ export default function TeamPage() {
   const [activeDiscipline, setActiveDiscipline] = useState<DisciplineId>('all')
 
   return (
-    <Page title="Faculty & Associates | SAGE — Shastry Associates Global Enterprises">
+    <Page title="Meet Our Team | SAGE — Shastry Associates Global Enterprises">
       <Head>
         <meta
           name="description"
-          content="Meet the faculty, research fellows, and principal corporate advisory consultants at SAGE specializing in RF circuits, antennas, and 5G/6G wireless systems."
+          content="Meet our team of instructors, research fellows, and principal corporate advisory consultants at SAGE specializing in RF circuits, antennas, and 5G/6G wireless systems."
         />
       </Head>
 

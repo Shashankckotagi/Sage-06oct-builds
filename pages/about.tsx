@@ -18,6 +18,7 @@ export default function AboutPage() {
           name="description"
           content="Learn about SAGE (Shastry Associates Global Enterprises) — empowering RF, microwave, and wireless engineers with practical training and global corporate advisory."
         />
+        <link rel="canonical" href="https://shastryassociates.com/about" />
       </Head>
 
       {/* Section 1: Page Header (Unchanged as requested) */}

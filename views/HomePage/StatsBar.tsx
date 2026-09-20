@@ -4,7 +4,7 @@ import { media } from 'utils/media';
 
 const STATS = [
   { value: '25+', label: 'Years of Engineering Experience' },
-  { value: '15+', label: 'Global Associates & Senior Faculty' },
+  { value: '15+', label: 'Global Associates & Instructors' },
   { value: '4', label: 'Core Engineering Disciplines' },
 ];
 

@@ -24,7 +24,7 @@ const navItems: NavItems = [
     title: 'About Us',
     href: '/about',
     subItems: [
-      { title: 'Faculty & Team', href: '/team' },
+      { title: 'Meet Our Team', href: '/team' },
       { title: 'Mission & Vision', href: '/about#mission' },
     ],
   },
@@ -40,11 +40,19 @@ const navItems: NavItems = [
     ],
   },
   {
+    title: 'Events',
+    href: '/events',
+    subItems: [
+      { title: 'Upcoming & Past Events', href: '/events' },
+      { title: 'Photo Gallery', href: '/events#gallery' },
+    ],
+  },
+  {
     title: 'News',
     href: '/blog',
     subItems: [
-      { title: 'Events', href: '/contact#events' },
-      { title: 'Photo Gallery', href: '/blog#gallery' },
+      { title: 'Blogs & Articles', href: '/blog' },
+      { title: 'Newsletter', href: '/blog#newsletter' },
     ],
   },
   { title: 'Contact Us', href: '/contact', outlined: true },
