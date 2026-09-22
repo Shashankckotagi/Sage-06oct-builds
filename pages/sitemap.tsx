@@ -50,10 +50,12 @@ const sitemapTree = [
 
 export default function SitemapPage() {
   return (
-    <Page title="Sitemap" description="Complete site navigation tree and sitemap for SAGE.">
-      <Head>
-        <title>{`Sitemap | ${EnvVars.SITE_NAME}`}</title>
-      </Head>
+    <Page
+      title="Sitemap & Navigation Tree"
+      description="Complete site navigation tree and sitemap for SAGE (Shastry Associates Global Enterprises)."
+      canonicalPath="/sitemap"
+      ogType="website"
+    >
       <SitemapWrapper>
         <Container>
           <HeaderSection>

@@ -1,0 +1,65 @@
+<svg width="1200" height="630" viewBox="0 0 1200 630" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background Navy Canvas -->
+  <rect width="1200" height="630" fill="#07111E"/>
+  
+  <!-- Subtle Grid Pattern -->
+  <defs>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#1E293B" stroke-width="1" stroke-opacity="0.5"/>
+    </pattern>
+    <linearGradient id="brandGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#006AAD"/>
+      <stop offset="50%" stop-color="#35A9EF"/>
+      <stop offset="100%" stop-color="#FB6B31"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#grid)"/>
+
+  <!-- Ambient Glow Cones -->
+  <circle cx="150" cy="120" r="220" fill="#006AAD" opacity="0.25" filter="blur(60px)"/>
+  <circle cx="1050" cy="510" r="240" fill="#FB6B31" opacity="0.2" filter="blur(60px)"/>
+
+  <!-- Outer Border -->
+  <rect x="24" y="24" width="1152" height="582" rx="16" fill="none" stroke="url(#brandGradient)" stroke-width="2" stroke-opacity="0.8"/>
+
+  <!-- Tag Pill -->
+  <rect x="80" y="90" width="340" height="44" rx="22" fill="#0E243F" stroke="#35A9EF" stroke-width="1.5"/>
+  <circle cx="104" cy="112" r="6" fill="#FB6B31"/>
+  <text x="122" y="118" fill="#35A9EF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="14" font-weight="700" letter-spacing="2">APPLIED ELECTROMAGNETICS</text>
+
+  <!-- Big Title -->
+  <text x="80" y="220" fill="#FFFFFF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="56" font-weight="800" letter-spacing="-1">
+    Shastry Associates
+  </text>
+  <text x="80" y="285" fill="#FB6B31" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="56" font-weight="800" letter-spacing="-1">
+    Global Enterprises (SAGE)
+  </text>
+
+  <!-- Subtitle -->
+  <text x="80" y="360" fill="#94A3B8" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="24" font-weight="500">
+    Professional RF, Microwave &amp; Wireless Engineering Education
+  </text>
+  <text x="80" y="400" fill="#64748B" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="20" font-weight="400">
+    Bridging Graduate Theory with the Industrial Lab Bench
+  </text>
+
+  <!-- Bottom Badges -->
+  <g transform="translate(80, 480)">
+    <!-- Badge 1 -->
+    <rect width="260" height="48" rx="8" fill="#0F1F33" stroke="#1E3A5F" stroke-width="1"/>
+    <text x="20" y="30" fill="#E2E8F0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="600">📡 RF &amp; Microwave Systems</text>
+
+    <!-- Badge 2 -->
+    <rect x="280" width="260" height="48" rx="8" fill="#0F1F33" stroke="#1E3A5F" stroke-width="1"/>
+    <text x="300" y="30" fill="#E2E8F0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="600">📶 Antennas &amp; CEM</text>
+
+    <!-- Badge 3 -->
+    <rect x="560" width="280" height="48" rx="8" fill="#0F1F33" stroke="#1E3A5F" stroke-width="1"/>
+    <text x="580" y="30" fill="#E2E8F0" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="16" font-weight="600">⚡ High-Frequency Circuitry</text>
+  </g>
+
+  <!-- Website URL in footer -->
+  <text x="1120" y="550" text-anchor="end" fill="#35A9EF" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="18" font-weight="700">
+    shastryassociates.com
+  </text>
+</svg>

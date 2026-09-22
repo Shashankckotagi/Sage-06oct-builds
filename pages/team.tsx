@@ -1,25 +1,29 @@
-import Head from 'next/head'
-import { useState } from 'react'
-import styled from 'styled-components'
-import Page from 'components/Page'
-import PageHero from 'components/PageHero'
-import Container from 'components/Container'
-import FilterPills from 'components/FilterPills'
-import FilterableTeamGrid from 'views/TeamPage/FilterableTeamGrid'
-import BioDrawer from 'components/BioDrawer'
-import { pageHeroes, DisciplineId, TeamMember } from 'sage-data'
+import { useState } from 'react';
+import styled from 'styled-components';
+import Page from 'components/Page';
+import PageHero from 'components/PageHero';
+import Container from 'components/Container';
+import FilterPills from 'components/FilterPills';
+import FilterableTeamGrid from 'views/TeamPage/FilterableTeamGrid';
+import { pageHeroes, DisciplineId } from 'sage-data';
+import { getBreadcrumbSchema } from 'utils/seo';
 
 export default function TeamPage() {
-  const [activeDiscipline, setActiveDiscipline] = useState<DisciplineId>('all')
+  const [activeDiscipline, setActiveDiscipline] = useState<DisciplineId>('all');
+
+  const breadcrumbs = [
+    { label: 'Home', href: '/' },
+    { label: 'Faculty & Associates', href: '/team' },
+  ];
 
   return (
-    <Page title="Faculty & Associates | SAGE — Shastry Associates Global Enterprises">
-      <Head>
-        <meta
-          name="description"
-          content="Meet the faculty, research fellows, and principal corporate advisory consultants at SAGE specializing in RF circuits, antennas, and 5G/6G wireless systems."
-        />
-      </Head>
+    <Page
+      title="Faculty & Associates Directory"
+      description="Meet the international faculty, IEEE research fellows, and principal corporate advisory consultants at SAGE specializing in RF circuits, antennas, microwave devices, and 5G/6G wireless systems."
+      canonicalPath="/team"
+      ogType="website"
+      jsonLd={getBreadcrumbSchema(breadcrumbs)}
+    >
 
       <PageHero {...pageHeroes['/team']} />
 

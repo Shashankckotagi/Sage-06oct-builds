@@ -1,7 +1,7 @@
 import { InferGetStaticPropsType } from 'next';
-import Head from 'next/head';
 import styled from 'styled-components';
-import { EnvVars } from 'env';
+import SEOHead from 'components/SEOHead';
+import { getOrganizationSchema, getWebSiteSchema, DEFAULT_DESCRIPTION } from 'utils/seo';
 import { getAllPosts } from 'utils/postsFetcher';
 import FeaturedCourses from 'views/HomePage/FeaturedCourses';
 import FeaturesGallery from 'views/HomePage/FeaturesGallery';
@@ -16,13 +16,13 @@ import WhySage from 'views/HomePage/WhySage';
 export default function Homepage({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
   return (
     <>
-      <Head>
-        <title>{`${EnvVars.SITE_NAME} | Professional RF & Wireless Engineering`}</title>
-        <meta
-          name="description"
-          content="SAGE provides expert-led training, consulting, workshops, and courses in radio frequency, microwave, applied electromagnetics, antennas, and wireless communication systems."
-        />
-      </Head>
+      <SEOHead
+        title="SAGE | Professional RF, Microwave & Wireless Engineering Education"
+        description={DEFAULT_DESCRIPTION}
+        canonicalPath="/"
+        ogType="website"
+        jsonLd={[getOrganizationSchema(), getWebSiteSchema()]}
+      />
       <HomepageWrapper>
         <Hero />
         <StatsBar />

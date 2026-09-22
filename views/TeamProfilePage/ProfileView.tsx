@@ -285,14 +285,14 @@ export default function ProfileView({ member, prevMember, nextMember }: ProfileV
                   </NextLink>
                 ) : <div />}
 
-                {nextMember && (
+                {nextMember ? (
                   <NextLink href={`/team/${nextMember.slug}`} passHref>
                     <AdjacentLink isRight>
                       <AdjacentDir>Next &rarr;</AdjacentDir>
                       <AdjacentName>{nextMember.name}</AdjacentName>
                     </AdjacentLink>
                   </NextLink>
-                )}
+                ) : <div />}
               </AdjacentNav>
             )}
           </MainColumn>
@@ -605,22 +605,21 @@ const InlineLink = styled.a`
 const AdjacentNav = styled.nav`
   display: flex;
   justify-content: space-between;
-  gap: 2rem;
-  padding-top: 1.5rem;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding-top: 2rem;
   border-top: 1px solid rgb(var(--lineColor));
-
-  ${media('<=phone')} {
-    flex-direction: column;
-  }
 `;
 
 const AdjacentLink = styled.a<{ isRight?: boolean }>`
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.3rem;
   text-decoration: none;
   text-align: ${(p) => (p.isRight ? 'right' : 'left')};
   color: inherit;
+  flex: 1;
+  max-width: 48%;
   transition: color 0.15s ease;
 
   &:hover {
@@ -634,6 +633,10 @@ const AdjacentDir = styled.span`
   color: rgb(var(--mutedColor));
   text-transform: uppercase;
   letter-spacing: 0.04em;
+
+  ${media('<=phone')} {
+    font-size: 1rem;
+  }
 `;
 
 const AdjacentName = styled.span`
@@ -641,4 +644,11 @@ const AdjacentName = styled.span`
   font-size: 1.4rem;
   font-weight: 600;
   color: rgb(var(--text));
+  line-height: 1.3;
+  transition: color 0.15s ease;
+
+  ${media('<=phone')} {
+    font-size: 1.25rem;
+  }
 `;
+
