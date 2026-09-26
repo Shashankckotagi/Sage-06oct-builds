@@ -43,7 +43,7 @@ const sitemapTree = [
     href: '/events',
     description: 'Hands-on hackathons, workshops, and engineering meetups.',
     subItems: [
-      { title: 'Event Photo Gallery', href: '/events#gallery', description: 'Photos and memories from past SAGE engineering symposia and workshops.' },
+      { title: 'Event Photo Gallery', href: '/photos', description: 'Photos and memories from past SAGE engineering symposia and workshops.' },
     ],
   },
   {

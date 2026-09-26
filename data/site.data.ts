@@ -130,6 +130,39 @@ export const pageHeroes: Record<string, PageHeroData> = {
     description: 'Have questions about our RF, microwave, and wireless training programs, consulting, or customized workshops? Connect with our specialist team.',
     imageSrc: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1600&q=80',
   },
+  '/photos': {
+    breadcrumbs: [
+      { label: 'Home', href: '/' },
+      { label: 'News', href: '/news' },
+      { label: 'Photo Gallery', href: '/photos' },
+    ],
+    title: 'Photo Gallery',
+    description: 'Moments and highlights from our global inaugurations, technical symposiums, university workshops, and engineering gatherings.',
+    imagePublicId: 'sage/pages/events.jpg',
+    imageSrc: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80',
+  },
+  'photos': {
+    breadcrumbs: [
+      { label: 'Home', href: '/' },
+      { label: 'News', href: '/news' },
+      { label: 'Photo Gallery', href: '/photos' },
+    ],
+    title: 'Photo Gallery',
+    description: 'Moments and highlights from our global inaugurations, technical symposiums, university workshops, and engineering gatherings.',
+    imagePublicId: 'sage/pages/events.jpg',
+    imageSrc: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80',
+  },
+  '/gallery': {
+    breadcrumbs: [
+      { label: 'Home', href: '/' },
+      { label: 'News', href: '/news' },
+      { label: 'Photo Gallery', href: '/photos' },
+    ],
+    title: 'Photo Gallery',
+    description: 'Moments and highlights from our global inaugurations, technical symposiums, university workshops, and engineering gatherings.',
+    imagePublicId: 'sage/pages/events.jpg',
+    imageSrc: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80',
+  },
   '/events': {
     breadcrumbs: [
       { label: 'Home', href: '/' },

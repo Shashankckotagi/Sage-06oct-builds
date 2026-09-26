@@ -16,6 +16,8 @@ const footerItems: FooterItems = [
       { title: 'Tutorials', href: '/tutorials' },
       { title: 'Workshops', href: '/workshops' },
       { title: 'Training Programs', href: '/training' },
+      { title: 'Events', href: '/events' },
+      { title: 'Photo Gallery', href: '/photos' },
     ],
   },
   {

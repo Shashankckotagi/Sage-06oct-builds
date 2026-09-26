@@ -44,7 +44,7 @@ const navItems: NavItems = [
     href: '/news',
     subItems: [
       { title: 'Events', href: '/events' },
-      { title: 'Photo Gallery', href: '/news' },
+      { title: 'Photo Gallery', href: '/photos' },
     ],
   },
   { title: 'Contact Us', href: '/contact', outlined: true },
