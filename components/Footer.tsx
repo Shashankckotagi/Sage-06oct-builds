@@ -13,16 +13,16 @@ const footerItems: FooterItems = [
     title: 'Explore',
     items: [
       { title: 'Courses', href: '/courses' },
-      { title: 'Tutorials', href: '/courses#tutorials' },
-      { title: 'Workshops', href: '/services#workshops' },
-      { title: 'Training Programs', href: '/services#training' },
+      { title: 'Tutorials', href: '/tutorials' },
+      { title: 'Workshops', href: '/workshops' },
+      { title: 'Training Programs', href: '/training' },
     ],
   },
   {
     title: 'Work With Us',
     items: [
-      { title: 'Consulting Services', href: '/services#consulting' },
-      { title: 'Customized Courses', href: '/services#custom' },
+      { title: 'Consulting Services', href: '/consulting' },
+      { title: 'Customized Courses', href: '/courses' },
       { title: 'Contact Us', href: '/contact' },
     ],
   },
@@ -30,8 +30,9 @@ const footerItems: FooterItems = [
     title: 'Company',
     items: [
       { title: 'About SAGE', href: '/about' },
-      { title: 'Global Team', href: '/about#team' },
-      { title: 'News & Articles', href: '/blog' },
+      { title: 'Mission & Vision', href: '/mission' },
+      { title: 'Global Team', href: '/team' },
+      { title: 'News & Articles', href: '/news' },
       { title: 'Privacy Policy', href: '/privacy-policy' },
     ],
   },

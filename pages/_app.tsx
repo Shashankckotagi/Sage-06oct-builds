@@ -25,7 +25,7 @@ const navItems: NavItems = [
     href: '/about',
     subItems: [
       { title: 'Faculty & Team', href: '/team' },
-      { title: 'Mission & Vision', href: '/about#mission' },
+      { title: 'Mission & Vision', href: '/mission' },
     ],
   },
   {
@@ -33,18 +33,18 @@ const navItems: NavItems = [
     href: '/services',
     subItems: [
       { title: 'Courses', href: '/courses' },
-      { title: 'Tutorials', href: '/courses#tutorials' },
-      { title: 'Workshops', href: '/services#workshops' },
-      { title: 'Training', href: '/services#training' },
-      { title: 'Consulting', href: '/services#consulting' },
+      { title: 'Tutorials', href: '/tutorials' },
+      { title: 'Workshops', href: '/workshops' },
+      { title: 'Training', href: '/training' },
+      { title: 'Consulting', href: '/consulting' },
     ],
   },
   {
     title: 'News',
-    href: '/blog',
+    href: '/news',
     subItems: [
-      { title: 'Events', href: '/contact#events' },
-      { title: 'Photo Gallery', href: '/blog#gallery' },
+      { title: 'Events', href: '/events' },
+      { title: 'Photo Gallery', href: '/news' },
     ],
   },
   { title: 'Contact Us', href: '/contact', outlined: true },

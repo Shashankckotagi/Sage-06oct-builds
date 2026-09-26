@@ -112,6 +112,15 @@ export const pageHeroes: Record<string, PageHeroData> = {
     description: 'To disseminate knowledge and information in applied electromagnetics and radio frequency wireless systems engineering globally.',
     imageSrc: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80',
   },
+  'mission': {
+    breadcrumbs: [
+      { label: 'Home', href: '/' },
+      { label: 'Mission & Vision', href: '/mission' },
+    ],
+    title: 'Mission & Vision',
+    description: 'To disseminate knowledge and information in applied electromagnetics and radio frequency wireless systems engineering globally.',
+    imageSrc: 'https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=1600&q=80',
+  },
   '/contact': {
     breadcrumbs: [
       { label: 'Home', href: '/' },

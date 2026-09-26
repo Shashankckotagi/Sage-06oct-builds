@@ -5,9 +5,9 @@ export const vision =
   "To be the leader in disseminating knowledge and information in radio frequency wireless systems engineering and technologies globally.";
 
 export const goals = [
-  "Make available practical engineering and technology information on RF, millimeter-wave, and microwave circuits, components, sub-systems, and systems.",
-  "Provide and deliver tutorials, courses, workshops, and training for recent college graduates (Bachelor and Master levels) and engineers in industry at appropriate levels — on-site, off-site, online, and via our website.",
-  "Provide engineering consulting services.",
+  "To make available practical engineering and technology information on RF, Millimeter-Wave, and Microwave circuits, components, sub-systems, and systems.",
+  "To provide and deliver tutorials, courses, workshops, and training for recent college graduates (Bachelor and Master levels) and engineers in industry at appropriate levels on-site, off-site, online, and via our website.",
+  "To provide engineering consulting services.",
 ];
 
 export const aboutShort =
