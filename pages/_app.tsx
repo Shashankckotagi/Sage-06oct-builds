@@ -65,7 +65,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Modals />
         <Navbar items={navItems} />
         <Component {...pageProps} />
-        <WaveCta />
+        {!pageProps?.hideDefaultWaveCta && <WaveCta />}
         <Footer />
       </Providers>
     </>

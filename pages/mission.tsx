@@ -51,3 +51,11 @@ export default function MissionVisionPage() {
     </Page>
   );
 }
+
+export async function getStaticProps() {
+  return {
+    props: {
+      hideDefaultWaveCta: true,
+    },
+  };
+}
