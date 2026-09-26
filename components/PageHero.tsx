@@ -530,12 +530,6 @@ const PageHero: React.FC<PageHeroProps> = ({
 
       <StyledContainer>
         <TextContent>
-          {breadcrumbs && breadcrumbs.length > 0 && (
-            <BreadcrumbWrapper>
-              <Breadcrumbs crumbs={breadcrumbs} />
-            </BreadcrumbWrapper>
-          )}
-
           {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
 
           <Title>{title}</Title>
