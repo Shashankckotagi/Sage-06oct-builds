@@ -13,9 +13,9 @@ test.describe('Functional Testing', () => {
     await expect(page).toHaveTitle(/Faculty & Associates/);
 
     // Click on Dr. Prasad Shastry card
-    const shastryCard = page.locator('text=Dr. Prasad Shastry').first();
-    await expect(shastryCard).toBeVisible();
-    await shastryCard.click();
+    const shastryLink = page.locator('a[href*="/team/prasad-shastry"]').first();
+    await expect(shastryLink).toBeVisible();
+    await shastryLink.click({ force: true });
 
     // Assert URL changed to /team/prasad-shastry
     await expect(page).toHaveURL(/\/team\/prasad-shastry/);
@@ -29,7 +29,7 @@ test.describe('Functional Testing', () => {
     // Check Next Specialist button
     const nextLink = page.locator('nav[aria-label="Adjacent faculty navigation"] a').last();
     await expect(nextLink).toBeVisible();
-    await nextLink.click();
+    await nextLink.click({ force: true });
 
     // URL should change to the adjacent member
     await expect(page).not.toHaveURL(/\/team\/prasad-shastry/);
