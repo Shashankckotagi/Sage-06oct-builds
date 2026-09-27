@@ -17,6 +17,8 @@
     "@heroicons/react": "^1.0.6",
     "@n8tb1t/use-scroll-position": "^2.0.3",
     "@svgr/webpack": "^8.0.0",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/speed-insights": "^2.0.0",
     "css-in-js-media": "^2.0.1",
     "date-fns": "^2.29.3",
     "framer-motion": "^10.18.0",

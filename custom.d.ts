@@ -20,6 +20,11 @@ declare global {
       children: {};
     }
   }
+
+  interface Window {
+    gtag?: (...args: any[]) => void;
+    dataLayer?: any[];
+  }
 }
 
 declare module 'react' {
@@ -28,3 +33,5 @@ declare module 'react' {
     [propName: string]: any;
   }
 }
+
+

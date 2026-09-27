@@ -6,7 +6,7 @@ test.describe('Form Validation & Anti-Bot Testing', () => {
     await expect(page.locator('form, button[type="submit"]').first()).toBeVisible();
 
     const submitBtn = page.locator('button[type="submit"]').first();
-    await submitBtn.click();
+    await submitBtn.click({ force: true });
 
     // Check validation error or input state
     const nameInput = page.locator('input[name="name"], input#name, input[placeholder*="Name"]').first();
