@@ -1,8 +1,7 @@
-export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || '';
+export const GA_TRACKING_ID = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID || 'G-SHYTPGKSH7';
 
 // Analytics runs only on live deployed environments in the browser
 export const isLiveEnvironment =
-  process.env.NODE_ENV === 'production' &&
   typeof window !== 'undefined' &&
   !window.location.hostname.includes('localhost') &&
   !window.location.hostname.includes('127.0.0.1');
