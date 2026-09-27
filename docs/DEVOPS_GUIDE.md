@@ -77,19 +77,30 @@ Located at the root of the repository, configuring HTTP security headers and API
 
 ---
 
-## 4. Continuous Integration & Security (GitHub Actions)
+## 4. Quality Gates & Continuous Integration
 
-### 4.1 CI Pipeline (`.github/workflows/ci.yml`)
-Triggers on every PR and push to `main` or `master`:
-1. Checks out repository and caches Yarn dependencies.
-2. Runs `yarn install --frozen-lockfile`.
-3. Validates types with `yarn tsc --noEmit`.
-4. Compiles production bundle with `yarn build`.
+### 4.1 Git Pre-Push Hook (Husky Quality Gate)
+Enforced locally on developer machines before any code can be pushed to remote GitHub repositories:
+* **Hook File**: [`.husky/pre-push`](file:///c:/Users/MOG/Documents/Projects/Sage-new/next-saas-starter/.husky/pre-push)
+* **Pre-Push Validation Checks**:
+  1. `yarn tsc --noEmit` — Rejects the push immediately if any TypeScript compilation error exists.
+  2. `yarn test:e2e` — Executes the full Playwright suite (smoke, functional, responsive, theme, forms, and SEO).
+  3. Updates [`docs/TEST_EVIDENCE_REPORT.md`](file:///c:/Users/MOG/Documents/Projects/Sage-new/next-saas-starter/docs/TEST_EVIDENCE_REPORT.md) automatically with pass/fail metrics.
+* **Failure Handling**: If any check fails, `git push` aborts with a non-zero exit code and displays the exact assertion error.
 
-### 4.2 Security Vulnerability Scanning (`.github/workflows/codeql-analysis.yml`)
+### 4.2 GitHub Actions CI Pipeline (`.github/workflows/ci.yml`)
+Triggers automatically on every pull request and push to `main`, `master`, and `feat/**` branches:
+1. **Dependency Installation**: Runs `yarn install --frozen-lockfile --ignore-engines` with Yarn caching.
+2. **Code Quality**: Runs `yarn lint`.
+3. **Type Safety**: Runs `yarn tsc --noEmit`.
+4. **Production Build**: Compiles the Next.js production bundle with `yarn build`.
+5. **Automated E2E Testing**: Installs Playwright Chromium headless browser and executes `yarn test:e2e`.
+6. **Artifact Storage**: Automatically uploads `docs/TEST_EVIDENCE_REPORT.md` as a verifiable build artifact.
+
+### 4.3 Security Vulnerability Scanning (`.github/workflows/codeql-analysis.yml`)
 * Runs weekly automated CodeQL analysis to identify vulnerabilities in JavaScript/TypeScript dependencies.
 
-### 4.3 Uptime Health Check Endpoint (`pages/api/health.ts`)
+### 4.4 Uptime Health Check Endpoint (`pages/api/health.ts`)
 * Endpoint: `https://shastryassociates.com/api/health`
 * Returns status, uptime, timestamp, and environment for external monitoring services (UptimeRobot, BetterStack).
 
