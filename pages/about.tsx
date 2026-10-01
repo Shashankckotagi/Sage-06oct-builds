@@ -17,23 +17,14 @@ export default function AboutPage() {
   ];
 
   return (
-    <Page title="About Us | SAGE — Shastry Associates Global Enterprises">
-      <Head>
-        <meta
-          name="description"
-          content="Learn about SAGE (Shastry Associates Global Enterprises) — empowering RF, microwave, and wireless engineers with practical training and global corporate advisory."
-        />
-        <link rel="canonical" href="https://shastryassociates.com/about" />
-      </Head>
     <Page
-      title="About Us"
+      title="About Us | SAGE — Shastry Associates Global Enterprises"
       description="Learn about SAGE (Shastry Associates Global Enterprises) — empowering RF, microwave, and wireless engineers with practical training and global corporate advisory."
       canonicalPath="/about"
       ogType="website"
       jsonLd={getBreadcrumbSchema(breadcrumbs)}
     >
-
-      {/* Section 1: Page Header (Unchanged as requested) */}
+      {/* Section 1: Page Header */}
       <PageHero {...pageHeroes['/about']} />
       
       {/* Section 2: Who We Are */}
@@ -53,7 +44,6 @@ export default function AboutPage() {
       
       {/* Section 7: Philosophy Quote & CTA */}
       <PhilosophyQuote />
-
     </Page>
-  )
+  );
 }
