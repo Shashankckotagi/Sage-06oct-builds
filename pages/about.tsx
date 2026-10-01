@@ -17,6 +17,14 @@ export default function AboutPage() {
   ];
 
   return (
+    <Page title="About Us | SAGE — Shastry Associates Global Enterprises">
+      <Head>
+        <meta
+          name="description"
+          content="Learn about SAGE (Shastry Associates Global Enterprises) — empowering RF, microwave, and wireless engineers with practical training and global corporate advisory."
+        />
+        <link rel="canonical" href="https://shastryassociates.com/about" />
+      </Head>
     <Page
       title="About Us"
       description="Learn about SAGE (Shastry Associates Global Enterprises) — empowering RF, microwave, and wireless engineers with practical training and global corporate advisory."

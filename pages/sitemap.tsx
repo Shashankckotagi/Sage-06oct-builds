@@ -16,7 +16,7 @@ const sitemapTree = [
     href: '/about',
     description: 'Learn about SAGE history, mission, and associate leadership.',
     subItems: [
-      { title: 'SAGE Team', href: '/about#team', description: 'Senior associates, faculty, & engineering experts.' },
+      { title: 'SAGE Team', href: '/team', description: 'Senior associates, faculty, & engineering experts.' },
       { title: 'Missions & Goals', href: '/about#mission', description: 'Core vision, objectives, & values.' },
     ],
   },
@@ -33,12 +33,21 @@ const sitemapTree = [
     ],
   },
   {
+    title: 'Events',
+    href: '/events',
+    description: 'Interactive workshops, hackathons, and technical bootcamps.',
+    subItems: [
+      { title: 'Upcoming & Past Events', href: '/events', description: 'Explore past sessions and register for upcoming events.' },
+      { title: 'Photo Gallery', href: '/events#gallery', description: 'Event photos & workshop archives.' },
+    ],
+  },
+  {
     title: 'News & Media',
     href: '/blog',
-    description: 'Latest articles, events, and gallery highlights.',
+    description: 'Latest blogs, technical articles, and newsletter updates.',
     subItems: [
-      { title: 'Events & Conferences', href: '/contact#events', description: 'Upcoming workshops & webinars.' },
-      { title: 'Photo Gallery', href: '/blog#gallery', description: 'Event photos & workshop archives.' },
+      { title: 'Blogs & Articles', href: '/blog', description: 'Technical articles and news.' },
+      { title: 'Newsletter', href: '/blog#newsletter', description: 'Subscribe to SAGE newsletter.' },
     ],
   },
   {

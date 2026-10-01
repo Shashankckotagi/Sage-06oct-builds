@@ -22,17 +22,18 @@ const footerItems: FooterItems = [
     title: 'Work With Us',
     items: [
       { title: 'Consulting Services', href: '/services#consulting' },
-      { title: 'Customized Courses', href: '/services#custom' },
       { title: 'Contact Us', href: '/contact' },
+      { title: 'info@shastryassociates.com', href: 'mailto:info@shastryassociates.com' },
     ],
   },
   {
     title: 'Company',
     items: [
       { title: 'About SAGE', href: '/about' },
-      { title: 'Global Team', href: '/about#team' },
       { title: 'News & Articles', href: '/blog' },
+      { title: 'Events', href: '/events' },
       { title: 'Privacy Policy', href: '/privacy-policy' },
+      { title: 'Sitemap', href: '/sitemap' },
     ],
   },
 ];

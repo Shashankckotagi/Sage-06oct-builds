@@ -17,6 +17,13 @@ export default function TeamPage() {
   ];
 
   return (
+    <Page title="Meet Our Team | SAGE — Shastry Associates Global Enterprises">
+      <Head>
+        <meta
+          name="description"
+          content="Meet our team of instructors, research fellows, and principal corporate advisory consultants at SAGE specializing in RF circuits, antennas, and 5G/6G wireless systems."
+        />
+      </Head>
     <Page
       title="Faculty & Associates Directory"
       description="Meet the international faculty, IEEE research fellows, and principal corporate advisory consultants at SAGE specializing in RF circuits, antennas, microwave devices, and 5G/6G wireless systems."

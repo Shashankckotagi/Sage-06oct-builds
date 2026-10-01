@@ -1,4 +1,4 @@
-export type SubNavItem = { title: string; href: string };
+export type SubNavItem = { title: string; href?: string; onClick?: () => void };
 
 export type SingleNavItem = {
   title: string;

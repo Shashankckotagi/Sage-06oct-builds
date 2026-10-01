@@ -133,11 +133,26 @@ function NavItem({ href, title, outlined, highlighted, subItems }: SingleNavItem
       </NextLink>
       {hasSubItems && isOpen && (
         <DropdownMenu>
-          {subItems.map((sub) => (
-            <NextLink key={sub.href} href={sub.href} passHref>
-              <DropdownItem>{sub.title}</DropdownItem>
-            </NextLink>
-          ))}
+          {subItems.map((sub) => {
+            if (sub.onClick) {
+              return (
+                <DropdownItemButton
+                  key={sub.title}
+                  onClick={() => {
+                    setIsOpen(false);
+                    sub.onClick?.();
+                  }}
+                >
+                  {sub.title}
+                </DropdownItemButton>
+              );
+            }
+            return (
+              <NextLink key={sub.href || sub.title} href={sub.href || '#'} passHref>
+                <DropdownItem>{sub.title}</DropdownItem>
+              </NextLink>
+            );
+          })}
         </DropdownMenu>
       )}
     </NavItemWrapper>
@@ -255,7 +270,7 @@ const DropdownMenu = styled.div`
   top: 100%;
   left: 0;
   min-width: 20rem;
-  background: #005a93;
+  background: rgb(var(--secondary));
   border: 1.5px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
   border-radius: 0.8rem;
@@ -273,8 +288,8 @@ const DropdownMenu = styled.div`
   }
 
   html[data-theme='dark'] & {
-    background: #003e66;
-    border: 1.5px solid rgba(53, 169, 239, 0.4);
+    background: rgb(var(--secondary));
+    border: 1.5px solid rgba(80, 180, 245, 0.3);
   }
 
   @keyframes fadeIn {
@@ -305,6 +320,28 @@ const DropdownItem = styled.a`
   }
 `;
 
+const DropdownItemButton = styled.button`
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.9rem 1.6rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: none;
+  font-family: inherit;
+  transition: background 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+  }
+`;
+
 const NavItemWrapper = styled.li<Partial<SingleNavItem>>`
   position: relative;
   border-radius: 0.5rem;
@@ -326,15 +363,15 @@ const NavbarContainer = styled.header<NavbarContainerProps>`
   height: 8rem;
   z-index: var(--z-navbar);
 
-  /* Light Mode SAGE Deep Blue background */
-  background-color: #006aad;
-  box-shadow: 0 4px 20px rgba(0, 106, 173, 0.35);
+  /* Light Mode softer footer blue background */
+  background-color: rgb(var(--secondary));
+  box-shadow: 0 4px 20px rgba(0, 80, 130, 0.3);
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 
-  /* Dark Mode Ultra-Rich Oceanic Blue background */
+  /* Dark Mode softened navy background */
   html[data-theme='dark'] & {
-    background-color: #004d7e;
-    border-bottom: 1px solid rgba(53, 169, 239, 0.3);
+    background-color: rgb(var(--secondary));
+    border-bottom: 1px solid rgba(80, 180, 245, 0.25);
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.45);
   }
 

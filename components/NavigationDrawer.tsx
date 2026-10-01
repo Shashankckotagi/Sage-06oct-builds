@@ -52,7 +52,20 @@ function NavItemsList({ items }: NavigationDrawerProps) {
               <SubList>
                 {singleItem.subItems.map((sub, sIdx) => (
                   <SubItem key={sIdx}>
-                    <NextLink href={sub.href}>{sub.title}</NextLink>
+                    {sub.href ? (
+                      <NextLink href={sub.href}>{sub.title}</NextLink>
+                    ) : (
+                      <a
+                        href="#"
+                        onClick={(e) => {
+                          e.preventDefault();
+                          close();
+                          sub.onClick?.();
+                        }}
+                      >
+                        {sub.title}
+                      </a>
+                    )}
                   </SubItem>
                 ))}
               </SubList>

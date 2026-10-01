@@ -1,11 +1,19 @@
+import NextLink from 'next/link';
 import styled from 'styled-components';
 import Button from 'components/Button';
+import { getNewsletters } from 'data/newsletters.data';
+import { FileText, Calendar } from 'lucide-react';
 
 export interface MailSentStateProps {
   onReset?: () => void;
+  customTitle?: string;
+  customDescription?: string;
+  showNewsletters?: boolean;
 }
 
-export default function MailSentState({ onReset }: MailSentStateProps) {
+export default function MailSentState({ onReset, customTitle, customDescription, showNewsletters }: MailSentStateProps) {
+  const newsletters = showNewsletters ? getNewsletters() : [];
+
   return (
     <Wrapper>
       <svg id="b76bd6b3-ad77-41ff-b778-1d1d054fe577" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 570 511.67482">
@@ -46,10 +54,35 @@ export default function MailSentState({ onReset }: MailSentStateProps) {
           fill="#fb6b31"
         />
       </svg>
-      <Title>Message Sent Successfully!</Title>
+      <Title>{customTitle || 'Message Sent Successfully!'}</Title>
       <Description>
-        Thank you for reaching out to SAGE. We have sent a confirmation receipt to your email, and a member of our specialist team will review your inquiry shortly.
+        {customDescription ||
+          'Thank you for reaching out to SAGE. We have sent a confirmation receipt to your email, and a member of our specialist team will review your inquiry shortly.'}
       </Description>
+
+      {showNewsletters && newsletters.length > 0 && (
+        <NewslettersContainer>
+          <NewslettersHeader>Published Newsletter Archive</NewslettersHeader>
+          <NewslettersList>
+            {newsletters.map((issue) => (
+              <NewsletterCard key={issue.id}>
+                <BadgeRow>
+                  <EditionBadge>{issue.edition}</EditionBadge>
+                  <DateText><Calendar size={12} /> {issue.date}</DateText>
+                </BadgeRow>
+                <IssueTitle>{issue.title}</IssueTitle>
+                <IssueSummary>{issue.summary}</IssueSummary>
+                {issue.pdfUrl && (
+                  <NextLink href={issue.pdfUrl} passHref>
+                    <ReadLink>Read Digest Issue &rarr;</ReadLink>
+                  </NextLink>
+                )}
+              </NewsletterCard>
+            ))}
+          </NewslettersList>
+        </NewslettersContainer>
+      )}
+
       {onReset && (
         <ButtonContainer>
           <Button type="button" onClick={onReset} transparent>
@@ -95,4 +128,93 @@ const Description = styled.p`
 const ButtonContainer = styled.div`
   display: flex;
   justify-content: center;
+`;
+
+const NewslettersContainer = styled.div`
+  width: 100%;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: rgba(var(--tertiary), 0.5);
+  border: 1px solid rgb(var(--lineColor));
+  border-radius: 1rem;
+`;
+
+const NewslettersHeader = styled.h4`
+  font-size: 1.4rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: rgb(var(--brandBlue));
+  margin-bottom: 1.2rem;
+`;
+
+const NewslettersList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  max-height: 28rem;
+  overflow-y: auto;
+  padding-right: 0.4rem;
+`;
+
+const NewsletterCard = styled.div`
+  background: rgb(var(--cardBackground));
+  padding: 1.4rem;
+  border-radius: 0.8rem;
+  border: 1px solid rgb(var(--lineColor));
+  text-align: left;
+`;
+
+const BadgeRow = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 0.6rem;
+`;
+
+const EditionBadge = styled.span`
+  background: rgb(var(--primary));
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  padding: 0.2rem 0.8rem;
+  border-radius: 0.4rem;
+  text-transform: uppercase;
+`;
+
+const DateText = styled.span`
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 1.2rem;
+  color: rgb(var(--mutedColor));
+`;
+
+const IssueTitle = styled.h5`
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: rgb(var(--text));
+  margin-bottom: 0.4rem;
+  line-height: 1.35;
+`;
+
+const IssueSummary = styled.p`
+  font-size: 1.25rem;
+  color: rgb(var(--mutedColor));
+  line-height: 1.4;
+  margin-bottom: 0.8rem;
+`;
+
+const ReadLink = styled.a`
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: rgb(var(--brandBlue));
+  text-decoration: none;
+
+  &:hover {
+    color: rgb(var(--primary));
+    text-decoration: underline;
+  }
 `;
