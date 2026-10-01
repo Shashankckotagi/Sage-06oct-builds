@@ -70,3 +70,5 @@ next-saas-starter/
 * **Leadership & Stakeholders:** Dr. Prasad Shastry, Scarlet Daoud, Aparna Sankarasubram
 * **Development & Engineering:** Team MSV
 * **Base Template:** [Next SaaS Starter](https://github.com/Blazity/next-saas-starter) under MIT License
+
+Hi
