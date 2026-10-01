@@ -1,24 +1,38 @@
-import Head from 'next/head';
 import { PropsWithChildren } from 'react';
 import styled from 'styled-components';
-import { EnvVars } from 'env';
+import SEOHead, { SEOHeadProps } from 'components/SEOHead';
 import { media } from 'utils/media';
 import Container from './Container';
 import SectionTitle from './SectionTitle';
 
-export interface PageProps {
+export interface PageProps extends Partial<SEOHeadProps> {
   title: string;
   description?: string;
   hasHeader?: boolean;
 }
 
-export default function Page({ title, description, hasHeader = false, children }: PropsWithChildren<PageProps>) {
+export default function Page({
+  title,
+  description,
+  canonicalPath,
+  ogImage,
+  ogType,
+  jsonLd,
+  noIndex,
+  hasHeader = false,
+  children,
+}: PropsWithChildren<PageProps>) {
   return (
     <>
-      <Head>
-        <title>{`${title} | ${EnvVars.SITE_NAME}`}</title>
-        <meta name="description" content={description} />
-      </Head>
+      <SEOHead
+        title={title}
+        description={description}
+        canonicalPath={canonicalPath}
+        ogImage={ogImage}
+        ogType={ogType}
+        jsonLd={jsonLd}
+        noIndex={noIndex}
+      />
       <Wrapper>
         {hasHeader && (
           <HeaderContainer>

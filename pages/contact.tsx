@@ -1,14 +1,19 @@
-import Head from 'next/head';
 import styled from 'styled-components';
 import Page from 'components/Page';
 import PageHero from 'components/PageHero';
 import Container from 'components/Container';
 import { media } from 'utils/media';
 import { pageHeroes } from 'sage-data';
+import { getBreadcrumbSchema } from 'utils/seo';
 import FormSection from 'views/ContactPage/FormSection';
 import InformationSection from 'views/ContactPage/InformationSection';
 
 export default function ContactPage() {
+  const breadcrumbs = [
+    { label: 'Home', href: '/' },
+    { label: 'Contact', href: '/contact' },
+  ];
+
   return (
     <Page title="Contact & Advisory Inquiries | SAGE — Shastry Associates Global Enterprises">
       <Head>
@@ -18,6 +23,13 @@ export default function ContactPage() {
         />
         <link rel="canonical" href="https://shastryassociates.com/contact" />
       </Head>
+    <Page
+      title="Contact & Technical Advisory Inquiries"
+      description="Contact SAGE for professional RF, microwave, and wireless engineering training programs, corporate consulting, and customized technical workshops."
+      canonicalPath="/contact"
+      ogType="website"
+      jsonLd={getBreadcrumbSchema(breadcrumbs)}
+    >
 
       {pageHeroes['/contact'] && <PageHero {...pageHeroes['/contact']} />}
 

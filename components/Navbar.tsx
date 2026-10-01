@@ -354,7 +354,7 @@ const NavItemWrapper = styled.li<Partial<SingleNavItem>>`
   }
 `;
 
-const NavbarContainer = styled.div<NavbarContainerProps>`
+const NavbarContainer = styled.header<NavbarContainerProps>`
   display: flex;
   position: sticky;
   top: 0;

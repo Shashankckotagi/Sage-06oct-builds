@@ -1,0 +1,2 @@
+echo "⚡ Running fast linter check before commit..."
+yarn lint

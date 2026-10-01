@@ -2,9 +2,14 @@ import styled from 'styled-components';
 import Page from 'components/Page';
 import RichText from 'components/RichText';
 
-export default function ContactPage() {
+export default function CookiesPolicyPage() {
   return (
-    <Page title="Cookies policy">
+    <Page
+      title="Cookies Policy"
+      description="Cookies Policy for Shastry Associates Global Enterprises (SAGE). Learn about cookie usage and browsing preferences."
+      canonicalPath="/cookies-policy"
+      ogType="website"
+    >
       <CookiesPolicyContainer>
         <RichText>
           <p>

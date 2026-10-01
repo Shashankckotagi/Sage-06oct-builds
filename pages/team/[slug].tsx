@@ -1,5 +1,4 @@
 import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
-import Head from 'next/head';
 import Page from 'components/Page';
 import ProfileView from 'views/TeamProfilePage/ProfileView';
 import {
@@ -8,6 +7,8 @@ import {
   getAdjacentTeamMembers,
   TeamMember,
 } from 'sage-data';
+import { getAvatarUrl, imagePresets } from 'utils/cloudinary';
+import { getPersonSchema, getBreadcrumbSchema } from 'utils/seo';
 
 interface PageProps {
   member: TeamMember;
@@ -22,9 +23,8 @@ export default function SingleTeamMemberPage({
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   if (!member) return null;
 
-  const pageTitle = `${member.name} | SAGE — Shastry Associates Global Enterprises`;
-  const metaDescription = `${member.name} (${member.role}) — ${member.bio.substring(0, 155)}...`;
-  const canonicalUrl = `https://shastryassociates.com/team/${member.slug}`;
+  const avatarSrc = getAvatarUrl(member.avatarPublicId, member.avatarUrl, imagePresets.avatar);
+  const metaDescription = `${member.name} (${member.role}${member.affiliation ? `, ${member.affiliation}` : ''}) — ${member.bio.replace(/\r?\n/g, ' ').substring(0, 155)}...`;
 
   return (
     <Page title={pageTitle}>
@@ -42,7 +42,24 @@ export default function SingleTeamMemberPage({
         <meta name="twitter:description" content={metaDescription} />
         {member.avatarUrl && <meta name="twitter:image" content={member.avatarUrl} />}
       </Head>
+  const breadcrumbs = [
+    { label: 'Home', href: '/' },
+    { label: 'Faculty & Associates', href: '/team' },
+    { label: member.name, href: `/team/${member.slug}` },
+  ];
 
+  const personSchema = getPersonSchema(member, avatarSrc);
+  const breadcrumbSchema = getBreadcrumbSchema(breadcrumbs);
+
+  return (
+    <Page
+      title={member.name}
+      description={metaDescription}
+      canonicalPath={`/team/${member.slug}`}
+      ogType="profile"
+      ogImage={avatarSrc || undefined}
+      jsonLd={[personSchema, breadcrumbSchema]}
+    >
       <ProfileView
         member={member}
         prevMember={prevMember}

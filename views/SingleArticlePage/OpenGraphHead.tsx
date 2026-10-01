@@ -20,6 +20,7 @@ export default function OpenGraphHead(props: OpenGraphHeadProps) {
 
   return (
     <Head>
+      <link rel="canonical" href={currentUrl} />
       <meta property="og:title" content={title} />
       <meta property="og:site_name" content={domainName} />
       <meta property="og:type" content="article" />

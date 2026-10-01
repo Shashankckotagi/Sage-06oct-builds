@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import styled, { keyframes } from 'styled-components';
 import { User, Mail, Phone, Tag, MessageSquare, Send, Loader2, ShieldCheck, AlertCircle } from 'lucide-react';
 import Button from 'components/Button';
+import { trackEvent } from 'utils/analytics';
 import { media } from 'utils/media';
 import MailSentState from '../../components/MailSentState';
 
@@ -51,6 +52,11 @@ export default function FormSection() {
       const data = await res.json().catch(() => null);
 
       if (res.ok && data?.ok) {
+        trackEvent({
+          action: 'submit_contact_form',
+          category: 'Engagement',
+          label: payload.topic || 'General Inquiry',
+        });
         setHasSuccessfullySentMail(true);
       } else {
         setErrorMessage(data?.error || "Couldn't send email. Please try again.");

@@ -6,8 +6,12 @@ import 'swiper/css/autoplay';
 import { AppProps } from 'next/dist/shared/lib/router/router';
 import dynamic from 'next/dynamic';
 import Head from 'next/head';
+import { useRouter } from 'next/router';
+import Script from 'next/script';
 import { ColorModeScript } from 'nextjs-color-mode';
-import React, { PropsWithChildren } from 'react';
+import React, { PropsWithChildren, useEffect } from 'react';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/react';
 
 import Footer from 'components/Footer';
 import { GlobalStyle } from 'components/GlobalStyles';
@@ -17,6 +21,7 @@ import NewsletterModal from 'components/NewsletterModal';
 import WaveCta from 'components/WaveCta';
 import { NewsletterModalContextProvider, useNewsletterModalContext } from 'contexts/newsletter-modal.context';
 import { NavItems } from 'types';
+import { GA_TRACKING_ID, pageview } from 'utils/analytics';
 
 function getNavItems(setIsModalOpened: (opened: boolean) => void): NavItems {
   return [
@@ -63,6 +68,18 @@ function getNavItems(setIsModalOpened: (opened: boolean) => void): NavItems {
 }
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleRouteChange = (url: string) => {
+      pageview(url);
+    };
+    router.events.on('routeChangeComplete', handleRouteChange);
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, [router.events]);
+
   return (
     <>
       <Head>
@@ -76,6 +93,41 @@ function MyApp({ Component, pageProps }: AppProps) {
       <NewsletterModalContextProvider>
         <AppContent Component={Component} pageProps={pageProps} />
       </NewsletterModalContextProvider>
+      {/* Google Analytics (GA4) Tag Manager */}
+      {GA_TRACKING_ID && (
+        <>
+          <Script
+            strategy="afterInteractive"
+            src={`https://www.googletagmanager.com/gtag/js?id=${GA_TRACKING_ID}`}
+          />
+          <Script
+            id="gtag-init"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){dataLayer.push(arguments);}
+                gtag('js', new Date());
+                gtag('config', '${GA_TRACKING_ID}', {
+                  page_path: window.location.pathname,
+                });
+              `,
+            }}
+          />
+        </>
+      )}
+
+      <Providers>
+        <Modals />
+        <Navbar items={navItems} />
+        <Component {...pageProps} />
+        <WaveCta />
+        <Footer />
+      </Providers>
+
+      {/* Vercel Web Analytics & Core Web Vitals */}
+      <Analytics />
+      <SpeedInsights />
     </>
   );
 }
