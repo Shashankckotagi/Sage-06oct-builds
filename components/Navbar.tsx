@@ -133,11 +133,26 @@ function NavItem({ href, title, outlined, highlighted, subItems }: SingleNavItem
       </NextLink>
       {hasSubItems && isOpen && (
         <DropdownMenu>
-          {subItems.map((sub) => (
-            <NextLink key={sub.href} href={sub.href} passHref>
-              <DropdownItem>{sub.title}</DropdownItem>
-            </NextLink>
-          ))}
+          {subItems.map((sub) => {
+            if (sub.onClick) {
+              return (
+                <DropdownItemButton
+                  key={sub.title}
+                  onClick={() => {
+                    setIsOpen(false);
+                    sub.onClick?.();
+                  }}
+                >
+                  {sub.title}
+                </DropdownItemButton>
+              );
+            }
+            return (
+              <NextLink key={sub.href || sub.title} href={sub.href || '#'} passHref>
+                <DropdownItem>{sub.title}</DropdownItem>
+              </NextLink>
+            );
+          })}
         </DropdownMenu>
       )}
     </NavItemWrapper>
@@ -297,6 +312,28 @@ const DropdownItem = styled.a`
   color: #ffffff;
   text-decoration: none;
   text-transform: none;
+  transition: background 0.15s ease, color 0.15s ease;
+
+  &:hover {
+    background: rgba(255, 255, 255, 0.18);
+    color: #ffffff;
+  }
+`;
+
+const DropdownItemButton = styled.button`
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0.9rem 1.6rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: none;
+  font-family: inherit;
   transition: background 0.15s ease, color 0.15s ease;
 
   &:hover {

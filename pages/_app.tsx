@@ -18,45 +18,49 @@ import WaveCta from 'components/WaveCta';
 import { NewsletterModalContextProvider, useNewsletterModalContext } from 'contexts/newsletter-modal.context';
 import { NavItems } from 'types';
 
-const navItems: NavItems = [
-  { title: 'Home', href: '/' },
-  {
-    title: 'About Us',
-    href: '/about',
-    subItems: [
-      { title: 'Meet Our Team', href: '/team' },
-      { title: 'Mission & Vision', href: '/about#mission' },
-    ],
-  },
-  {
-    title: 'Services',
-    href: '/services',
-    subItems: [
-      { title: 'Courses', href: '/courses' },
-      { title: 'Tutorials', href: '/courses#tutorials' },
-      { title: 'Workshops', href: '/services#workshops' },
-      { title: 'Training', href: '/services#training' },
-      { title: 'Consulting', href: '/services#consulting' },
-    ],
-  },
-  {
-    title: 'Events',
-    href: '/events',
-    subItems: [
-      { title: 'Upcoming & Past Events', href: '/events' },
-      { title: 'Photo Gallery', href: '/events#gallery' },
-    ],
-  },
-  {
-    title: 'News',
-    href: '/blog',
-    subItems: [
-      { title: 'Blogs & Articles', href: '/blog' },
-      { title: 'Newsletter', href: '/blog#newsletter' },
-    ],
-  },
-  { title: 'Contact Us', href: '/contact', outlined: true },
-];
+function getNavItems(setIsModalOpened: (opened: boolean) => void): NavItems {
+  return [
+    { title: 'Home', href: '/' },
+    {
+      title: 'About Us',
+      href: '/about',
+      subItems: [
+        { title: 'Meet Our Team', href: '/team' },
+        { title: 'Mission & Vision', href: '/about#mission' },
+      ],
+    },
+    {
+      title: 'Services',
+      href: '/services',
+      subItems: [
+        { title: 'Courses', href: '/courses' },
+        { title: 'Tutorials', href: '/courses#tutorials' },
+        { title: 'Workshops', href: '/services#workshops' },
+        { title: 'Training', href: '/services#training' },
+        { title: 'Consulting', href: '/services#consulting' },
+      ],
+    },
+    {
+      title: 'Events',
+      href: '/events',
+      subItems: [
+        { title: 'Upcoming & Past Events', href: '/events' },
+        { title: 'Photo Gallery', href: '/events#gallery' },
+      ],
+    },
+    {
+      title: 'News',
+      href: '#',
+      subItems: [
+        {
+          title: 'Newsletter',
+          onClick: () => setIsModalOpened(true),
+        },
+      ],
+    },
+    { title: 'Contact Us', href: '/contact', outlined: true },
+  ];
+}
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
@@ -69,22 +73,25 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ColorModeScript />
       <GlobalStyle />
 
-      <Providers>
-        <Modals />
-        <Navbar items={navItems} />
-        <Component {...pageProps} />
-        <WaveCta />
-        <Footer />
-      </Providers>
+      <NewsletterModalContextProvider>
+        <AppContent Component={Component} pageProps={pageProps} />
+      </NewsletterModalContextProvider>
     </>
   );
 }
 
-function Providers<T>({ children }: PropsWithChildren<T>) {
+function AppContent({ Component, pageProps }: any) {
+  const { setIsModalOpened } = useNewsletterModalContext();
+  const navItems = getNavItems(setIsModalOpened);
+
   return (
-    <NewsletterModalContextProvider>
-      <NavigationDrawer items={navItems}>{children}</NavigationDrawer>
-    </NewsletterModalContextProvider>
+    <NavigationDrawer items={navItems}>
+      <Modals />
+      <Navbar items={navItems} />
+      <Component {...pageProps} />
+      <WaveCta />
+      <Footer />
+    </NavigationDrawer>
   );
 }
 

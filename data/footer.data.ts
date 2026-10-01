@@ -12,7 +12,6 @@ export const footerNav = {
     title: "Work With Us",
     links: [
       { label: "Consulting", href: "/services#consulting" },
-      { label: "Custom Courses", href: "/services#custom" },
       { label: "Contact", href: "/contact" },
       { label: "info@shastryassociates.com", href: "mailto:info@shastryassociates.com" },
     ],

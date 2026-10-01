@@ -1,3 +1,4 @@
+import { useRouter } from 'next/router';
 import React, { useState } from 'react';
 import MailchimpSubscribe, { DefaultFormFields } from 'react-mailchimp-subscribe';
 import styled from 'styled-components';
@@ -17,8 +18,14 @@ export interface NewsletterModalProps {
 
 export default function NewsletterModal({ onClose }: NewsletterModalProps) {
   const [email, setEmail] = useState('');
+  const router = useRouter();
 
-  useEscClose({ onClose });
+  function handleCloseAndRedirect() {
+    onClose();
+    router.push('/newsletter');
+  }
+
+  useEscClose({ onClose: handleCloseAndRedirect });
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>, enrollNewsletter: (props: DefaultFormFields) => void) {
     event.preventDefault();
@@ -38,21 +45,30 @@ export default function NewsletterModal({ onClose }: NewsletterModalProps) {
             <Container>
               <Card onSubmit={(event: React.FormEvent<HTMLFormElement>) => onSubmit(event, subscribe)}>
                 <CloseIconContainer>
-                  <CloseIcon onClick={onClose} />
+                  <CloseIcon onClick={handleCloseAndRedirect} />
                 </CloseIconContainer>
-                {hasSignedUp && <MailSentState />}
+                {hasSignedUp && (
+                  <MailSentState
+                    customTitle="Successfully Enrolled in SAGE Newsletter!"
+                    customDescription="Thank you for enrolling! Below is our archive of published SAGE Technical Digest issues available for immediate reading."
+                    showNewsletters
+                  />
+                )}
                 {!hasSignedUp && (
                   <>
-                    <Title>Are you ready to enroll to the best newsletter ever?</Title>
+                    <Title>Enroll to Our Newsletter</Title>
+                    <Subtitle>
+                      Stay updated with SAGE's upcoming RF & wireless hackathons, antenna design workshops, technical articles, and engineering events.
+                    </Subtitle>
                     <Row>
                       <CustomInput
                         value={email}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
-                        placeholder="Enter your email..."
+                        placeholder="Enter your email address..."
                         required
                       />
                       <CustomButton type="submit" disabled={hasSignedUp}>
-                        Submit
+                        Enroll Now
                       </CustomButton>
                     </Row>
                     {message && <ErrorMessage dangerouslySetInnerHTML={{ __html: message as string }} />}
@@ -106,6 +122,17 @@ const Title = styled.div`
   ${media('<=tablet')} {
     font-size: 2.6rem;
   }
+`;
+
+const Subtitle = styled.p`
+  font-size: 1.5rem;
+  line-height: 1.5;
+  text-align: center;
+  color: rgb(var(--mutedColor));
+  margin-top: 1rem;
+  max-width: 48rem;
+  margin-left: auto;
+  margin-right: auto;
 `;
 
 const ErrorMessage = styled.p`
