@@ -6,7 +6,7 @@ import { mission, vision, goals } from 'sage-data';
 
 export default function MissionVisionGoals() {
   return (
-    <Section>
+    <Section id="mission">
       <Container>
         <Grid>
           <motion.div

@@ -1,164 +1,122 @@
-import NextImage from 'next/image';
 import React from 'react';
 import styled from 'styled-components';
-
-import { A11y, Autoplay, Navigation } from 'swiper';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import Container from 'components/Container';
-import OverTitle from 'components/OverTitle';
-import SectionTitle from 'components/SectionTitle';
-import Separator from 'components/Separator';
 import { media } from 'utils/media';
 
 const TESTIMONIALS = [
   {
-    content: `The advanced RF system design principles and practical circuit guidelines provided by Dr. Prasad and SAGE are unparalleled in clarity and mathematical rigor.`,
-    author: {
-      name: 'Dr. Vikram Sharma',
-      title: 'Senior RF Systems Architect • Wireless Communications Inc.',
-      avatarUrl: '/testimonials/author-photo-1.jpeg',
-    },
+    content: `The advanced RF system design principles and practical circuit guidelines provided by SAGE are unparalleled in clarity and mathematical rigor.`,
+    initials: 'V. S.',
   },
   {
     content: `SAGE's specialized faculty training program transformed our laboratory curriculum. The bridge from theoretical electromagnetics to microwave prototyping is exceptional.`,
-    author: {
-      name: 'Prof. Rajesh Kumar',
-      title: 'Professor of ECE • Applied Electromagnetics Lab',
-      avatarUrl: '/testimonials/author-photo-2.jpeg',
-    },
+    initials: 'R. K.',
   },
   {
-    content: `Taking SAGE's microwave passive circuits course gave me the exact design formulas and link budget insights needed for my industrial 5G antenna research.`,
-    author: {
-      name: 'Elena Rostova',
-      title: 'Graduate Research Assistant & Microwave Engineer',
-      avatarUrl: '/testimonials/author-photo-3.jpeg',
-    },
+    content: `Taking SAGE's microwave passive circuits course gave me the exact design formulas and link budget insights needed for my industrial antenna research.`,
+    initials: 'E. R.',
   },
 ];
 
 export default function Testimonials() {
   return (
     <SectionWrapper>
-      <Separator />
-      <HeaderContainer>
-        <OverTitle>Testimonials & Feedback</OverTitle>
-        <Title>What Engineers & Educators Say About SAGE</Title>
-      </HeaderContainer>
-      <TestimonialsWrapper>
-        <Swiper
-          modules={[Navigation, Autoplay, A11y]}
-          slidesPerView={1}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
-          centeredSlides
-          navigation
-          loop
-        >
-          {TESTIMONIALS.map((singleTestimonial, idx) => (
-            <SwiperSlide key={idx}>
-              <TestimonialCard>
-                <Content>“{singleTestimonial.content}”</Content>
-                <AuthorContainer>
-                  <AuthorImageContainer>
-                    <NextImage src={singleTestimonial.author.avatarUrl} alt={singleTestimonial.author.name} width={56} height={56} />
-                  </AuthorImageContainer>
-                  <AuthorContent>
-                    <AuthorName>{singleTestimonial.author.name}</AuthorName>
-                    <AuthorTitle>{singleTestimonial.author.title}</AuthorTitle>
-                  </AuthorContent>
-                </AuthorContainer>
-              </TestimonialCard>
-            </SwiperSlide>
+      <Container>
+        <SectionHeader>
+          <Overline>Feedback & Endorsements</Overline>
+        </SectionHeader>
+        <Grid>
+          {TESTIMONIALS.map((item, idx) => (
+            <CompactCard key={idx}>
+              <QuoteText>“{item.content}”</QuoteText>
+              <AuthorRow>
+                <InitialsAvatar>{item.initials}</InitialsAvatar>
+              </AuthorRow>
+            </CompactCard>
           ))}
-        </Swiper>
-      </TestimonialsWrapper>
-      <Separator />
+        </Grid>
+      </Container>
     </SectionWrapper>
   );
 }
 
 const SectionWrapper = styled.section`
-  padding: 4rem 0;
+  padding: 5rem 0 6rem 0;
+  background: transparent;
 `;
 
-const HeaderContainer = styled.div`
+const SectionHeader = styled.div`
   text-align: center;
-  max-width: 75rem;
-  margin: 4rem auto 4rem auto;
+  margin-bottom: 2.5rem;
 `;
 
-const Title = styled(SectionTitle)`
-  margin-top: 1.5rem;
-`;
-
-const TestimonialsWrapper = styled(Container)`
-  position: relative;
-
-  .swiper-button-prev,
-  .swiper-button-next {
-    color: rgb(var(--secondary));
-
-    ${media('<=desktop')} {
-      display: none;
-    }
-  }
-
-  .swiper-button-prev {
-    color: rgb(var(--textSecondary));
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M0%2C22L22%2C0l2.1%2C2.1L4.2%2C22l19.9%2C19.9L22%2C44L0%2C22L0%2C22L0%2C22z'%20fill%3D'%23currentColor'%2F%3E%3C%2Fsvg%3E");
-  }
-
-  .swiper-button-next {
-    color: rgb(var(--textSecondary));
-    background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%2027%2044'%3E%3Cpath%20d%3D'M27%2C22L27%2C22L5%2C44l-2.1-2.1L22.8%2C22L2.9%2C2.1L5%2C0L27%2C22L27%2C22z'%20fill%3D'%23currentColor'%2F%3E%3C%2Fsvg%3E");
-  }
-`;
-
-const TestimonialCard = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  & > *:not(:first-child) {
-    margin-top: 5rem;
-  }
-`;
-
-const Content = styled.blockquote`
-  text-align: center;
+const Overline = styled.h3`
+  font-family: var(--font-heading);
   font-size: 2.2rem;
-  font-weight: bold;
-  font-style: italic;
-  max-width: 60%;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgb(var(--mutedColor, 100, 116, 139));
+
+  ${media('<=tablet')} {
+    font-size: 1.8rem;
+  }
+`;
+
+const Grid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
 
   ${media('<=desktop')} {
-    max-width: 100%;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 1.5rem;
   }
 `;
 
-const AuthorContainer = styled.div`
-  display: flex;
-  align-items: center;
-`;
-
-const AuthorContent = styled.div`
+const CompactCard = styled.div`
+  background: rgb(var(--secondBackground));
+  border: 1px solid rgb(var(--lineColor, 226, 232, 240));
+  border-radius: 0.8rem;
+  padding: 2rem 2.2rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  font-size: 1.4rem;
+  box-shadow: var(--shadow-sm);
 `;
 
-const AuthorTitle = styled.p`
-  font-weight: bold;
+const QuoteText = styled.p`
+  font-size: 1.35rem;
+  line-height: 1.55;
+  font-style: italic;
+  color: rgb(var(--text));
+  opacity: 0.88;
+  margin-bottom: 1.5rem;
 `;
 
-const AuthorName = styled.p`
-  font-weight: normal;
-`;
-
-const AuthorImageContainer = styled.div`
+const AuthorRow = styled.div`
   display: flex;
-  border-radius: 10rem;
-  margin-right: 1rem;
-  overflow: hidden;
+  align-items: center;
+  gap: 1rem;
+  margin-top: auto;
+`;
+
+const InitialsAvatar = styled.div`
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 50%;
+  background: rgb(var(--brandBlue, 0, 106, 173));
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+`;
+
+const InitialsLabel = styled.span`
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: rgb(var(--mutedColor, 100, 116, 139));
 `;

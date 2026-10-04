@@ -50,18 +50,12 @@ function getNavItems(setIsModalOpened: (opened: boolean) => void): NavItems {
       href: '/events',
       subItems: [
         { title: 'Upcoming & Past Events', href: '/events' },
-        { title: 'Photo Gallery', href: '/events#gallery' },
+        { title: 'Photo Gallery', href: '/gallery' },
       ],
     },
     {
       title: 'News',
-      href: '#',
-      subItems: [
-        {
-          title: 'Newsletter',
-          onClick: () => setIsModalOpened(true),
-        },
-      ],
+      href: '/newsletter',
     },
     { title: 'Contact Us', href: '/contact', outlined: true },
   ];

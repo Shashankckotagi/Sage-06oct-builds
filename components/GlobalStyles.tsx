@@ -32,23 +32,23 @@ export const GlobalStyle = createGlobalStyle`
 }
 
 .next-dark-theme {
-  --background: 15,23,42; /* #0F172A Dark Slate Ink Base */
-  --secondBackground: 24,36,60;
+  --background: 34,43,58; /* Soft Slate Ash #222B3A */
+  --secondBackground: 44,55,73; /* Lighter Ash #2C3749 */
   --text: 248,250,252;
   --textSecondary: 255,255,255;
   --primary: 251,107,49; /* #FB6B31 Vibrant Orange */
-  --brandBlue: 53,169,239; /* #35A9EF Sky Blue */
-  --skyBlue: 53,169,239; /* #35A9EF Sky Blue */
-  --secondary: 0,106,173; /* #006AAD Deep Blue */
-  --tertiary: 28,48,78;
-  --cardBackground: 24,36,60;
-  --inputBackground: 24,36,60;
-  --navbarBackground: 0,106,173;
-  --modalBackground: 15,23,42;
+  --brandBlue: 56,189,248; /* Sky Blue */
+  --skyBlue: 56,189,248; /* Sky Blue */
+  --secondary: 15,118,186; /* Bright Steel Blue */
+  --tertiary: 52,65,85; /* Ash Accent */
+  --cardBackground: 44,55,73;
+  --inputBackground: 44,55,73;
+  --navbarBackground: 15,118,186;
+  --modalBackground: 34,43,58;
   --errorColor: 220,38,38;
-  --logoColor: #35a9ef;
-  --lineColor: 44,62,92;
-  --mutedColor: 148,163,184;
+  --logoColor: #38bdf8;
+  --lineColor: 71,85,105; /* Soft Slate Border */
+  --mutedColor: 160,174,192; /* Lighter Muted Ash */
 }
 
 :root {

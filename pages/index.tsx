@@ -26,11 +26,7 @@ export default function Homepage({ posts }: InferGetStaticPropsType<typeof getSt
       <HomepageWrapper>
         <Hero />
         <StatsBar />
-        <MissionVision />
-        <FeaturesGallery />
         <ServicesPortal />
-        <FeaturedCourses />
-        <WhySage />
         <Testimonials />
         {/* <ScrollableBlogPosts posts={posts} /> */}
       </HomepageWrapper>
@@ -40,7 +36,7 @@ export default function Homepage({ posts }: InferGetStaticPropsType<typeof getSt
 
 const HomepageWrapper = styled.div`
   & > :last-child {
-    margin-bottom: 10rem;
+    margin-bottom: 7rem;
   }
 `;
 

@@ -38,16 +38,15 @@ const sitemapTree = [
     description: 'Interactive workshops, hackathons, and technical bootcamps.',
     subItems: [
       { title: 'Upcoming & Past Events', href: '/events', description: 'Explore past sessions and register for upcoming events.' },
-      { title: 'Photo Gallery', href: '/events#gallery', description: 'Event photos & workshop archives.' },
+      { title: 'Photo Gallery', href: '/gallery', description: 'Event photos & workshop archives.' },
     ],
   },
   {
     title: 'News & Media',
-    href: '/blog',
-    description: 'Latest blogs, technical articles, and newsletter updates.',
+    href: '/newsletter',
+    description: 'Latest SAGE technical digests, publications, and newsletter updates.',
     subItems: [
-      { title: 'Blogs & Articles', href: '/blog', description: 'Technical articles and news.' },
-      { title: 'Newsletter', href: '/blog#newsletter', description: 'Subscribe to SAGE newsletter.' },
+      { title: 'Newsletter & Technical Digest', href: '/newsletter', description: 'Published newsletter editions & technical digests.' },
     ],
   },
   {

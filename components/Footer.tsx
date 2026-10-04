@@ -10,27 +10,28 @@ type FooterItems = SingleFooterList[];
 
 const footerItems: FooterItems = [
   {
-    title: 'Explore',
+    title: '',
     items: [
       { title: 'Courses', href: '/courses' },
       { title: 'Tutorials', href: '/courses#tutorials' },
       { title: 'Workshops', href: '/services#workshops' },
-      { title: 'Training Programs', href: '/services#training' },
+      { title: 'Training', href: '/services#training' },
+      { title: 'Newsletter', href: '/newsletter' },
     ],
   },
   {
-    title: 'Work With Us',
+    title: '',
     items: [
       { title: 'Consulting Services', href: '/services#consulting' },
       { title: 'Contact Us', href: '/contact' },
       { title: 'info@shastryassociates.com', href: 'mailto:info@shastryassociates.com' },
+      { title: 'Photo Gallery', href: '/gallery' },
     ],
   },
   {
-    title: 'Company',
+    title: '',
     items: [
       { title: 'About SAGE', href: '/about' },
-      { title: 'News & Articles', href: '/blog' },
       { title: 'Events', href: '/events' },
       { title: 'Privacy Policy', href: '/privacy-policy' },
       { title: 'Sitemap', href: '/sitemap' },
@@ -43,8 +44,8 @@ export default function Footer() {
     <FooterWrapper>
       <Container>
         <ListContainer>
-          {footerItems.map((singleItem) => (
-            <FooterList key={singleItem.title} {...singleItem} />
+          {footerItems.map((singleItem, idx) => (
+            <FooterList key={idx} {...singleItem} />
           ))}
         </ListContainer>
         <BottomBar>
@@ -80,7 +81,7 @@ export default function Footer() {
 function FooterList({ title, items }: SingleFooterList) {
   return (
     <ListWrapper>
-      <ListHeader>{title}</ListHeader>
+      {title ? <ListHeader>{title}</ListHeader> : null}
       {items.map((singleItem) => (
         <ListItem key={singleItem.href} {...singleItem} />
       ))}

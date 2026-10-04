@@ -12,8 +12,9 @@ import Container from './Container';
 import Drawer from './Drawer';
 import { HamburgerIcon } from './HamburgerIcon';
 import Logo from './Logo';
+import SearchModal from './SearchModal';
 
-const ColorSwitcher = dynamic(() => import('../components/ColorSwitcher'), { ssr: false });
+const ColorSwitcher = dynamic(() => import('./ColorSwitcher'), { ssr: false });
 
 type NavbarProps = { items: NavItems };
 type ScrollingDirections = 'up' | 'down' | 'none';
@@ -82,9 +83,12 @@ export default function Navbar({ items }: NavbarProps) {
             <NavItem key={singleItem.href} {...singleItem} />
           ))}
         </NavItemList>
-        <ColorSwitcherContainer>
-          <ColorSwitcher />
-        </ColorSwitcherContainer>
+        <ActionsContainer>
+          <SearchModal />
+          <ColorSwitcherContainer>
+            <ColorSwitcher />
+          </ColorSwitcherContainer>
+        </ActionsContainer>
         <HamburgerMenuWrapper>
           <HamburgerIcon aria-label="Toggle menu" onClick={toggle} />
         </HamburgerMenuWrapper>
@@ -389,7 +393,13 @@ const Content = styled(Container)`
   align-items: center;
 `;
 
+const ActionsContainer = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+`;
+
 const ColorSwitcherContainer = styled.div`
   width: 4rem;
-  margin: 0 1rem;
+  margin: 0 0.8rem;
 `;

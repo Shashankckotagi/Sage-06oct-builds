@@ -9,6 +9,7 @@ import CoreCompetencies from 'views/AboutPage/CoreCompetencies';
 import ServicesSnapshot from 'views/AboutPage/ServicesSnapshot';
 import StatsBar from 'views/AboutPage/StatsBar';
 import PhilosophyQuote from 'views/AboutPage/PhilosophyQuote';
+import WhySage from 'views/HomePage/WhySage';
 
 export default function AboutPage() {
   const breadcrumbs = [
@@ -29,17 +30,20 @@ export default function AboutPage() {
       
       {/* Section 2: Who We Are */}
       <WhoWeAre />
+
+      {/* Section 3: The SAGE Advantage Cards */}
+      <WhySage />
       
-      {/* Section 3: Mission, Vision & Goals */}
+      {/* Section 4: Mission, Vision & Goals */}
       <MissionVisionGoals />
       
-      {/* Section 4: Core Competencies */}
+      {/* Section 5: Core Competencies */}
       <CoreCompetencies />
       
-      {/* Section 5: Services Snapshot */}
+      {/* Section 6: Services Snapshot */}
       <ServicesSnapshot />
       
-      {/* Section 6: Stats Bar */}
+      {/* Section 7: Stats Bar */}
       <StatsBar />
       
       {/* Section 7: Philosophy Quote & CTA */}

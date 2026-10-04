@@ -1,3 +1,4 @@
+import NextLink from 'next/link';
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import PageHero from 'components/PageHero';
@@ -13,8 +14,6 @@ interface EventsPageProps {
 
 export default function EventsPageView({ events }: EventsPageProps) {
   const [filter, setFilter] = useState<'all' | 'upcoming' | 'past'>('all');
-  const [selectedGalleryEvent, setSelectedGalleryEvent] = useState<SageEvent | null>(null);
-  const [lightboxImage, setLightboxImage] = useState<string | null>(null);
 
   const today = new Date().toISOString().split('T')[0];
 
@@ -23,8 +22,6 @@ export default function EventsPageView({ events }: EventsPageProps) {
 
   const filteredEvents =
     filter === 'upcoming' ? upcomingEvents : filter === 'past' ? pastEvents : events;
-
-  const pastEventsWithGallery = pastEvents.filter((e) => e.gallery && e.gallery.length > 0);
 
   return (
     <>
@@ -94,9 +91,11 @@ export default function EventsPageView({ events }: EventsPageProps) {
                           Register Now <ExternalLink size={14} />
                         </RegisterButton>
                       ) : !isUpcoming && event.gallery ? (
-                        <GalleryLink onClick={() => setSelectedGalleryEvent(event)}>
-                          <ImageIcon size={14} /> View Photos ({event.gallery.length})
-                        </GalleryLink>
+                        <NextLink href={`/gallery?event=${event.id}`} passHref>
+                          <GalleryLink>
+                            <ImageIcon size={14} /> View Photos ({event.gallery.length})
+                          </GalleryLink>
+                        </NextLink>
                       ) : null}
                     </CardFooter>
                   </CardBody>
@@ -105,49 +104,7 @@ export default function EventsPageView({ events }: EventsPageProps) {
             })}
           </EventGrid>
         )}
-
-        {/* Photo Gallery Section */}
-        <GallerySection id="gallery">
-          <GalleryHeader>
-            <SectionEyebrow>Media & Highlights</SectionEyebrow>
-            <SectionTitle>Photo Gallery</SectionTitle>
-            <SectionSubtitle>
-              Snapshots and memories from past SAGE workshops, hackathons, and technical bootcamps.
-            </SectionSubtitle>
-          </GalleryHeader>
-
-          {selectedGalleryEvent && (
-            <SelectedEventFilter>
-              <span>Showing gallery for: <strong>{selectedGalleryEvent.title}</strong></span>
-              <ClearFilterBtn onClick={() => setSelectedGalleryEvent(null)}>Show All Photos</ClearFilterBtn>
-            </SelectedEventFilter>
-          )}
-
-          <GalleryGrid>
-            {(selectedGalleryEvent
-              ? selectedGalleryEvent.gallery || []
-              : pastEventsWithGallery.flatMap((e) => e.gallery || [])
-            ).map((imgUrl, idx) => (
-              <GalleryThumb key={idx} onClick={() => setLightboxImage(imgUrl)}>
-                <img src={imgUrl} alt={`SAGE Event photo ${idx + 1}`} loading="lazy" />
-                <ThumbOverlay>
-                  <span>Click to view</span>
-                </ThumbOverlay>
-              </GalleryThumb>
-            ))}
-          </GalleryGrid>
-        </GallerySection>
       </SectionContainer>
-
-      {/* Simple Lightbox Modal */}
-      {lightboxImage && (
-        <LightboxOverlay onClick={() => setLightboxImage(null)}>
-          <LightboxContent onClick={(e: React.MouseEvent) => e.stopPropagation()}>
-            <LightboxImage src={lightboxImage} alt="Event detail" />
-            <CloseButton onClick={() => setLightboxImage(null)}>&times;</CloseButton>
-          </LightboxContent>
-        </LightboxOverlay>
-      )}
     </>
   );
 }

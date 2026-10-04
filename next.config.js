@@ -27,6 +27,8 @@ module.exports = withBundleAnalyzer({
     return [
       { source: '/about-us', destination: '/about', permanent: true },
       { source: '/contact-us', destination: '/contact', permanent: true },
+      { source: '/blog', destination: '/newsletter', permanent: true },
+      { source: '/blog/:slug*', destination: '/newsletter', permanent: true },
     ];
   },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {

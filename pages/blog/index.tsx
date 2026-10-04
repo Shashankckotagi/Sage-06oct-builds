@@ -1,54 +1,18 @@
-import { InferGetStaticPropsType } from 'next';
-import styled from 'styled-components';
-import ArticleCard from 'components/ArticleCard';
-import AutofitGrid from 'components/AutofitGrid';
-import Page from 'components/Page';
-import { media } from 'utils/media';
-import { getAllPosts } from 'utils/postsFetcher';
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
 
-export default function BlogIndexPage({ posts }: InferGetStaticPropsType<typeof getStaticProps>) {
-  return (
-    <Page
-      title="Engineering News & Technical Insights"
-      description="Latest technical articles, applied electromagnetics publications, conference updates, and engineering news from SAGE."
-      canonicalPath="/blog"
-      ogType="website"
-    >
-      <CustomAutofitGrid>
-        {posts.map((singlePost, idx) => (
-          <ArticleCard
-            key={singlePost.slug}
-            title={singlePost.meta.title}
-            description={singlePost.meta.description}
-            imageUrl={singlePost.meta.imageUrl}
-            slug={singlePost.slug}
-          />
-        ))}
-      </CustomAutofitGrid>
-    </Page>
-  );
+export default function BlogIndexRedirect() {
+  const router = useRouter();
+
+  useEffect(() => {
+    router.replace('/newsletter');
+  }, [router]);
+
+  return null;
 }
-
-const CustomAutofitGrid = styled(AutofitGrid)`
-  --autofit-grid-item-size: 40rem;
-
-  ${media('<=tablet')} {
-    --autofit-grid-item-size: 30rem;
-  }
-
-  ${media('<=phone')} {
-    --autofit-grid-item-size: 100%;
-  }
-
-  .article-card-wrapper {
-    max-width: 100%;
-  }
-`;
 
 export async function getStaticProps() {
   return {
-    props: {
-      posts: await getAllPosts(),
-    },
+    props: {},
   };
 }
