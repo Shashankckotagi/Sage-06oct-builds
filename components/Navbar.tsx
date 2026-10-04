@@ -18,7 +18,7 @@ const ColorSwitcher = dynamic(() => import('./ColorSwitcher'), { ssr: false });
 
 type NavbarProps = { items: NavItems };
 type ScrollingDirections = 'up' | 'down' | 'none';
-type NavbarContainerProps = { hidden: boolean; transparent: boolean };
+type NavbarContainerProps = { $hidden: boolean; transparent: boolean };
 
 export default function Navbar({ items }: NavbarProps) {
   const router = useRouter();
@@ -71,7 +71,7 @@ export default function Navbar({ items }: NavbarProps) {
   const isTransparent = scrollingDirection === 'none';
 
   return (
-    <NavbarContainer hidden={isNavbarHidden} transparent={isTransparent}>
+    <NavbarContainer $hidden={isNavbarHidden} transparent={isTransparent}>
       <Content>
         <NextLink href="/" passHref>
           <LogoWrapper>
@@ -379,7 +379,7 @@ const NavbarContainer = styled.header<NavbarContainerProps>`
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.45);
   }
 
-  transform: ${(p) => (p.hidden ? 'translate3d(0, -100%, 0)' : 'translate3d(0, 0, 0)')};
+  transform: ${(p) => (p.$hidden ? 'translate3d(0, -100%, 0)' : 'translate3d(0, 0, 0)')};
   will-change: transform;
 
   transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),

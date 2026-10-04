@@ -5,7 +5,7 @@ test.describe('Functional Testing', () => {
     await page.goto('/');
     await expect(page).toHaveTitle(/SAGE/);
     await expect(page.locator('text=Shastry Associates').first()).toBeVisible();
-    await expect(page.locator('text=Applied Electromagnetics').first()).toBeVisible();
+    await expect(page.locator('text=wireless technology').first()).toBeVisible();
   });
 
   test('Faculty directory loads and allows clicking to individual profile', async ({ page }) => {

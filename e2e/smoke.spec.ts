@@ -10,7 +10,7 @@ test.describe('Launch Smoke Tests & Uptime Health', () => {
     expect(json.timestamp).toBeDefined();
   });
 
-  const routes = ['/', '/about', '/team', '/contact', '/mission', '/blog', '/privacy-policy', '/sitemap'];
+  const routes = ['/', '/about', '/team', '/contact', '/mission', '/newsletter', '/gallery', '/services', '/courses', '/privacy-policy', '/sitemap'];
 
   for (const route of routes) {
     test(`Smoke check: Route ${route} returns 200 and renders with 0 uncaught errors`, async ({ page }) => {
@@ -18,7 +18,7 @@ test.describe('Launch Smoke Tests & Uptime Health', () => {
       expect(response?.status()).toBe(200);
 
       // Verify header and footer are visible
-      await expect(page.locator('header, nav').first()).toBeVisible();
+      await expect(page.locator('header').first()).toBeVisible();
       await expect(page.locator('footer').first()).toBeVisible();
     });
   }
