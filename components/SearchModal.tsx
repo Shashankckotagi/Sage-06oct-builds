@@ -102,7 +102,7 @@ export default function SearchModal() {
       </SearchTriggerButton>
 
       <Overlay onClick={() => setIsOpen(false)}>
-        <ModalContainer onClick={(e) => e.stopPropagation()}>
+        <ModalContainer onClick={(e: React.MouseEvent) => e.stopPropagation()}>
           <SearchHeader>
             <HeaderSearchIcon viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
               <circle cx="11" cy="11" r="8" />
@@ -113,7 +113,7 @@ export default function SearchModal() {
               type="text"
               placeholder="Search courses, team members, topics, newsletters..."
               value={query}
-              onChange={(e) => setQuery(e.target.value)}
+              onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
             />
             {query && (
               <ClearButton onClick={() => setQuery('')} aria-label="Clear query">

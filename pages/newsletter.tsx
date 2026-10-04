@@ -47,7 +47,7 @@ export default function NewsletterPage() {
             render={({ subscribe, status, message }) => {
               const hasSignedUp = isSubmitted || status === 'success';
               return (
-                <EnrollmentCard onSubmit={(e) => handleEnrollSubmit(e, subscribe)}>
+                <EnrollmentCard onSubmit={(e: React.FormEvent) => handleEnrollSubmit(e, subscribe)}>
                   <GlowBackground />
                   <CardHeader>
                     <BadgeTag>
@@ -76,7 +76,7 @@ export default function NewsletterPage() {
                         <EmailInput
                           type="email"
                           value={email}
-                          onChange={(e) => setEmail(e.target.value)}
+                          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setEmail(e.target.value)}
                           placeholder="Enter your email address..."
                           required
                         />

@@ -104,7 +104,7 @@ export default function GalleryPageView({ events = eventsData }: GalleryPageView
 
       {lightboxImage && (
         <LightboxOverlay onClick={() => setLightboxImage(null)}>
-          <LightboxContent onClick={(e) => e.stopPropagation()}>
+          <LightboxContent onClick={(e: React.MouseEvent) => e.stopPropagation()}>
             <CloseButton onClick={() => setLightboxImage(null)}>
               <X size={28} />
             </CloseButton>
