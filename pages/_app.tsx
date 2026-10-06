@@ -40,9 +40,9 @@ function getNavItems(setIsModalOpened: (opened: boolean) => void): NavItems {
       subItems: [
         { title: 'Courses', href: '/courses' },
         { title: 'Tutorials', href: '/tutorials' },
-        { title: 'Workshops', href: '/services#workshops' },
+        { title: 'Workshops', href: '/workshops' },
         { title: 'Training', href: '/training' },
-        { title: 'Consulting', href: '/services#consulting' },
+        { title: 'Consulting', href: '/consulting' },
       ],
     },
     {
