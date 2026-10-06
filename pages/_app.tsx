@@ -39,9 +39,9 @@ function getNavItems(setIsModalOpened: (opened: boolean) => void): NavItems {
       href: '/services',
       subItems: [
         { title: 'Courses', href: '/courses' },
-        { title: 'Tutorials', href: '/courses#tutorials' },
+        { title: 'Tutorials', href: '/tutorials' },
         { title: 'Workshops', href: '/services#workshops' },
-        { title: 'Training', href: '/services#training' },
+        { title: 'Training', href: '/training' },
         { title: 'Consulting', href: '/services#consulting' },
       ],
     },
@@ -55,7 +55,7 @@ function getNavItems(setIsModalOpened: (opened: boolean) => void): NavItems {
     },
     {
       title: 'News',
-      href: '/newsletter',
+      href: '/news',
     },
     { title: 'Contact Us', href: '/contact', outlined: true },
   ];
@@ -127,7 +127,7 @@ function AppContent({ Component, pageProps }: any) {
       <Modals />
       <Navbar items={navItems} />
       <Component {...pageProps} />
-      <WaveCta />
+      {!pageProps?.hideDefaultWaveCta && <WaveCta />}
       <Footer />
     </NavigationDrawer>
   );

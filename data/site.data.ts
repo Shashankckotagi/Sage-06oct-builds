@@ -90,8 +90,7 @@ export const pageHeroes: Record<string, PageHeroData> = {
       { label: 'About Us', href: '/about' },
     ],
     title: 'About Us',
-    description: 'Applied electromagnetics, taught with engineering rigor. Founded by RF and microwave veterans to bridge graduate theory with the industry bench.',
-    imageSrc: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=1600&q=80',
+    description: 'Global RF and microwave experts and professionals striving for excellence in disseminating knowledge, skills, and solutions.',
   },
   '/team': {
     breadcrumbs: [
