@@ -5,7 +5,6 @@ import { getBreadcrumbSchema } from 'utils/seo';
 
 import WhoWeAre from 'views/AboutPage/WhoWeAre';
 import MissionVisionGoals from 'views/AboutPage/MissionVisionGoals';
-import ServicesSnapshot from 'views/AboutPage/ServicesSnapshot';
 import StatsBar from 'views/AboutPage/StatsBar';
 import PhilosophyQuote from 'views/AboutPage/PhilosophyQuote';
 import WhySage from 'views/HomePage/WhySage';
@@ -36,10 +35,7 @@ export default function AboutPage() {
       {/* Section 4: Mission, Vision & Goals */}
       <MissionVisionGoals />
       
-      {/* Section 5: Services Snapshot */}
-      <ServicesSnapshot />
-      
-      {/* Section 7: Stats Bar */}
+      {/* Section 5: Stats Bar */}
       <StatsBar />
       
       {/* Section 7: Philosophy Quote & CTA */}
