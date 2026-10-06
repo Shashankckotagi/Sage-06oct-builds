@@ -4,7 +4,6 @@ import styled, { createGlobalStyle } from 'styled-components';
 import Lightbox from 'yet-another-react-lightbox';
 import 'yet-another-react-lightbox/styles.css';
 import { cloudinaryUrl, imagePresets } from 'utils/cloudinary';
-import FilterPills from './FilterPills';
 
 const FALLBACK_PHOTOS = [
   'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80',
@@ -64,32 +63,14 @@ export default function GalleryGrid({ events }: GalleryGridProps) {
     }));
   });
 
-  // 2. Filter options: All Events + individual events
-  const filterOptions = [
-    { id: 'all', label: 'All Events' },
-    ...events
-      .filter((e) => e.gallery && e.gallery.length > 0)
-      .map((e) => ({
-        id: e.id,
-        label: getEventDisplayName(e),
-      })),
-  ];
-
-  const [activeEventFilter, setActiveEventFilter] = useState<string>('all');
   const [lightboxIndex, setLightboxIndex] = useState<number>(-1);
 
   // Focus return ref tracking (EV-5)
   const triggerButtonRefs = useRef<Record<string, HTMLButtonElement | null>>({});
   const activeTriggerRef = useRef<HTMLButtonElement | null>(null);
 
-  // EV-6: picking an event in the pills shows only that event's photos
-  const filteredPhotos =
-    activeEventFilter === 'all'
-      ? allPhotos
-      : allPhotos.filter((p) => p.eventId === activeEventFilter);
-
   // Lightbox slides using imagePresets.lightbox
-  const slides = filteredPhotos.map((p) => ({
+  const slides = allPhotos.map((p) => ({
     src: cloudinaryUrl(p.photoPath, imagePresets.lightbox),
     alt: p.alt,
     title: p.eventTitle,
@@ -127,29 +108,19 @@ export default function GalleryGrid({ events }: GalleryGridProps) {
       {/* Lightbox theme applied via Master Trio CSS Variables */}
       <LightboxMasterTrioStyles />
 
-      {/* FilterPills above the masonry grid */}
-      <FilterRow>
-        <FilterPills
-          options={filterOptions}
-          activeId={activeEventFilter}
-          onSelect={(id) => setActiveEventFilter(id)}
-          ariaLabel="Filter gallery by event"
-        />
-      </FilterRow>
-
       {/* Masonry wall of photos */}
-      {filteredPhotos.length === 0 ? (
-        <EmptyGallery>No photos found for this event.</EmptyGallery>
+      {allPhotos.length === 0 ? (
+        <EmptyGallery>No photos found.</EmptyGallery>
       ) : (
         <MasonryWall>
-          {filteredPhotos.map((photo, index) => (
+          {allPhotos.map((photo, index) => (
             <MasonryItem key={photo.id}>
               <ThumbnailButton
                 ref={(el: HTMLButtonElement | null) => {
                   triggerButtonRefs.current[photo.id] = el;
                 }}
                 onClick={() => handleOpen(photo.id, index)}
-                aria-label={`Open photo ${index + 1} of ${filteredPhotos.length} from ${photo.eventTitle}`}
+                aria-label={`Open photo ${index + 1} of ${allPhotos.length} from ${photo.eventTitle}`}
                 type="button"
               >
                 <ThumbnailImageItem
@@ -159,7 +130,6 @@ export default function GalleryGrid({ events }: GalleryGridProps) {
                 />
                 <OverlayGradient>
                   <OverlayTitle>{photo.eventTitle}</OverlayTitle>
-                  <OverlayAction>View photo &nearr;</OverlayAction>
                 </OverlayGradient>
               </ThumbnailButton>
             </MasonryItem>
@@ -249,14 +219,6 @@ const LightboxMasterTrioStyles = createGlobalStyle`
 
 const GalleryWrapper = styled.div`
   width: 100%;
-`;
-
-const FilterRow = styled.div`
-  display: flex;
-  justify-content: center;
-  margin-bottom: 4rem;
-  overflow-x: auto;
-  padding-bottom: 1rem;
 `;
 
 const MasonryWall = styled.div`
@@ -350,15 +312,6 @@ const OverlayTitle = styled.span`
   font-weight: 700;
   text-align: left;
   line-height: 1.3;
-`;
-
-const OverlayAction = styled.span`
-  color: rgb(var(--skyBlue));
-  font-family: var(--font-body);
-  font-size: 1.2rem;
-  font-weight: 600;
-  text-align: left;
-  margin-top: 0.4rem;
 `;
 
 const EmptyGallery = styled.div`

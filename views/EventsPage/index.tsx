@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import PageHero from 'components/PageHero';
 import WaveCta from 'components/WaveCta';
 import EventsListSection from './EventsListSection';
-import EventsGallerySection from './EventsGallerySection';
 import { pageHeroes } from 'sage-data';
 import type { SageEvent } from 'lib/content';
 
@@ -31,9 +30,6 @@ export default function EventsPage({
         upcomingEvents={upcomingEvents}
         pastEvents={pastEvents}
       />
-
-      {/* Photo gallery anchor target for past event cards */}
-      <EventsGallerySection events={pastEvents} />
 
       {/* 4. Skip StatsBar entirely for now */}
 

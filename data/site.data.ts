@@ -119,4 +119,52 @@ export const pageHeroes: Record<string, PageHeroData> = {
     description: 'Have questions about our RF, microwave, and wireless training programs, consulting, or customized workshops? Connect with our specialist team.',
     imageSrc: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=1600&q=80',
   },
+  '/events': {
+    breadcrumbs: [
+      { label: 'Home', href: '/' },
+      { label: 'Events', href: '/events' },
+    ],
+    title: 'Upcoming & Past Events',
+    description: 'Explore technical symposiums, hands-on workshops, engineering hackathons, and webinars organized by SAGE globally.',
+    imageSrc: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80',
+  },
+  '/gallery': {
+    breadcrumbs: [
+      { label: 'Home', href: '/' },
+      { label: 'Events', href: '/events' },
+      { label: 'Photo Gallery', href: '/gallery' },
+    ],
+    title: 'Photo Gallery',
+    description: 'Moments and photo highlights from SAGE international inaugurations, technical symposiums, university workshops, and academic leadership gatherings.',
+    imageSrc: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=1600&q=80',
+  },
+  '/photos': {
+    breadcrumbs: [
+      { label: 'Home', href: '/' },
+      { label: 'Events', href: '/events' },
+      { label: 'Photo Gallery', href: '/photos' },
+    ],
+    title: 'Photo Gallery',
+    description: 'Moments and photo highlights from SAGE international inaugurations, technical symposiums, university workshops, and academic leadership gatherings.',
+    imageSrc: 'https://images.unsplash.com/photo-1511578314322-379afb476865?w=1600&q=80',
+  },
+  '/news': {
+    breadcrumbs: [
+      { label: 'Home', href: '/' },
+      { label: 'News', href: '/news' },
+    ],
+    title: 'SAGE News & Technical Insights',
+    description: 'Latest institutional updates, engineering breakthroughs, publications, and milestone announcements from SAGE global network.',
+    imageSrc: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?w=1600&q=80',
+  },
+  '/training': {
+    breadcrumbs: [
+      { label: 'Home', href: '/' },
+      { label: 'Services', href: '/services' },
+      { label: 'Training Programs', href: '/training' },
+    ],
+    title: 'Professional Training Programs',
+    description: 'Specialized RF, microwave, and wireless engineering curricula bridging fundamental electromagnetic principles with state-of-the-art industrial practice.',
+    imageSrc: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=1600&q=80',
+  },
 };
