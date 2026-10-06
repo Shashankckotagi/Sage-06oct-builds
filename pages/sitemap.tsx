@@ -16,40 +16,38 @@ const sitemapTree = [
     href: '/about',
     description: 'Learn about SAGE history, mission, and associate leadership.',
     subItems: [
-      { title: 'Faculty & Associates', href: '/team', description: 'Senior associates, faculty, & engineering experts.' },
-      { title: 'Mission & Vision', href: '/mission', description: 'Core vision, objectives, & values.' },
-    ],
-  },
-  {
-    title: 'Courses',
-    href: '/courses',
-    description: 'Master the art of RF & wireless engineering with foundational and advanced courses.',
-    subItems: [
-      { title: 'Tutorials', href: '/tutorials', description: 'Step-by-step guided learning in RF circuit analysis and design.' },
-      { title: 'Workshops', href: '/workshops', description: 'Hands-on design-and-test sessions bridging theory with prototype measurement.' },
+      { title: 'SAGE Team', href: '/team', description: 'Senior associates, faculty, & engineering experts.' },
+      { title: 'Missions & Goals', href: '/about#mission', description: 'Core vision, objectives, & values.' },
     ],
   },
   {
     title: 'Services',
     href: '/services',
-    description: 'Comprehensive engineering services tailored for academia and industry.',
+    description: 'Specialized offerings for academia & industry.',
     subItems: [
-      { title: 'Training Programs', href: '/training', description: 'Corporate & academic programs to upskill engineering teams.' },
-      { title: 'Consulting Services', href: '/consulting', description: 'Expert RF/wireless advisory to resolve critical electromagnetic challenges.' },
+      { title: 'Courses', href: '/courses', description: 'Comprehensive RF & microwave engineering courses.' },
+      { title: 'Tutorials', href: '/courses#tutorials', description: 'Targeted technical tutorials & design formulas.' },
+      { title: 'Workshops', href: '/services#workshops', description: 'Hands-on practical engineering workshops.' },
+      { title: 'Training', href: '/services#training', description: 'Customized faculty & industry training.' },
+      { title: 'Consulting', href: '/services#consulting', description: 'Expert advisory for 5G, antennas & RF systems.' },
     ],
   },
   {
     title: 'Events',
     href: '/events',
-    description: 'Hands-on hackathons, workshops, and engineering meetups.',
+    description: 'Interactive workshops, hackathons, and technical bootcamps.',
     subItems: [
-      { title: 'Event Photo Gallery', href: '/photos', description: 'Photos and memories from past SAGE engineering symposia and workshops.' },
+      { title: 'Upcoming & Past Events', href: '/events', description: 'Explore past sessions and register for upcoming events.' },
+      { title: 'Photo Gallery', href: '/gallery', description: 'Event photos & workshop archives.' },
     ],
   },
   {
-    title: 'News & Articles',
-    href: '/news',
-    description: 'Technical articles, research developments, industry trends, and announcements from SAGE.',
+    title: 'News & Media',
+    href: '/newsletter',
+    description: 'Latest SAGE technical digests, publications, and newsletter updates.',
+    subItems: [
+      { title: 'Newsletter & Technical Digest', href: '/newsletter', description: 'Published newsletter editions & technical digests.' },
+    ],
   },
   {
     title: 'Contact Us',
@@ -60,10 +58,12 @@ const sitemapTree = [
 
 export default function SitemapPage() {
   return (
-    <Page title="Sitemap" description="Complete site navigation tree and sitemap for SAGE.">
-      <Head>
-        <title>{`Sitemap | ${EnvVars.SITE_NAME}`}</title>
-      </Head>
+    <Page
+      title="Sitemap & Navigation Tree"
+      description="Complete site navigation tree and sitemap for SAGE (Shastry Associates Global Enterprises)."
+      canonicalPath="/sitemap"
+      ogType="website"
+    >
       <SitemapWrapper>
         <Container>
           <HeaderSection>

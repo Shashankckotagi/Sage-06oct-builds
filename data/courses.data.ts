@@ -26,7 +26,6 @@ export interface Course {
     isPlaceholder: boolean;
   };
   syllabus: string[] | null; // TODO: add when available
-  featured?: boolean;
   isPlaceholder: boolean;
 }
 
@@ -42,22 +41,15 @@ export const courses: Course[] = [
     longDescription: null,
     price: 199,
     currency: "USD",
-    duration: "8 Weeks (40 Hours)",
+    duration: null,
     level: "Advanced",
-    instructor: "Dr. S.N. Prasad",
+    instructor: null,
     image: {
       src: "https://images.unsplash.com/photo-1518770660439-4636190af475?w=600&q=80",
       alt: "Electronic circuit board close-up",
       isPlaceholder: true,
     },
-    syllabus: [
-      "Module 1: RF System Architectures, Cascaded Noise Figure & Linearity (IIP3/OIP3)",
-      "Module 2: Dynamic Range, Gain Compression Points & Phase Noise Considerations",
-      "Module 3: Impedance Matching Networks, Smith Chart Calculations & S-Parameter Verification",
-      "Module 4: Link Budget Analysis for Terrestrial, Cellular & Satellite Links",
-      "Module 5: Practical RF Simulation Workflows & Vector Network Analyzer (VNA) Verification",
-    ],
-    featured: true,
+    syllabus: null,
     isPlaceholder: true,
   },
   {

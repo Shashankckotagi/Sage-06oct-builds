@@ -1,12 +1,13 @@
 import { InferGetStaticPropsType } from 'next';
 import styled from 'styled-components';
 import SEOHead from 'components/SEOHead';
-import { DEFAULT_DESCRIPTION, getOrganizationSchema, getWebSiteSchema } from 'utils/seo';
+import { getOrganizationSchema, getWebSiteSchema, DEFAULT_DESCRIPTION } from 'utils/seo';
 import { getAllPosts } from 'utils/postsFetcher';
 import FeaturedCourses from 'views/HomePage/FeaturedCourses';
 import FeaturesGallery from 'views/HomePage/FeaturesGallery';
 import Hero from 'views/HomePage/Hero';
 import MissionVision from 'views/HomePage/MissionVision';
+import ScrollableBlogPosts from 'views/HomePage/ScrollableBlogPosts';
 import ServicesPortal from 'views/HomePage/ServicesPortal';
 import StatsBar from 'views/HomePage/StatsBar';
 import Testimonials from 'views/HomePage/Testimonials';

@@ -8,12 +8,12 @@ const services = [
   {
     title: "Training",
     description: "Corporate and institutional training tailored for modern engineering challenges.",
-    link: "/training"
+    link: "/services#training"
   },
   {
     title: "Consulting",
     description: "Expert engineering advisory and technical problem-solving for enterprise projects.",
-    link: "/consulting"
+    link: "/services#consulting"
   },
   {
     title: "Custom Courses",
@@ -23,7 +23,7 @@ const services = [
   {
     title: "Workshops",
     description: "Hands-on, immersive learning sessions for practical skill development.",
-    link: "/workshops"
+    link: "/services#workshops"
   }
 ];
 

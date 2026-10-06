@@ -34,14 +34,4 @@ declare module 'react' {
   }
 }
 
-declare module 'yet-another-react-lightbox' {
-  const Lightbox: any;
-  export default Lightbox;
-}
-
-declare module 'yet-another-react-lightbox/plugins/*' {
-  const plugin: any;
-  export default plugin;
-}
-
 

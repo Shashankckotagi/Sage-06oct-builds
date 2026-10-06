@@ -5,7 +5,7 @@ import PageHero from 'components/PageHero';
 import Container from 'components/Container';
 import FilterPills from 'components/FilterPills';
 import FilterableTeamGrid from 'views/TeamPage/FilterableTeamGrid';
-import { DisciplineId, pageHeroes } from 'sage-data';
+import { pageHeroes, DisciplineId } from 'sage-data';
 import { getBreadcrumbSchema } from 'utils/seo';
 
 export default function TeamPage() {

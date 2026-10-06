@@ -2,13 +2,13 @@ import { GetStaticPaths, GetStaticProps, InferGetStaticPropsType } from 'next';
 import Page from 'components/Page';
 import ProfileView from 'views/TeamProfilePage/ProfileView';
 import {
-  getAdjacentTeamMembers,
   getAllTeamMemberSlugs,
   getTeamMemberBySlug,
+  getAdjacentTeamMembers,
   TeamMember,
 } from 'sage-data';
 import { getAvatarUrl, imagePresets } from 'utils/cloudinary';
-import { getBreadcrumbSchema, getPersonSchema } from 'utils/seo';
+import { getPersonSchema, getBreadcrumbSchema } from 'utils/seo';
 
 interface PageProps {
   member: TeamMember;

@@ -1,44 +1,30 @@
 import styled from 'styled-components'
-import { DisciplineId, DISCIPLINES } from 'sage-data'
+import { DISCIPLINES, DisciplineId } from 'sage-data'
 
-export interface FilterPillOption<T = string> {
-  id: T;
-  label: string;
+export interface FilterPillsProps {
+  activeId: DisciplineId
+  onSelect: (id: DisciplineId) => void
 }
 
-export interface FilterPillsProps<T = string> {
-  options?: readonly FilterPillOption<T>[] | FilterPillOption<T>[];
-  activeId: T;
-  onSelect: (id: T) => void;
-  ariaLabel?: string;
-}
-
-export default function FilterPills<T extends string = DisciplineId>({
-  options,
-  activeId,
-  onSelect,
-  ariaLabel = 'Filter Options',
-}: FilterPillsProps<T>) {
-  const items = options || (DISCIPLINES as unknown as FilterPillOption<T>[]);
-
+export default function FilterPills({ activeId, onSelect }: FilterPillsProps) {
   return (
-    <SegmentGroupRoot role="tablist" aria-label={ariaLabel}>
-      {items.map((item) => {
-        const isActive = activeId === item.id;
+    <SegmentGroupRoot role="tablist" aria-label="Filter Team by Discipline">
+      {DISCIPLINES.map((item) => {
+        const isActive = activeId === item.id
         return (
           <SegmentItem
             key={item.id}
             role="tab"
             aria-selected={isActive}
             isActive={isActive}
-            onClick={() => onSelect(item.id)}
+            onClick={() => onSelect(item.id as DisciplineId)}
           >
             {item.label}
           </SegmentItem>
-        );
+        )
       })}
     </SegmentGroupRoot>
-  );
+  )
 }
 
 const SegmentGroupRoot = styled.div`
