@@ -58,7 +58,7 @@ const HeroImage = styled.div<{ $src?: string; $parallaxY: number }>`
   z-index: -5;
 
   background-image: ${(p) => (p.$src ? `url("${p.$src}")` : 'none')};
-  background-position: center center;
+  background-position: center right;
   background-size: cover;
   background-repeat: no-repeat;
 
@@ -451,11 +451,11 @@ const Description = styled.p`
 
   margin: 0;
 
-  color: rgba(var(--text), 0.9);
+  color: rgba(var(--text), 0.82);
 
-  font-size: 1.85rem;
-  font-weight: 500;
-  line-height: 1.6;
+  font-size: 1.18rem;
+  font-weight: 450;
+  line-height: 1.65;
   letter-spacing: -0.008em;
 
   text-wrap: pretty;
@@ -463,13 +463,13 @@ const Description = styled.p`
   ${media('<=tablet')} {
     max-width: 62ch;
 
-    font-size: 1.65rem;
-    line-height: 1.55;
+    font-size: 1.08rem;
+    line-height: 1.62;
   }
 
   ${media('<=phone')} {
-    font-size: 1.5rem;
-    line-height: 1.5;
+    font-size: 1rem;
+    line-height: 1.6;
   }
 `;
 
