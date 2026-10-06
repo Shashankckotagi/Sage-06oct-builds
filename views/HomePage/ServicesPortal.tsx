@@ -89,9 +89,9 @@ const SERVICE_TABS: ServiceTab[] = [
     title: 'Workshops',
     badge: 'Interactive Seminars',
     icon: 'workshops',
-    headline: 'Hands-On Technical Workshops & Interactive Seminars',
+    headline: 'Technical Workshops, Interactive Seminars, & Webinars',
     description:
-      'Intensive 1-day to 3-day technical workshops focusing on specialized topics in mmWave circuits, 5G wireless deployment, and microwave component measurement.',
+      'Technical skills development entailing lectures, hands-on design, simulation, and test equipment training for beginners or experienced professionals.',
     highlights: [
       'Interactive problem-solving & prototype design labs',
       'Guest lectures by international faculty & industry leaders',
