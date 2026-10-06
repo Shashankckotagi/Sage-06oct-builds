@@ -31,14 +31,14 @@ const SERVICE_TABS: ServiceTab[] = [
     icon: 'courses',
     headline: 'Structured Engineering Courses from Fundamentals to Advanced Design',
     description:
-      'Rigorous, self-paced and instructor-led courses covering RF & microwave circuit design, antenna theory, and wireless communication technologies.',
+      'Rigorous, self-paced and instructor-led courses covering RF circuit design, microwave passive networks, 5G wireless architectures, and antenna theory.',
     highlights: [
-      'Comprehensive curriculum with viable applications',
-      'Hands-on design concepts and practical guidelines',
-      'Professional RF/Wireless certification programs',
+      'Comprehensive curriculum with real-world circuit formulas',
+      'Hands-on design exercises and prototype guidelines',
+      'Certificate of completion from SAGE senior faculty',
     ],
-    formats: ['Online Self-Paced', 'Practical Seminars', 'On-Site Delivery'],
-    ctaText: 'Explore Courses',
+    formats: ['Online Self-Paced', 'Live Online Seminars', 'Campus Sessions'],
+    ctaText: 'Explore All Courses',
     ctaLink: '/courses',
     imageBg: 'linear-gradient(135deg, rgba(0, 106, 173, 0.92) 0%, rgba(15, 23, 42, 0.95) 100%)',
     imageUrl: 'https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=900&q=80',
@@ -49,17 +49,17 @@ const SERVICE_TABS: ServiceTab[] = [
     title: 'Tutorials',
     badge: 'Applied Guides',
     icon: 'tutorials',
-    headline: 'Accessible Tutorials, Resources, Design Insights, & Technical Tools.',
+    headline: 'In-Depth Technical Tutorials & Mathematical Insights',
     description:
-      'Practical tutorials bridging electromagnetic theory with circuit design guidelines, resources, applications, and tools.',
+      'Clear, practical tutorials bridging complex electromagnetic theory with physical circuit design guidelines, S-parameter analysis, and link budgets.',
     highlights: [
-      'A catalog of applied electromagnetics & fundamental concepts',
-      'Practical design resources of common & specialized RF circuits',
-      'RF design tools, conversion tables, and calculators',
+      'Step-by-step mathematical derivations & design rules',
+      'Applied electromagnetics & impedance matching guides',
+      'Downloadable design tables and calculation cheatsheets',
     ],
-    formats: ['Web Tutorials', 'Reference Guides', 'Video Demonstrations'],
+    formats: ['Web Tutorials', 'PDF Reference Guides', 'Video Demonstrations'],
     ctaText: 'Browse Tutorials',
-    ctaLink: '/courses#tutorials',
+    ctaLink: '/tutorials',
     imageBg: 'linear-gradient(135deg, rgba(15, 23, 42, 0.92) 0%, rgba(0, 106, 173, 0.95) 100%)',
     imageUrl: 'https://images.unsplash.com/photo-1600132806370-bf17e65e942f?auto=format&fit=crop&w=900&q=80',
     accentColor: '#35A9EF',
@@ -79,9 +79,29 @@ const SERVICE_TABS: ServiceTab[] = [
     ],
     formats: ['Corporate On-Site', 'Off-Site Retreats', 'Virtual Bootcamps'],
     ctaText: 'Request Training Info',
-    ctaLink: '/services#training',
+    ctaLink: '/training',
     imageBg: 'linear-gradient(135deg, rgba(0, 106, 173, 0.92) 0%, rgba(30, 41, 59, 0.95) 100%)',
     imageUrl: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=900&q=80',
+    accentColor: '#FB6B31',
+  },
+  {
+    id: 'consulting',
+    title: 'Consulting',
+    badge: 'Expert Advisory',
+    icon: 'consulting',
+    headline: 'Specialized RF, Microwave & Wireless System Consulting',
+    description:
+      'Direct consulting engagements with Dr. S.N. Prasad and senior SAGE associates to solve critical electromagnetic design challenges and optimize system performance.',
+    highlights: [
+      'Antenna array optimization & beamforming consulting',
+      'RF transceiver architecture review & troubleshooting',
+      'Electromagnetic compatibility (EMC) & signal integrity',
+    ],
+    formats: ['Direct Retainer', 'Project-Based Advisory', 'Design Audits'],
+    ctaText: 'Explore Consulting',
+    ctaLink: '/consulting',
+    imageBg: 'linear-gradient(135deg, rgba(21, 128, 61, 0.9) 0%, rgba(0, 106, 173, 0.95) 100%)',
+    imageUrl: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80',
     accentColor: '#FB6B31',
   },
   {
@@ -99,29 +119,9 @@ const SERVICE_TABS: ServiceTab[] = [
     ],
     formats: ['On-Site Workshops', 'IEEE Conference Sessions', 'Webinars'],
     ctaText: 'View Workshops',
-    ctaLink: '/services#workshops',
+    ctaLink: '/workshops',
     imageBg: 'linear-gradient(135deg, rgba(3, 105, 161, 0.92) 0%, rgba(53, 169, 239, 0.95) 100%)',
     imageUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=80',
-    accentColor: '#FB6B31',
-  },
-  {
-    id: 'consulting',
-    title: 'Consulting',
-    badge: 'Expert Advisory',
-    icon: 'consulting',
-    headline: 'Specialized RF, Microwave & Wireless System Consulting',
-    description:
-      'Direct consulting engagements with Dr. S.N. Prasad and senior SAGE associates to solve critical electromagnetic design challenges and optimize system performance.',
-    highlights: [
-      'Antenna array optimization & beamforming consulting',
-      'RF transceiver architecture review & troubleshooting',
-      'Electromagnetic compatibility (EMC) & signal integrity',
-    ],
-    formats: ['Direct Retainer', 'Project-Based Advisory', 'Design Audits'],
-    ctaText: 'Schedule Consultation',
-    ctaLink: '/contact',
-    imageBg: 'linear-gradient(135deg, rgba(21, 128, 61, 0.9) 0%, rgba(0, 106, 173, 0.95) 100%)',
-    imageUrl: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?auto=format&fit=crop&w=900&q=80',
     accentColor: '#FB6B31',
   },
   {
@@ -139,7 +139,7 @@ const SERVICE_TABS: ServiceTab[] = [
     ],
     formats: ['Editorial Articles', 'Research Papers', 'Quarterly Digest'],
     ctaText: 'Read Latest News',
-    ctaLink: '/newsletter',
+    ctaLink: '/news',
     imageBg: 'linear-gradient(135deg, rgba(51, 65, 85, 0.92) 0%, rgba(0, 106, 173, 0.95) 100%)',
     imageUrl: 'https://images.unsplash.com/photo-1504711434969-e33886168f5c?auto=format&fit=crop&w=900&q=80',
     accentColor: '#35A9EF',
@@ -159,7 +159,7 @@ const SERVICE_TABS: ServiceTab[] = [
     ],
     formats: ['IEEE Symposia', 'Global Webinars', 'Academic Panels'],
     ctaText: 'Check Event Calendar',
-    ctaLink: '/contact#events',
+    ctaLink: '/events',
     imageBg: 'linear-gradient(135deg, rgba(0, 106, 173, 0.92) 0%, rgba(2, 132, 199, 0.95) 100%)',
     imageUrl: 'https://images.unsplash.com/photo-1475721027785-f74eccf877e2?auto=format&fit=crop&w=900&q=80',
     accentColor: '#FB6B31',
@@ -246,7 +246,11 @@ export default function ServicesPortal() {
     <SectionWrapper>
       <Container>
         <HeaderContainer>
-          <Title>Tour our Services at SAGE</Title>
+          <OverTitle>SAGE Ecosystem</OverTitle>
+          <Title>Services & Specialized Offerings</Title>
+          <LeadText>
+            Select a discipline to explore tailored learning, specialized consulting, workshops, and industry insights.
+          </LeadText>
         </HeaderContainer>
 
         {/* Tab Selector Pills */}
@@ -327,18 +331,18 @@ export default function ServicesPortal() {
 }
 
 const SectionWrapper = styled.section`
-  padding: 5rem 0 5rem 0;
+  padding: 8rem 0;
 `;
 
 const HeaderContainer = styled.div`
   text-align: center;
   max-width: 75rem;
-  margin: 0 auto 2.5rem auto;
+  margin: 0 auto 5rem auto;
 `;
 
 const Title = styled(SectionTitle)`
-  margin-top: 1rem;
-  margin-bottom: 1.5rem;
+  margin-top: 1.5rem;
+  margin-bottom: 2rem;
 `;
 
 const LeadText = styled.p`
@@ -353,7 +357,7 @@ const TabPillsRow = styled.div`
   align-items: center;
   flex-wrap: wrap;
   gap: 1.2rem;
-  margin-bottom: 3rem;
+  margin-bottom: 5rem;
 `;
 
 const PillButton = styled.button<{ isActive: boolean }>`

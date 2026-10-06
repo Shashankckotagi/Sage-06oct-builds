@@ -1,10 +1,7 @@
-import dynamic from 'next/dynamic';
 import NextLink from 'next/link';
-import { useRouter } from 'next/router';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNewsletterModalContext } from 'contexts/newsletter-modal.context';
-import { ScrollPositionEffectProps, useScrollPosition } from 'hooks/useScrollPosition';
 import { NavItems, SingleNavItem } from 'types';
 import { media } from 'utils/media';
 import Button from './Button';
@@ -12,66 +9,14 @@ import Container from './Container';
 import Drawer from './Drawer';
 import { HamburgerIcon } from './HamburgerIcon';
 import Logo from './Logo';
-import SearchModal from './SearchModal';
-
-const ColorSwitcher = dynamic(() => import('./ColorSwitcher'), { ssr: false });
 
 type NavbarProps = { items: NavItems };
-type ScrollingDirections = 'up' | 'down' | 'none';
-type NavbarContainerProps = { $hidden: boolean; transparent: boolean };
 
 export default function Navbar({ items }: NavbarProps) {
-  const router = useRouter();
   const { toggle } = Drawer.useDrawer();
-  const [scrollingDirection, setScrollingDirection] = useState<ScrollingDirections>('none');
-
-  let lastScrollY = useRef(0);
-  const lastRoute = useRef('');
-  const stepSize = useRef(50);
-
-  useScrollPosition(scrollPositionCallback, [router.asPath], undefined, undefined, 50);
-
-  function scrollPositionCallback({ currPos }: ScrollPositionEffectProps) {
-    const routerPath = router.asPath;
-    const currentY = Math.abs(currPos.y);
-
-    if (routerPath !== lastRoute.current) {
-      lastRoute.current = routerPath;
-      lastScrollY.current = currentY;
-      setScrollingDirection('none');
-      return;
-    }
-
-    // Always keep visible when near the top of the page (< 80px)
-    if (currentY < 80) {
-      if (scrollingDirection !== 'none') {
-        setScrollingDirection('none');
-      }
-      lastScrollY.current = currentY;
-      return;
-    }
-
-    const diff = currentY - lastScrollY.current;
-
-    // Minimum scroll threshold of 15px to prevent flickering on small movements
-    if (Math.abs(diff) < 15) {
-      return;
-    }
-
-    if (diff > 0 && scrollingDirection !== 'down') {
-      setScrollingDirection('down');
-      lastScrollY.current = currentY;
-    } else if (diff < 0 && scrollingDirection !== 'up') {
-      setScrollingDirection('up');
-      lastScrollY.current = currentY;
-    }
-  }
-
-  const isNavbarHidden = scrollingDirection === 'down';
-  const isTransparent = scrollingDirection === 'none';
 
   return (
-    <NavbarContainer $hidden={isNavbarHidden} transparent={isTransparent}>
+    <NavbarContainer>
       <Content>
         <NextLink href="/" passHref>
           <LogoWrapper>
@@ -83,12 +28,6 @@ export default function Navbar({ items }: NavbarProps) {
             <NavItem key={singleItem.href} {...singleItem} />
           ))}
         </NavItemList>
-        <ActionsContainer>
-          <SearchModal />
-          <ColorSwitcherContainer>
-            <ColorSwitcher />
-          </ColorSwitcherContainer>
-        </ActionsContainer>
         <HamburgerMenuWrapper>
           <HamburgerIcon aria-label="Toggle menu" onClick={toggle} />
         </HamburgerMenuWrapper>
@@ -137,26 +76,11 @@ function NavItem({ href, title, outlined, highlighted, subItems }: SingleNavItem
       </NextLink>
       {hasSubItems && isOpen && (
         <DropdownMenu>
-          {subItems.map((sub) => {
-            if (sub.onClick) {
-              return (
-                <DropdownItemButton
-                  key={sub.title}
-                  onClick={() => {
-                    setIsOpen(false);
-                    sub.onClick?.();
-                  }}
-                >
-                  {sub.title}
-                </DropdownItemButton>
-              );
-            }
-            return (
-              <NextLink key={sub.href || sub.title} href={sub.href || '#'} passHref>
-                <DropdownItem>{sub.title}</DropdownItem>
-              </NextLink>
-            );
-          })}
+          {subItems.map((sub) => (
+            <NextLink key={sub.href} href={sub.href} passHref>
+              <DropdownItem>{sub.title}</DropdownItem>
+            </NextLink>
+          ))}
         </DropdownMenu>
       )}
     </NavItemWrapper>
@@ -274,7 +198,7 @@ const DropdownMenu = styled.div`
   top: 100%;
   left: 0;
   min-width: 20rem;
-  background: rgb(var(--secondary));
+  background: #005a93;
   border: 1.5px solid rgba(255, 255, 255, 0.2);
   box-shadow: 0 12px 32px rgba(0, 0, 0, 0.25);
   border-radius: 0.8rem;
@@ -292,8 +216,8 @@ const DropdownMenu = styled.div`
   }
 
   html[data-theme='dark'] & {
-    background: rgb(var(--secondary));
-    border: 1.5px solid rgba(80, 180, 245, 0.3);
+    background: #003e66;
+    border: 1.5px solid rgba(53, 169, 239, 0.4);
   }
 
   @keyframes fadeIn {
@@ -324,28 +248,6 @@ const DropdownItem = styled.a`
   }
 `;
 
-const DropdownItemButton = styled.button`
-  display: block;
-  width: 100%;
-  text-align: left;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0.9rem 1.6rem;
-  font-size: 1.3rem;
-  font-weight: 600;
-  color: #ffffff;
-  text-decoration: none;
-  text-transform: none;
-  font-family: inherit;
-  transition: background 0.15s ease, color 0.15s ease;
-
-  &:hover {
-    background: rgba(255, 255, 255, 0.18);
-    color: #ffffff;
-  }
-`;
-
 const NavItemWrapper = styled.li<Partial<SingleNavItem>>`
   position: relative;
   border-radius: 0.5rem;
@@ -358,7 +260,7 @@ const NavItemWrapper = styled.li<Partial<SingleNavItem>>`
   }
 `;
 
-const NavbarContainer = styled.header<NavbarContainerProps>`
+const NavbarContainer = styled.div`
   display: flex;
   position: sticky;
   top: 0;
@@ -367,23 +269,19 @@ const NavbarContainer = styled.header<NavbarContainerProps>`
   height: 8rem;
   z-index: var(--z-navbar);
 
-  /* Light Mode softer footer blue background */
-  background-color: rgb(var(--secondary));
-  box-shadow: 0 4px 20px rgba(0, 80, 130, 0.3);
+  /* Light Mode SAGE Deep Blue background */
+  background-color: #006aad;
+  box-shadow: 0 4px 20px rgba(0, 106, 173, 0.35);
   border-bottom: 1px solid rgba(255, 255, 255, 0.15);
 
-  /* Dark Mode softened navy background */
+  /* Dark Mode Ultra-Rich Oceanic Blue background */
   html[data-theme='dark'] & {
-    background-color: rgb(var(--secondary));
-    border-bottom: 1px solid rgba(80, 180, 245, 0.25);
+    background-color: #004d7e;
+    border-bottom: 1px solid rgba(53, 169, 239, 0.3);
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.45);
   }
 
-  transform: ${(p) => (p.$hidden ? 'translate3d(0, -100%, 0)' : 'translate3d(0, 0, 0)')};
-  will-change: transform;
-
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.25s ease,
+  transition: background-color 0.25s ease,
               box-shadow 0.25s ease;
 `;
 
@@ -391,15 +289,4 @@ const Content = styled(Container)`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-`;
-
-const ActionsContainer = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-`;
-
-const ColorSwitcherContainer = styled.div`
-  width: 4rem;
-  margin: 0 0.8rem;
 `;

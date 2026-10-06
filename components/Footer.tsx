@@ -10,31 +10,32 @@ type FooterItems = SingleFooterList[];
 
 const footerItems: FooterItems = [
   {
-    title: '',
+    title: 'Explore',
     items: [
       { title: 'Courses', href: '/courses' },
-      { title: 'Tutorials', href: '/courses#tutorials' },
-      { title: 'Workshops', href: '/services#workshops' },
-      { title: 'Training', href: '/services#training' },
-      { title: 'Newsletter', href: '/newsletter' },
+      { title: 'Tutorials', href: '/tutorials' },
+      { title: 'Workshops', href: '/workshops' },
+      { title: 'Training Programs', href: '/training' },
+      { title: 'Events', href: '/events' },
+      { title: 'Photo Gallery', href: '/photos' },
     ],
   },
   {
-    title: '',
+    title: 'Work With Us',
     items: [
-      { title: 'Consulting Services', href: '/services#consulting' },
+      { title: 'Consulting Services', href: '/consulting' },
+      { title: 'Customized Courses', href: '/courses' },
       { title: 'Contact Us', href: '/contact' },
-      { title: 'info@shastryassociates.com', href: 'mailto:info@shastryassociates.com' },
-      { title: 'Photo Gallery', href: '/gallery' },
     ],
   },
   {
-    title: '',
+    title: 'Company',
     items: [
       { title: 'About SAGE', href: '/about' },
-      { title: 'Events', href: '/events' },
+      { title: 'Mission & Vision', href: '/mission' },
+      { title: 'Global Team', href: '/team' },
+      { title: 'News & Articles', href: '/news' },
       { title: 'Privacy Policy', href: '/privacy-policy' },
-      { title: 'Sitemap', href: '/sitemap' },
     ],
   },
 ];
@@ -44,8 +45,8 @@ export default function Footer() {
     <FooterWrapper>
       <Container>
         <ListContainer>
-          {footerItems.map((singleItem, idx) => (
-            <FooterList key={idx} {...singleItem} />
+          {footerItems.map((singleItem) => (
+            <FooterList key={singleItem.title} {...singleItem} />
           ))}
         </ListContainer>
         <BottomBar>
@@ -81,7 +82,7 @@ export default function Footer() {
 function FooterList({ title, items }: SingleFooterList) {
   return (
     <ListWrapper>
-      {title ? <ListHeader>{title}</ListHeader> : null}
+      <ListHeader>{title}</ListHeader>
       {items.map((singleItem) => (
         <ListItem key={singleItem.href} {...singleItem} />
       ))}

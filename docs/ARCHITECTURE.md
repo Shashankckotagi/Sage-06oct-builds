@@ -10,7 +10,7 @@
 
 | Layer | Selected Decision | Strategic Rationale |
 | :--- | :--- | :--- |
-| **Hosting & CI/CD** | **Vercel (Production)** | Native Next.js first-class deployment platform, automatic preview deployments on GitHub branches, Edge CDN caching for static routes, and zero-config Serverless API function support. |
+| **Hosting & CI/CD** | **Netlify (Free Tier)** | Automated branch deploys from GitHub `main`, instant preview environments, zero-configuration Next.js SSG support. |
 | **Content Layer** | **Git-based (`data/*.ts` + MDX)** | Pure TypeScript data files in `data/` and MDX articles in `posts/`. Maintained by MSV team; headless CMS visual UI deferred for direct Git workflow efficiency. |
 | **Contact Form** | **Resend (Free Tier)** | High-deliverability transactional emails forwarding directly to `info@shastryassociates.com`. |
 | **Media & Images** | **Cloudinary CDN** | High-performance image optimization, responsive format delivery (WebP/AVIF), and centralized hosting for faculty profile photos and event galleries. |

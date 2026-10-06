@@ -1,4 +1,4 @@
-import React, { useRef, useState, MouseEvent } from 'react';
+import React, { MouseEvent, useRef, useState } from 'react';
 import styled from 'styled-components';
 
 interface SpotlightCardProps extends React.HTMLAttributes<HTMLDivElement> {
