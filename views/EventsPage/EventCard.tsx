@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import NextLink from 'next/link';
 import styled from 'styled-components';
 import DisciplineTag from 'components/DisciplineTag';
 import DateBadge from './DateBadge';
@@ -19,18 +20,21 @@ export default function EventCard({ event }: EventCardProps) {
 
   const isUpcoming = event.status === 'upcoming';
   const isPast = event.status === 'past';
+  const eventDetailUrl = `/events/${event.id}`;
 
   return (
     <CardContainer data-testid={`event-card-${event.id}`} id={`event-${event.id}`}>
-      <ImageFrame>
-        <EventImage
-          src={imgSrc}
-          alt={event.title ? `${event.title} - ${event.location}` : `SAGE Event in ${event.location}`}
-          loading="lazy"
-          onError={() => setImgSrc(FALLBACK_IMAGE)}
-        />
-        <DateBadge date={event.date} />
-      </ImageFrame>
+      <NextLink href={eventDetailUrl} passHref>
+        <ImageFrameLink aria-label={`View details for ${event.title || event.id}`}>
+          <EventImage
+            src={imgSrc}
+            alt={event.title ? `${event.title} - ${event.location}` : `SAGE Event in ${event.location}`}
+            loading="lazy"
+            onError={() => setImgSrc(FALLBACK_IMAGE)}
+          />
+          <DateBadge date={event.date} />
+        </ImageFrameLink>
+      </NextLink>
 
       <CardBody>
         <HeaderRow>
@@ -57,20 +61,30 @@ export default function EventCard({ event }: EventCardProps) {
           )}
         </HeaderRow>
 
-        <EventTitle>
-          {event.title && !event.title.includes('TODO')
-            ? event.title
-            : event.id
-                .split('-')
-                .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
-                .join(' ')}
-        </EventTitle>
+        <NextLink href={eventDetailUrl} passHref>
+          <EventTitleLink>
+            <EventTitle>
+              {event.title && !event.title.includes('TODO')
+                ? event.title
+                : event.id
+                    .split('-')
+                    .map((w) => w.charAt(0).toUpperCase() + w.slice(1))
+                    .join(' ')}
+            </EventTitle>
+          </EventTitleLink>
+        </NextLink>
 
         {event.description && !event.description.includes('TODO') && (
           <EventDescription>{event.description}</EventDescription>
         )}
 
         <FooterRow>
+          <NextLink href={eventDetailUrl} passHref>
+            <ViewDetailsButton>
+              View Event Page <span>&rarr;</span>
+            </ViewDetailsButton>
+          </NextLink>
+
           {/* EV-3: Upcoming cards - orange Register button ONLY when registrationUrl exists, opens in new tab with rel="noopener" */}
           {isUpcoming && event.registrationUrl && (
             <RegisterButton
@@ -78,14 +92,14 @@ export default function EventCard({ event }: EventCardProps) {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Register Now <span>&rarr;</span>
+              Register <span>&rarr;</span>
             </RegisterButton>
           )}
 
           {/* Past cards: "View photos" anchor that scrolls to the gallery section */}
           {isPast && (
-            <ViewPhotosLink href="#gallery">
-              View photos <span>&darr;</span>
+            <ViewPhotosLink href={`/events/${event.id}#gallery`}>
+              Photos <span>&darr;</span>
             </ViewPhotosLink>
           )}
         </FooterRow>
@@ -113,12 +127,52 @@ const CardContainer = styled.article`
   }
 `;
 
-const ImageFrame = styled.div`
+const ImageFrameLink = styled.a`
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
   overflow: hidden;
   background: rgb(var(--secondBackground));
+  display: block;
+  text-decoration: none;
+`;
+
+const EventTitleLink = styled.a`
+  text-decoration: none;
+  color: inherit;
+
+  &:hover h3 {
+    color: rgb(var(--primary));
+  }
+`;
+
+const ViewDetailsButton = styled.a`
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  background: rgb(var(--brandBlue));
+  color: #ffffff;
+  font-family: var(--font-heading);
+  font-size: 1.35rem;
+  font-weight: 700;
+  padding: 0.8rem 1.6rem;
+  border-radius: 0.6rem;
+  text-decoration: none;
+  margin-right: auto;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background: rgb(var(--primary));
+    transform: translateY(-1px);
+  }
+
+  span {
+    transition: transform 0.2s ease;
+  }
+
+  &:hover span {
+    transform: translateX(3px);
+  }
 `;
 
 const EventImage = styled.img`

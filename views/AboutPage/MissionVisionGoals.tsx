@@ -34,6 +34,7 @@ export default function MissionVisionGoals() {
           </motion.div>
         </Grid>
 
+        <GoalsHeader>GOALS</GoalsHeader>
         <GoalsContainer>
           {goals && goals.map((goal, idx) => (
             <motion.div
@@ -54,6 +55,17 @@ export default function MissionVisionGoals() {
     </Section>
   );
 }
+
+const GoalsHeader = styled.h3`
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: rgb(var(--primary));
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin-bottom: 3rem;
+  text-transform: uppercase;
+`;
 
 const Section = styled.section`
   padding: 8rem 0 10rem 0;

@@ -1,10 +1,7 @@
-import dynamic from 'next/dynamic';
 import NextLink from 'next/link';
-import { useRouter } from 'next/router';
-import React, { useRef, useState } from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { useNewsletterModalContext } from 'contexts/newsletter-modal.context';
-import { ScrollPositionEffectProps, useScrollPosition } from 'hooks/useScrollPosition';
 import { NavItems, SingleNavItem } from 'types';
 import { media } from 'utils/media';
 import Button from './Button';
@@ -13,64 +10,13 @@ import Drawer from './Drawer';
 import { HamburgerIcon } from './HamburgerIcon';
 import Logo from './Logo';
 
-const ColorSwitcher = dynamic(() => import('../components/ColorSwitcher'), { ssr: false });
-
 type NavbarProps = { items: NavItems };
-type ScrollingDirections = 'up' | 'down' | 'none';
-type NavbarContainerProps = { hidden: boolean; transparent: boolean };
 
 export default function Navbar({ items }: NavbarProps) {
-  const router = useRouter();
   const { toggle } = Drawer.useDrawer();
-  const [scrollingDirection, setScrollingDirection] = useState<ScrollingDirections>('none');
-
-  let lastScrollY = useRef(0);
-  const lastRoute = useRef('');
-  const stepSize = useRef(50);
-
-  useScrollPosition(scrollPositionCallback, [router.asPath], undefined, undefined, 50);
-
-  function scrollPositionCallback({ currPos }: ScrollPositionEffectProps) {
-    const routerPath = router.asPath;
-    const currentY = Math.abs(currPos.y);
-
-    if (routerPath !== lastRoute.current) {
-      lastRoute.current = routerPath;
-      lastScrollY.current = currentY;
-      setScrollingDirection('none');
-      return;
-    }
-
-    // Always keep visible when near the top of the page (< 80px)
-    if (currentY < 80) {
-      if (scrollingDirection !== 'none') {
-        setScrollingDirection('none');
-      }
-      lastScrollY.current = currentY;
-      return;
-    }
-
-    const diff = currentY - lastScrollY.current;
-
-    // Minimum scroll threshold of 15px to prevent flickering on small movements
-    if (Math.abs(diff) < 15) {
-      return;
-    }
-
-    if (diff > 0 && scrollingDirection !== 'down') {
-      setScrollingDirection('down');
-      lastScrollY.current = currentY;
-    } else if (diff < 0 && scrollingDirection !== 'up') {
-      setScrollingDirection('up');
-      lastScrollY.current = currentY;
-    }
-  }
-
-  const isNavbarHidden = scrollingDirection === 'down';
-  const isTransparent = scrollingDirection === 'none';
 
   return (
-    <NavbarContainer hidden={isNavbarHidden} transparent={isTransparent}>
+    <NavbarContainer>
       <Content>
         <NextLink href="/" passHref>
           <LogoWrapper>
@@ -82,9 +28,6 @@ export default function Navbar({ items }: NavbarProps) {
             <NavItem key={singleItem.href} {...singleItem} />
           ))}
         </NavItemList>
-        <ColorSwitcherContainer>
-          <ColorSwitcher />
-        </ColorSwitcherContainer>
         <HamburgerMenuWrapper>
           <HamburgerIcon aria-label="Toggle menu" onClick={toggle} />
         </HamburgerMenuWrapper>
@@ -317,7 +260,7 @@ const NavItemWrapper = styled.li<Partial<SingleNavItem>>`
   }
 `;
 
-const NavbarContainer = styled.div<NavbarContainerProps>`
+const NavbarContainer = styled.div`
   display: flex;
   position: sticky;
   top: 0;
@@ -338,11 +281,7 @@ const NavbarContainer = styled.div<NavbarContainerProps>`
     box-shadow: 0 4px 25px rgba(0, 0, 0, 0.45);
   }
 
-  transform: ${(p) => (p.hidden ? 'translate3d(0, -100%, 0)' : 'translate3d(0, 0, 0)')};
-  will-change: transform;
-
-  transition: transform 0.28s cubic-bezier(0.16, 1, 0.3, 1),
-              background-color 0.25s ease,
+  transition: background-color 0.25s ease,
               box-shadow 0.25s ease;
 `;
 
@@ -350,9 +289,4 @@ const Content = styled(Container)`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-`;
-
-const ColorSwitcherContainer = styled.div`
-  width: 4rem;
-  margin: 0 1rem;
 `;

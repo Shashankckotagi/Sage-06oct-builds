@@ -81,6 +81,8 @@ export type PageHeroData = {
   description?: string;
   imageSrc?: string; // omit for legal / 404
   imagePublicId?: string; // Cloudinary public ID
+  imageMode?: 'background' | 'rightCard';
+  imagePosition?: string;
   extra?: ReactNode;
 };
 
@@ -91,8 +93,8 @@ export const pageHeroes: Record<string, PageHeroData> = {
       { label: 'About Us', href: '/about' },
     ],
     title: 'About Us',
-    description: 'Applied electromagnetics, taught with engineering rigor. Founded by RF and microwave veterans to bridge graduate theory with the industry bench.',
-    imageSrc: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=1600&q=80',
+    description: 'Global RF and microwave experts and professionals striving for excellence in disseminating knowledge, skills, and solutions.',
+    imageSrc: '/pages/gallery-hero.jpg',
   },
   '/team': {
     breadcrumbs: [
@@ -138,8 +140,7 @@ export const pageHeroes: Record<string, PageHeroData> = {
     ],
     title: 'Photo Gallery',
     description: 'Moments and highlights from our global inaugurations, technical symposiums, university workshops, and engineering gatherings.',
-    imagePublicId: 'sage/pages/events.jpg',
-    imageSrc: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80',
+    imageSrc: '/pages/gallery-hero.jpg',
   },
   'photos': {
     breadcrumbs: [
@@ -149,8 +150,7 @@ export const pageHeroes: Record<string, PageHeroData> = {
     ],
     title: 'Photo Gallery',
     description: 'Moments and highlights from our global inaugurations, technical symposiums, university workshops, and engineering gatherings.',
-    imagePublicId: 'sage/pages/events.jpg',
-    imageSrc: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80',
+    imageSrc: '/pages/gallery-hero.jpg',
   },
   '/gallery': {
     breadcrumbs: [
@@ -160,8 +160,7 @@ export const pageHeroes: Record<string, PageHeroData> = {
     ],
     title: 'Photo Gallery',
     description: 'Moments and highlights from our global inaugurations, technical symposiums, university workshops, and engineering gatherings.',
-    imagePublicId: 'sage/pages/events.jpg',
-    imageSrc: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80',
+    imageSrc: '/pages/gallery-hero.jpg',
   },
   '/events': {
     breadcrumbs: [
@@ -170,8 +169,6 @@ export const pageHeroes: Record<string, PageHeroData> = {
     ],
     title: 'Events',
     description: 'Hands-on hackathons, workshops & engineering meetups',
-    imagePublicId: 'sage/pages/events.jpg',
-    imageSrc: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80',
   },
   'events': {
     breadcrumbs: [
@@ -180,8 +177,6 @@ export const pageHeroes: Record<string, PageHeroData> = {
     ],
     title: 'Events',
     description: 'Hands-on hackathons, workshops & engineering meetups',
-    imagePublicId: 'sage/pages/events.jpg',
-    imageSrc: 'https://images.unsplash.com/photo-1540575467063-178a50c2df87?w=1600&q=80',
   },
   '/services': {
     breadcrumbs: [

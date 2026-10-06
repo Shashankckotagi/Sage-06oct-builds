@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import { DISCIPLINES, DisciplineId } from 'sage-data'
+import { DisciplineId, DISCIPLINES } from 'sage-data'
 
 export interface FilterPillOption<T = string> {
   id: T;

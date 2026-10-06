@@ -1,3 +1,4 @@
+
 import React, { useState } from 'react';
 import styled, { keyframes } from 'styled-components';
 import media from 'css-in-js-media';
@@ -34,7 +35,7 @@ const HeroSection = styled.section<{ $src?: string }>`
   position: relative;
   isolation: isolate;
   width: 100%;
-  min-height: ${(p) => (p.$src ? 'clamp(380px, 48vh, 540px)' : 'auto')};
+  min-height: clamp(380px, 48vh, 540px);
   display: flex;
   align-items: center;
   overflow: hidden;
@@ -447,15 +448,15 @@ const Title = styled.h1`
 /* -------------------------------------------------------------------------- */
 
 const Description = styled.p`
-  max-width: 58ch;
+  max-width: 64ch;
 
   margin: 0;
 
-  color: rgba(var(--text), 0.82);
+  color: rgba(var(--text), 0.88);
 
-  font-size: 1.18rem;
-  font-weight: 450;
-  line-height: 1.65;
+  font-size: clamp(1.3rem, 1.8vw, 1.55rem);
+  font-weight: 500;
+  line-height: 1.6;
   letter-spacing: -0.008em;
 
   text-wrap: pretty;
@@ -463,13 +464,13 @@ const Description = styled.p`
   ${media('<=tablet')} {
     max-width: 62ch;
 
-    font-size: 1.08rem;
-    line-height: 1.62;
+    font-size: 1.18rem;
+    line-height: 1.58;
   }
 
   ${media('<=phone')} {
-    font-size: 1rem;
-    line-height: 1.6;
+    font-size: 1.08rem;
+    line-height: 1.55;
   }
 `;
 
@@ -486,6 +487,55 @@ const ExtraWrapper = styled.div`
   margin-top: 0.35rem;
 `;
 
+const HeroContentWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  width: 100%;
+
+  ${media('<=tablet')} {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+`;
+
+const RightHeroImageCard = styled.div`
+  flex: 0 0 auto;
+  width: clamp(320px, 36vw, 480px);
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 20px 45px -12px rgba(0, 0, 0, 0.22),
+    0 0 0 1px rgba(var(--lineColor), 0.8);
+  background: rgb(var(--secondBackground));
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow:
+      0 28px 60px -12px rgba(0, 0, 0, 0.32),
+      0 0 0 1px rgba(var(--primary), 0.4);
+  }
+
+  img {
+    width: 100%;
+    height: auto;
+    max-height: 380px;
+    object-fit: contain;
+    display: block;
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  ${media('<=tablet')} {
+    width: 100%;
+    max-width: 500px;
+    margin-top: 0.5rem;
+  }
+`;
+
 /* -------------------------------------------------------------------------- */
 /* Component                                                                   */
 /* -------------------------------------------------------------------------- */
@@ -498,6 +548,7 @@ const PageHero: React.FC<PageHeroProps> = ({
   extra,
   imageSrc,
   imagePublicId,
+  imageMode = 'background',
 }) => {
   const [scrollY, setScrollY] = useState(0);
 
@@ -516,9 +567,11 @@ const PageHero: React.FC<PageHeroProps> = ({
     ? cloudinaryUrl(imagePublicId, imagePresets.hero)
     : imageSrc;
 
+  const isRightCard = imageMode === 'rightCard' && Boolean(resolvedImageSrc);
+
   return (
-    <HeroSection $src={resolvedImageSrc}>
-      {resolvedImageSrc && (
+    <HeroSection $src={isRightCard ? undefined : resolvedImageSrc}>
+      {!isRightCard && resolvedImageSrc && (
         <>
           <HeroImage $src={resolvedImageSrc} $parallaxY={parallaxY} aria-hidden="true" />
           <ImageShade aria-hidden="true" />
@@ -529,15 +582,23 @@ const PageHero: React.FC<PageHeroProps> = ({
       )}
 
       <StyledContainer>
-        <TextContent>
-          {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
+        <HeroContentWrapper>
+          <TextContent>
+            {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
 
-          <Title>{title}</Title>
+            <Title>{title}</Title>
 
-          {description && <Description>{description}</Description>}
+            {description && <Description>{description}</Description>}
 
-          {extra && <ExtraWrapper>{extra}</ExtraWrapper>}
-        </TextContent>
+            {extra && <ExtraWrapper>{extra}</ExtraWrapper>}
+          </TextContent>
+
+          {isRightCard && resolvedImageSrc && (
+            <RightHeroImageCard>
+              <img src={resolvedImageSrc} alt={title} />
+            </RightHeroImageCard>
+          )}
+        </HeroContentWrapper>
       </StyledContainer>
     </HeroSection>
   );

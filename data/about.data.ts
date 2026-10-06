@@ -1,23 +1,21 @@
 export const mission =
-  "To disseminate knowledge and information in the area of applied electromagnetics and wireless systems.";
+  "The mission of SAGE is threefold: education, training, and consulting to provide knowledge, skills, and solutions respectively in RF, Microwave, and Wireless technologies.";
 
 export const vision =
-  "To be the leader in disseminating knowledge and information in radio frequency wireless systems engineering and technologies globally.";
+  "To be a global leader excelling in fulfilling the Mission — delivering education, training, and consulting excellence in RF, Microwave, and Wireless technologies worldwide.";
 
 export const goals = [
-  "To make available practical engineering and technology information on RF, Millimeter-Wave, and Microwave circuits, components, sub-systems, and systems.",
-  "To provide and deliver tutorials, courses, workshops, and training for recent college graduates (Bachelor and Master levels) and engineers in industry at appropriate levels on-site, off-site, online, and via our website.",
-  "To provide engineering consulting services.",
+  "Education: Deliver courses (including professional certification options) and provide free accessible tutorials — offering knowledge to college students, beginning engineers in industry, and experienced executives in companies.",
+  "Training: Offer both design and simulation tools and test equipment skills training through SAGE or in collaboration with SAGE partners and respective tools and equipment companies.",
+  "Consulting: Provide engineering solutions by SAGE experts to industry upon request.",
 ];
 
 export const aboutShort =
-  "SAGE is an international group of highly qualified engineers and entrepreneurs with deep expertise in applied electromagnetics, RF circuits and antennas, and wireless communication systems.";
+  "SAGE is an international group of highly qualified and accomplished engineers and entrepreneurs with extensive engineering and technology experience in industry and academia, specializing in RF, Microwave, and Wireless technologies.";
 
-export const aboutFull = `SAGE (Shastry Associates Global Enterprises) is an international group of highly qualified and accomplished engineers and entrepreneurs with a long track record of engineering and technology experience in industry and academia.
+export const aboutFull = `SAGE (Shastry Associates Global Enterprises) is an international group of highly qualified and accomplished engineers and entrepreneurs with extensive engineering and technology experience in industry and academia. Their knowledge is very well rooted both in the fundamentals of electronics and communication engineering in general, and in RF/Microwave/Wireless technologies in particular.
 
-Their knowledge is well rooted both in the fundamentals of electronics and communication engineering in general, and in applied electromagnetics, RF circuits and antennas, and wireless communication systems in particular.
-
-SAGE associates are also excellent communicators. They disseminate knowledge through courses, tutorials, and workshops to provide a deep understanding of the subject matter and insights therein, as well as guidelines for design and applications of the theory.`;
+The associates in SAGE disseminate knowledge through courses, tutorials, and workshops to provide deep understanding of the subject matter and insights therein, as well as guidelines for design and applications of the theory. They also impart skills through training, customized courses, tutorials, and workshops on demand. Consulting services are available upon request to provide engineering solutions.`;
 
 export interface Competency {
   id: string;
