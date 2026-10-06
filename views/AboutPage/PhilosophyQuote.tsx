@@ -13,14 +13,6 @@ const ideaPillars = [
 export default function PhilosophyQuote() {
   return (
     <Section>
-      <style
-        dangerouslySetInnerHTML={{
-          __html: `
-        .wave-cta-svg { background-color: #FFF8F3; }
-        .next-dark-theme .wave-cta-svg { background-color: rgb(var(--secondBackground)); }
-      `,
-        }}
-      />
       <Container>
         <Layout>
           <motion.div
@@ -70,13 +62,7 @@ export default function PhilosophyQuote() {
 
 const Section = styled.section`
   padding: 10rem 0 12rem 0;
-  background: #fff8f3;
-
-  @media (prefers-color-scheme: dark) {
-    .next-dark-theme & {
-      background: rgb(var(--secondBackground));
-    }
-  }
+  background: rgb(var(--background));
 `;
 
 const Layout = styled.div`

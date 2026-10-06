@@ -52,14 +52,7 @@ export default function MissionVisionGoals() {
 
 const Section = styled.section`
   padding: 8rem 0 10rem 0;
-  background: #fff8f3;
-
-  /* Fallback for dark mode */
-  @media (prefers-color-scheme: dark) {
-    .next-dark-theme & {
-      background: rgb(var(--secondBackground));
-    }
-  }
+  background: rgb(var(--secondBackground));
 `;
 
 const MissionVisionCard = styled.div`
