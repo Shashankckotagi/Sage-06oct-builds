@@ -9,26 +9,25 @@ import { media } from 'utils/media';
 export default function WaveCta() {
   return (
     <>
-      <svg className="wave-cta-svg" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" preserveAspectRatio="none" style={{ display: 'block' }}>
+      <WaveSvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 220" preserveAspectRatio="none">
         <path
           fill="rgb(var(--secondary))"
           fillOpacity="1"
-          d="M0,64L80,58.7C160,53,320,43,480,80C640,117,800,203,960,197.3C1120,192,1280,96,1360,48L1440,0L1440,320L1360,320C1280,320,1120,320,960,320C800,320,640,320,480,320C320,320,160,320,80,320L0,320Z"
+          d="M0,64L80,58.7C160,53,320,43,480,80C640,117,800,160,960,150C1120,140,1280,80,1360,40L1440,0L1440,220L1360,220C1280,220,1120,220,960,220C800,220,640,220,480,220C320,220,160,220,80,220L0,220Z"
         ></path>
-      </svg>
+      </WaveSvg>
       <CtaWrapper>
         <Container>
-          <Title>Your next system begins with deeper understanding.</Title>
-          <Subtitle>Build the practical expertise to analyse, design, and deliver modern RF and wireless systems.</Subtitle>
+          <Title>Your next step into the wireless world starts here with SAGE.</Title>
           <CustomButtonGroup>
             <NextLink href="/courses" passHref>
               <Button>
                 Explore Courses <span>&rarr;</span>
               </Button>
             </NextLink>
-            <NextLink href="/contact" passHref>
+            <NextLink href="/events" passHref>
               <OutlinedButton transparent>
-                Talk to an Expert <span>&rarr;</span>
+                Explore Events <span>&rarr;</span>
               </OutlinedButton>
             </NextLink>
           </CustomButtonGroup>
@@ -38,30 +37,30 @@ export default function WaveCta() {
   );
 }
 
+const WaveSvg = styled.svg`
+  display: block;
+  width: 100%;
+  height: 140px;
+
+  ${media('<=tablet')} {
+    height: 90px;
+  }
+`;
+
 const CtaWrapper = styled.div`
   background: rgb(var(--secondary));
   margin-top: -1rem;
-  padding-bottom: 6rem;
+  padding-bottom: 5rem;
 
   ${media('<=tablet')} {
-    padding-top: 4rem;
-    padding-bottom: 4rem;
+    padding-top: 2rem;
+    padding-bottom: 3.5rem;
   }
 `;
 
 const Title = styled(SectionTitle)`
   color: rgb(var(--textSecondary));
-  margin-bottom: 1.5rem;
-`;
-
-const Subtitle = styled.p`
-  font-size: 1.8rem;
-  color: rgba(var(--textSecondary), 0.85);
-  margin-bottom: 4rem;
-  text-align: center;
-  max-width: 60rem;
-  margin-left: auto;
-  margin-right: auto;
+  margin-bottom: 3rem;
 `;
 
 const OutlinedButton = styled(Button)`

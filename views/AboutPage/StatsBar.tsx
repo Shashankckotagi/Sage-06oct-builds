@@ -10,23 +10,23 @@ export default function StatsBar() {
         <Grid>
           <StatBlock>
             <NumberWrapper>
-              <CountUp end={25} suffix="+" duration={2} />
+              <CountUp end={35} suffix="+" duration={2} />
             </NumberWrapper>
-            <Label>Years Experience</Label>
+            <Label>Years of Combined Experience</Label>
           </StatBlock>
 
           <StatBlock>
             <NumberWrapper>
-              <CountUp end={15} suffix="+" duration={2} />
+              <CountUp end={20} suffix="+" duration={2} />
             </NumberWrapper>
-            <Label>Global Associates</Label>
+            <Label>Global Associates: Professionals & Faculty</Label>
           </StatBlock>
 
           <StatBlock>
             <NumberWrapper>
-              <CountUp end={4} duration={1.5} />
+              <CountUp end={5} duration={1.5} />
             </NumberWrapper>
-            <Label>Core Disciplines</Label>
+            <Label>Workshops & Events to Date</Label>
           </StatBlock>
         </Grid>
       </Container>

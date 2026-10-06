@@ -65,7 +65,7 @@ const TextImageContainer = styled.div`
 
 const SubText = styled.span`
   font-family: var(--font-body);
-  font-size: 0.78rem;
+  font-size: 0.92rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   color: #ffffff;

@@ -13,18 +13,17 @@ export default function TeamPage() {
 
   const breadcrumbs = [
     { label: 'Home', href: '/' },
-    { label: 'Faculty & Associates', href: '/team' },
+    { label: 'Meet Our Team', href: '/team' },
   ];
 
   return (
     <Page
-      title="Faculty & Associates Directory"
-      description="Meet the international faculty, IEEE research fellows, and principal corporate advisory consultants at SAGE specializing in RF circuits, antennas, microwave devices, and 5G/6G wireless systems."
+      title="Meet Our Team | SAGE — Shastry Associates Global Enterprises"
+      description="Meet our team of instructors, research fellows, and principal corporate advisory consultants at SAGE specializing in RF circuits, antennas, microwave devices, and 5G/6G wireless systems."
       canonicalPath="/team"
       ogType="website"
       jsonLd={getBreadcrumbSchema(breadcrumbs)}
     >
-
       <PageHero {...pageHeroes['/team']} />
 
       <FilterBarSection>
@@ -38,10 +37,10 @@ export default function TeamPage() {
 
       <FilterableTeamGrid activeDiscipline={activeDiscipline} />
     </Page>
-  )
+  );
 }
 
 const FilterBarSection = styled.div`
   padding-top: 3.5rem;
   padding-bottom: 1rem;
-`
+`;

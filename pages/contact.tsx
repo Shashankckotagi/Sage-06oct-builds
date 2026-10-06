@@ -16,13 +16,12 @@ export default function ContactPage() {
 
   return (
     <Page
-      title="Contact & Technical Advisory Inquiries"
+      title="Contact & Technical Advisory Inquiries | SAGE — Shastry Associates Global Enterprises"
       description="Contact SAGE for professional RF, microwave, and wireless engineering training programs, corporate consulting, and customized technical workshops."
       canonicalPath="/contact"
       ogType="website"
       jsonLd={getBreadcrumbSchema(breadcrumbs)}
     >
-
       {pageHeroes['/contact'] && <PageHero {...pageHeroes['/contact']} />}
 
       <ContactSection>

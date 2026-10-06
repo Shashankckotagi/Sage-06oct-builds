@@ -9,6 +9,7 @@ import CoreCompetencies from 'views/AboutPage/CoreCompetencies';
 import ServicesSnapshot from 'views/AboutPage/ServicesSnapshot';
 import StatsBar from 'views/AboutPage/StatsBar';
 import PhilosophyQuote from 'views/AboutPage/PhilosophyQuote';
+import WhySage from 'views/HomePage/WhySage';
 
 export default function AboutPage() {
   const breadcrumbs = [
@@ -18,34 +19,35 @@ export default function AboutPage() {
 
   return (
     <Page
-      title="About Us"
+      title="About Us | SAGE — Shastry Associates Global Enterprises"
       description="Learn about SAGE (Shastry Associates Global Enterprises) — empowering RF, microwave, and wireless engineers with practical training and global corporate advisory."
       canonicalPath="/about"
       ogType="website"
       jsonLd={getBreadcrumbSchema(breadcrumbs)}
     >
-
-      {/* Section 1: Page Header (Unchanged as requested) */}
+      {/* Section 1: Page Header */}
       <PageHero {...pageHeroes['/about']} />
       
       {/* Section 2: Who We Are */}
       <WhoWeAre />
+
+      {/* Section 3: The SAGE Advantage Cards */}
+      <WhySage />
       
-      {/* Section 3: Mission, Vision & Goals */}
+      {/* Section 4: Mission, Vision & Goals */}
       <MissionVisionGoals />
       
-      {/* Section 4: Core Competencies */}
+      {/* Section 5: Core Competencies */}
       <CoreCompetencies />
       
-      {/* Section 5: Services Snapshot */}
+      {/* Section 6: Services Snapshot */}
       <ServicesSnapshot />
       
-      {/* Section 6: Stats Bar */}
+      {/* Section 7: Stats Bar */}
       <StatsBar />
       
       {/* Section 7: Philosophy Quote & CTA */}
       <PhilosophyQuote />
-
     </Page>
-  )
+  );
 }

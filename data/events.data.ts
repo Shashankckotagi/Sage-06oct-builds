@@ -615,4 +615,23 @@ export const events: SageEvent[] = [
       '/events/sage-inauguration/gallery/4.jpg',
     ],
   },
-];
+export const eventsData: SageEvent[] = events;
+
+export function getEvents(): SageEvent[] {
+  return events;
+}
+
+export function getUpcomingEvents(): SageEvent[] {
+  const today = new Date().toISOString().split('T')[0];
+  return events
+    .filter((event) => event.date >= today)
+    .sort((a, b) => a.date.localeCompare(b.date));
+}
+
+export function getPastEvents(): SageEvent[] {
+  const today = new Date().toISOString().split('T')[0];
+  return events
+    .filter((event) => event.date < today)
+    .sort((a, b) => b.date.localeCompare(a.date));
+}
+

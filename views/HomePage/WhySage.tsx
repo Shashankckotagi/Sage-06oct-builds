@@ -9,14 +9,6 @@ export default function WhySage() {
   return (
     <SectionWrapper>
       <Container>
-        <HeaderContainer>
-          <OverTitle>The SAGE Advantage</OverTitle>
-          <Title>Why Engineers & Organizations Choose SAGE</Title>
-          <LeadText>
-            We provide more than just education; we deliver actionable guidelines and insights for real-world system success.
-          </LeadText>
-        </HeaderContainer>
-
         <Grid>
           {whyFeatures.map((feature, idx) => (
             <FeatureCard key={feature.title}>

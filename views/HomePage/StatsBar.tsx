@@ -3,9 +3,9 @@ import Container from 'components/Container';
 import { media } from 'utils/media';
 
 const STATS = [
-  { value: '25+', label: 'Years of Engineering Experience' },
-  { value: '15+', label: 'Global Associates & Senior Faculty' },
-  { value: '4', label: 'Core Engineering Disciplines' },
+  { value: '35+', label: 'Years of Combined Experience' },
+  { value: '20+', label: 'Global Associates: Professionals & Faculty' },
+  { value: '5', label: 'Workshops & Events to Date' },
 ];
 
 export default function StatsBar() {
@@ -27,8 +27,8 @@ const StatsWrapper = styled.div`
   background: rgb(var(--tertiary, 235, 246, 254));
   border-top: 1px solid rgb(var(--lineColor, 226, 232, 240));
   border-bottom: 1px solid rgb(var(--lineColor, 226, 232, 240));
-  padding: 4rem 0;
-  margin-top: 6rem;
+  padding: 3rem 0;
+  margin-top: 2rem;
 `;
 
 const StatsContainer = styled(Container)`

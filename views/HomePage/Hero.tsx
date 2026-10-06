@@ -15,9 +15,9 @@ export default function Hero() {
       </TaglineBadge>
       <HeroWrapper>
         <Contents>
-          <Heading>Master the art of RF & wireless engineering.</Heading>
+          <Heading>Welcome to your practical platform for wireless technology and services.</Heading>
           <Description>
-            SAGE (Shastry Associates Global Enterprises) provides expert-led training, consulting, workshops, and courses in radio frequency, microwave, applied electromagnetics, antennas, and wireless communication systems.
+            Shastry Associates Global Enterprises (SAGE), provides professional training, workshops, and consulting services, including courses and tutorials, in the fields of radio frequency, microwave, and wireless engineering systems and technologies.
           </Description>
           <CustomButtonGroup>
             <NextLink href="/courses" passHref>
@@ -25,9 +25,9 @@ export default function Hero() {
                 Explore Courses <span>&rarr;</span>
               </Button>
             </NextLink>
-            <NextLink href="/contact" passHref>
+            <NextLink href="/events" passHref>
               <Button transparent>
-                Talk to an Expert <span>&rarr;</span>
+                Explore Events <span>&rarr;</span>
               </Button>
             </NextLink>
           </CustomButtonGroup>
@@ -74,17 +74,17 @@ const pulseGlow = keyframes`
 `;
 
 const HeroOuterContainer = styled(Container)`
-  padding-top: 1.5rem;
+  padding-top: 2.5rem;
   padding-bottom: 3rem;
 
   ${media('<=desktop')} {
-    min-height: calc(100vh - 8rem);
+    min-height: auto;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-bottom: 2.5rem;
   }
 `;
 
@@ -93,15 +93,15 @@ const TaglineBadge = styled.div`
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  margin: 0 auto 1.5rem auto;
-  padding: 0.8rem 2rem;
+  margin: 0 auto 1.8rem auto;
+  padding: 0.75rem 1.8rem;
   width: fit-content;
   background: rgb(var(--tertiary, 235, 246, 254));
   border: 1.5px solid rgba(53, 169, 239, 0.35);
   border-radius: 9999px;
   color: rgb(var(--brandBlue, 0, 106, 173));
   font-family: var(--font-heading);
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   font-weight: 700;
   letter-spacing: 0.05em;
   text-transform: uppercase;
@@ -116,16 +116,15 @@ const TaglineBadge = styled.div`
 
   ${media('<=tablet')} {
     font-size: 1.05rem;
-    padding: 0.6rem 1.4rem;
+    padding: 0.55rem 1.3rem;
     text-align: center;
     margin-bottom: 1.2rem;
   }
 
   ${media('<=phone')} {
     font-size: 0.9rem;
-    padding: 0.5rem 1rem;
-    gap: 0.6rem;
-    letter-spacing: 0.03em;
+    padding: 0.45rem 0.9rem;
+    gap: 0.5rem;
   }
 `;
 
@@ -152,8 +151,8 @@ const HeroWrapper = styled.div`
 `;
 
 const Contents = styled.div`
-  flex: 1;
-  max-width: 52rem;
+  flex: 1.2;
+  max-width: 58rem;
 
   ${media('<=desktop')} {
     max-width: 100%;
@@ -167,27 +166,27 @@ const Contents = styled.div`
 `;
 
 const CustomButtonGroup = styled(ButtonGroup)`
-  margin-top: 2.5rem;
+  margin-top: 2.2rem;
 
   ${media('<=desktop')} {
-    margin-top: 2.5rem;
+    margin-top: 2.2rem;
     justify-content: center;
   }
 
   ${media('<=tablet')} {
-    margin-top: 2rem;
+    margin-top: 1.8rem;
   }
 `;
 
 const ImageContainer = styled.div`
   display: flex;
   position: relative;
-  flex: 1.1;
+  flex: 1;
   justify-content: center;
   align-items: center;
 
   ${media('<=desktop')} {
-    margin-top: 3rem;
+    margin-top: 2.5rem;
   }
 `;
 
@@ -228,14 +227,14 @@ const HexagonWrapper = styled.div`
   }
 
   ${media('<=tablet')} {
-    max-width: 300px;
+    max-width: 320px;
   }
 `;
 
 const Description = styled.p`
-  font-size: 1.8rem;
-  opacity: 0.8;
-  line-height: 1.6;
+  font-size: 1.75rem;
+  opacity: 0.88;
+  line-height: 1.55;
 
   ${media('<=desktop')} {
     font-size: 1.5rem;
@@ -243,15 +242,20 @@ const Description = styled.p`
 `;
 
 const Heading = styled.h1`
-  font-size: 6.4rem;
+  font-size: 5.4rem;
   font-weight: 800;
-  line-height: 1.1;
-  margin-bottom: 3rem;
-  letter-spacing: -0.03em;
+  line-height: 1.12;
+  margin-bottom: 1.8rem;
+  letter-spacing: -0.025em;
   color: rgb(var(--text));
 
-  ${media('<=tablet')} {
+  ${media('<=desktop')} {
     font-size: 4.2rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.4rem;
+  }
+
+  ${media('<=tablet')} {
+    font-size: 3.2rem;
+    margin-bottom: 1.2rem;
   }
 `;

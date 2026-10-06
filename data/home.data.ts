@@ -85,9 +85,9 @@ export const homeCopy = {
     secondaryCta: { label: "Talk to an Expert", href: "/contact" },
   },
   stats: [
-    { value: "25+", label: "Years of Experience", isPlaceholder: false },
-    { value: "15+", label: "Global Associates", isPlaceholder: false },
-    { value: "4", label: "Core Disciplines", isPlaceholder: false },
+    { value: "35+", label: "Years of Combined Experience", isPlaceholder: false },
+    { value: "20+", label: "Global Associates: Professionals & Faculty", isPlaceholder: false },
+    { value: "5", label: "Workshops & Events to Date", isPlaceholder: false },
   ],
   competenciesHeading: "Our Expertise",
   competenciesSubheading: "Core Competencies",
@@ -98,36 +98,35 @@ export const homeCopy = {
   whyHeading: "Why SAGE?",
   whyBody:
     "We provide more than just education; we provide the tools for your professional success in the wireless industry.",
-  ctaHeading: "Your next system begins with deeper understanding.",
-  ctaBody:
-    "Build the practical expertise to analyse, design, and deliver modern RF and wireless systems.",
-  ctaPrimary: { label: "Explore Learning Paths", href: "/courses" },
-  ctaSecondary: { label: "Start a Conversation", href: "/contact" },
+  ctaHeading: "Your next step into the wireless world starts here with SAGE.",
+  ctaBody: "",
+  ctaPrimary: { label: "Explore Courses", href: "/courses" },
+  ctaSecondary: { label: "Explore Events", href: "/events" },
 };
 
 export const whyFeatures = [
   {
     title: "Expert Instructors",
     description:
-      "Learn from engineers and educators with decades of practical experience in RF and Microwave systems.",
+      "Learn from engineers and educators with decades of practical and academic experience in RF and Microwave systems.",
     icon: "GraduationCap",
   },
   {
     title: "Flexible Learning",
     description:
-      "Access courses on-site, off-site, and online. Our delivery adapts to your schedule and needs.",
+      "Access courses and tutorials online to meet your schedule and needs. On-site delivery also available upon request.",
     icon: "Globe",
   },
   {
     title: "Practical Focus",
     description:
-      "Every course bridges electromagnetic theory with real-world design guidelines and applications.",
+      "Every course bridges electromagnetic fundamentals with real-world design guidelines and applications.",
     icon: "Wrench",
   },
   {
-    title: "Tailored Programs",
+    title: "Certificate Programs",
     description:
-      "Custom courses, workshops, and consulting designed around your organisation's specific engineering challenges.",
+      "Practical curriculum to help you advance your personal skills and improve your organizational wireless edge.",
     icon: "Settings",
   },
 ];

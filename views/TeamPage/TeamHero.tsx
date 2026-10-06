@@ -14,13 +14,13 @@ export default function TeamHero({ activeDiscipline, onSelectDiscipline }: TeamH
     <HeroWrapper>
       <Container>
         <HeroContent>
-          <OverTitle>02 / FACULTY & ASSOCIATES</OverTitle>
+          <OverTitle>02 / MEET OUR TEAM</OverTitle>
           <HeroTitle>
             World-class RF, microwave, &{' '}
             <TitleHighlight>wireless systems experts.</TitleHighlight>
           </HeroTitle>
           <HeroSubtitle>
-            Our international faculty and corporate advisors bring decades of engineering leadership from
+            Our international instructors, research fellows, and corporate advisors bring decades of engineering leadership from
             top research institutions, semiconductor design centers, and industrial laboratories.
           </HeroSubtitle>
 

@@ -26,9 +26,11 @@ export default function SingleTeamMemberPage({
   const avatarSrc = getAvatarUrl(member.avatarPublicId, member.avatarUrl, imagePresets.avatar);
   const metaDescription = `${member.name} (${member.role}${member.affiliation ? `, ${member.affiliation}` : ''}) — ${member.bio.replace(/\r?\n/g, ' ').substring(0, 155)}...`;
 
+  const pageTitle = `${member.name} | SAGE — Shastry Associates Global Enterprises`;
+
   const breadcrumbs = [
     { label: 'Home', href: '/' },
-    { label: 'Faculty & Associates', href: '/team' },
+    { label: 'Meet Our Team', href: '/team' },
     { label: member.name, href: `/team/${member.slug}` },
   ];
 
@@ -37,7 +39,7 @@ export default function SingleTeamMemberPage({
 
   return (
     <Page
-      title={member.name}
+      title={pageTitle}
       description={metaDescription}
       canonicalPath={`/team/${member.slug}`}
       ogType="profile"

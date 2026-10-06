@@ -23,6 +23,12 @@ Welcome to the technical and strategic documentation for the **SAGE (Shastry Ass
 | 📐 [**Design System**](file:///c:/Users/MOG/Documents/Projects/Sage-new/next-saas-starter/docs/DESIGN_SYSTEM.md) | CSS variable tokens, styled-components conventions, responsive breakpoints, UI primitives. | Frontend Engineers |
 | 🖼️ [**Page Hero Specifications**](file:///c:/Users/MOG/Documents/Projects/Sage-new/next-saas-starter/docs/PAGE_HERO_SPECS.md) | Specifications for the inner-page parallax blurred banner component. | Frontend Engineers |
 
+### 🧪 QA & Quality Assurance
+| Guide | Description | Target Audience |
+| :--- | :--- | :--- |
+| 🧪 [**Test Plan & Evidence Template**](file:///c:/Users/MOG/Documents/Projects/Sage-new/next-saas-starter/docs/TEST_PLAN_AND_EVIDENCE_TEMPLATE.md) | QA master test plan covering 9 categories, acceptance criteria, test commands, and evidence templates. | QA Engineers, Developers & Stakeholders |
+| 📊 [**Automated Test Evidence Report**](file:///c:/Users/MOG/Documents/Projects/Sage-new/next-saas-starter/docs/TEST_EVIDENCE_REPORT.md) | Auto-generated report containing Pass/Fail metrics across all browsers & devices. | QA Leads, Management & Stakeholders |
+
 ### 🛠️ Developer Workflows & Governance
 | Guide | Description | Target Audience |
 | :--- | :--- | :--- |
