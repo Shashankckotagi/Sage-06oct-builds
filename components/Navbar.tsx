@@ -77,7 +77,7 @@ function NavItem({ href, title, outlined, highlighted, subItems }: SingleNavItem
       {hasSubItems && isOpen && (
         <DropdownMenu>
           {subItems.map((sub) => (
-            <NextLink key={sub.href} href={sub.href} passHref>
+            <NextLink key={sub.href || sub.title} href={sub.href || '#'} passHref>
               <DropdownItem>{sub.title}</DropdownItem>
             </NextLink>
           ))}
