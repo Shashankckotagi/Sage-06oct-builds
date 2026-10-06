@@ -615,6 +615,8 @@ export const events: SageEvent[] = [
       '/events/sage-inauguration/gallery/4.jpg',
     ],
   },
+];
+
 export const eventsData: SageEvent[] = events;
 
 export function getEvents(): SageEvent[] {

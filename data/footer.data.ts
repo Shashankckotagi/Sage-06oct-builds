@@ -11,6 +11,7 @@ export const footerNav = {
   },
   workWithUs: {
     title: "Work With Us",
+    links: [
       { label: "Consulting", href: "/consulting" },
       { label: "Custom Courses", href: "/courses" },
       { label: "Contact", href: "/contact" },
