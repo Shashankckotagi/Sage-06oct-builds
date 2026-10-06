@@ -12,7 +12,7 @@ export interface GalleryPageProps {
 }
 
 export default function GalleryPage({ events }: GalleryPageProps) {
-  const heroData = pageHeroes['/photos'] || pageHeroes['photos'] || pageHeroes['/events'];
+  const heroData = pageHeroes['/gallery'] || pageHeroes['/photos'] || pageHeroes['gallery'] || pageHeroes['photos'] || pageHeroes['/events'];
 
   return (
     <GalleryPageWrapper>
@@ -21,9 +21,9 @@ export default function GalleryPage({ events }: GalleryPageProps) {
       <MainGallerySection>
         <Container>
           <GalleryIntro>
-            <IntroTitle>Moments & Milestones</IntroTitle>
+            <IntroTitle>Moments &amp; Milestones</IntroTitle>
             <IntroSubtitle>
-              Explore photo highlights from SAGE global inaugurations, IEEE technical symposiums, university workshops, and academic leadership gatherings.
+              Explore photo highlights from SAGE global inaugurations, technical symposiums, university workshops, and academic leadership gatherings.
             </IntroSubtitle>
           </GalleryIntro>
 

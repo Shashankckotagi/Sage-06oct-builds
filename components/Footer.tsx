@@ -13,16 +13,16 @@ const footerItems: FooterItems = [
     title: '',
     items: [
       { title: 'Courses', href: '/courses' },
-      { title: 'Tutorials', href: '/courses#tutorials' },
-      { title: 'Workshops', href: '/services#workshops' },
-      { title: 'Training', href: '/services#training' },
+      { title: 'Tutorials', href: '/tutorials' },
+      { title: 'Workshops', href: '/workshops' },
+      { title: 'Training', href: '/training' },
       { title: 'Newsletter', href: '/newsletter' },
     ],
   },
   {
     title: '',
     items: [
-      { title: 'Consulting Services', href: '/services#consulting' },
+      { title: 'Consulting Services', href: '/consulting' },
       { title: 'Events', href: '/events' },
       { title: 'Photo Gallery', href: '/gallery' },
     ],
