@@ -1,11 +1,11 @@
 import Head from 'next/head';
 import React from 'react';
 import {
+  SITE_URL,
+  SITE_NAME,
   DEFAULT_DESCRIPTION,
   DEFAULT_OG_IMAGE,
   formatTitle,
-  SITE_NAME,
-  SITE_URL,
 } from 'utils/seo';
 
 export interface SEOHeadProps {

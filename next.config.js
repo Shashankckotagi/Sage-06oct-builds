@@ -1,3 +1,6 @@
+const CopyPlugin = require('copy-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
 });
@@ -24,8 +27,8 @@ module.exports = withBundleAnalyzer({
     return [
       { source: '/about-us', destination: '/about', permanent: true },
       { source: '/contact-us', destination: '/contact', permanent: true },
-      { source: '/blog', destination: '/news', permanent: true },
-      { source: '/blog/:slug*', destination: '/news/:slug*', permanent: true },
+      { source: '/blog', destination: '/newsletter', permanent: true },
+      { source: '/blog/:slug*', destination: '/newsletter', permanent: true },
     ];
   },
   webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
@@ -41,6 +44,18 @@ module.exports = withBundleAnalyzer({
       },
       use: [{ loader: '@svgr/webpack' }, { loader: 'url-loader' }],
     });
+
+    if (!dev) {
+      config.optimization.minimizer = [
+        new TerserPlugin({
+          terserOptions: {
+            ecma: 2020,
+            compress: { ecma: 2020 },
+            output: { ecma: 2020 },
+          },
+        }),
+      ];
+    }
 
     return config;
   },
