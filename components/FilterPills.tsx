@@ -1,24 +1,15 @@
 import styled from 'styled-components'
 import { DISCIPLINES, DisciplineId } from 'sage-data'
 
-export interface FilterOption {
-  id: string
-  label: string
-}
-
 export interface FilterPillsProps {
-  activeId: string
-  onSelect: (id: any) => void
-  options?: FilterOption[]
-  ariaLabel?: string
+  activeId: DisciplineId
+  onSelect: (id: DisciplineId) => void
 }
 
-export default function FilterPills({ activeId, onSelect, options, ariaLabel }: FilterPillsProps) {
-  const items = options || DISCIPLINES
-
+export default function FilterPills({ activeId, onSelect }: FilterPillsProps) {
   return (
-    <SegmentGroupRoot role="tablist" aria-label={ariaLabel || 'Filter options'}>
-      {items.map((item) => {
+    <SegmentGroupRoot role="tablist" aria-label="Filter Team by Discipline">
+      {DISCIPLINES.map((item) => {
         const isActive = activeId === item.id
         return (
           <SegmentItem
@@ -26,7 +17,7 @@ export default function FilterPills({ activeId, onSelect, options, ariaLabel }: 
             role="tab"
             aria-selected={isActive}
             isActive={isActive}
-            onClick={() => onSelect(item.id)}
+            onClick={() => onSelect(item.id as DisciplineId)}
           >
             {item.label}
           </SegmentItem>
