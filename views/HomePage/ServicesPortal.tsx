@@ -98,7 +98,7 @@ const SERVICE_TABS: ServiceTab[] = [
       'Networking with fellow wireless & microwave engineers',
     ],
     formats: ['On-Site Workshops', 'Conference Sessions', 'Webinars'],
-    ctaText: 'Explore Events',
+    ctaText: 'View Workshops',
     ctaLink: '/events',
     imageBg: 'linear-gradient(135deg, rgba(3, 105, 161, 0.92) 0%, rgba(53, 169, 239, 0.95) 100%)',
     imageUrl: 'https://images.unsplash.com/photo-1581092160607-ee22621dd758?auto=format&fit=crop&w=900&q=80',
